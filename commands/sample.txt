@@ -1,0 +1,9 @@
+#Execute all tests
+> robot --outputdir reports
+
+#Execute a test suite
+> robot --outputdir results --variable BROWSER:chrome --variable ENVIRONMENT:DEV --variable RESOLUTION:1920x1080 features-frontend/new.feature.robot
+
+#Execute a specific testcase
+> robot --outputdir reports --test "helloApi" features/sanity/sanity.feature.robot
+
