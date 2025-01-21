@@ -5,11 +5,15 @@ Resource    pages/webdrivers.robot
 Variables    webelements.py
 
 *** Variables ***
+${OBJECTIVE_PLACEHOLDER_TEXT}    Where are you going?
 
 *** Keywords ***
 I click on destination field
-    Wait Until Element Is Enabled    
-
+    Wait Until Element Is Enabled    ${DESTINATION_FIELD}    timeout=10
+    ${dest_placeholder_text}    Get Element Attribute    ${DESTINATION_FIELD}    placeholder
+    Should Be Equal As Strings    ${OBJECTIVE_PLACEHOLDER_TEXT}    ${dest_placeholder_text}
+    Click Element    ${DESTINATION_FIELD}
+    
 I will see that field is enabled
     Log    message
 
