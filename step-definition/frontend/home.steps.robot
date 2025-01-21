@@ -1,6 +1,5 @@
 *** Settings ***
 Library    SeleniumLibrary
-Library    OperatingSystem
 Variables    webelements.py
 Resource    pages/webdrivers.robot
 Resource    pages/bookingHomePage.robot
