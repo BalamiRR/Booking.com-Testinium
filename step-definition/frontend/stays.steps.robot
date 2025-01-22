@@ -22,6 +22,7 @@ The list of destinations is displayed
     ${l}=    Get Length    ${destination_items}
     Set Global Variable    @{destination_items}
     Set Global Variable    ${l}
+    Log    ${l}
     RETURN    ${destination_items}    ${l}
 
 When I enter "${B}" "${A}" in the input field
@@ -35,8 +36,10 @@ When I enter "${B}" "${A}" in the input field
 The list of destinations matching the input
     FOR    ${i}    IN RANGE    ${l}
         ${destination}=    Get Text    ${destination_items}[${i}]
+        Log    ${destination}
         ${destination_lower}=    Convert To Lower Case    ${destination}
-        Wait Until Element Contains    ${DESTINATION_CITIES}    BA
+        Log    ${input}
+        Log    ${destination_lower}
         Should Contain    ${destination_lower}    ${input}
     END
 
