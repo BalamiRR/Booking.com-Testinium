@@ -26,6 +26,7 @@ Scenario: Verify the list of destination field after entering input
     [Tags]    High    
     Given I click on destination field
     When I enter "B" "A" in the input field
+    And The list of destinations is displayed
     Then The list of destinations matching the input
 
 Scenario: Assign a new destination to a destination field

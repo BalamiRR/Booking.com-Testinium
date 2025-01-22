@@ -5,4 +5,6 @@ APP_LOGO="css=span[data-testid='header-logo']"
 DESTINATION_FIELD="//input[contains(@aria-label,'Où allez-vous ?')]"
 DESTINATION_PLACEHOLDER="css=input[@data-destination='1']"
 DESTINATION_LIST="//div[@role='listbox']//ul"
+CITY_NAMES="//div[contains(@class, 'a3332d346a')]"
+
 

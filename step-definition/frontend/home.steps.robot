@@ -15,6 +15,7 @@ Open BookingApp
         ...    ELSE
         ...    Fail    The browser selection is not valid
     Maximize Browser Window
+    Accept Cookies
     Set Global Variable    ${URL}
     RETURN    ${URL}
 
@@ -26,3 +27,5 @@ The header contains the navigation menu
     Wait Until Page Contains Element    ${NAV_MENU}
     ${tabs}=    Get WebElement    ${NAV_MENU}
     
+Accept Cookies
+    Click Element    css=#onetrust-accept-btn-handler

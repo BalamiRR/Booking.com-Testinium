@@ -6,16 +6,8 @@ Variables    webelements.py
 
 *** Variables ***
 ${DESTINATION_PLACEHOLDER_TEXT}    Où allez-vous ?
-# ${x}    xpath=(//span[@class='f419a93f12'])[2]
 
 *** Keywords ***
-
-# The language selection
-#     Wait Until Element Is Enabled    ${x}    timeout=10
-#     Click Element    ${x} 
-#     Sleep    2s
-#     Click Element    ${LANGUAGE_ENG}
-#     Sleep    2s
 
 I click on destination field
     Wait Until Element Is Enabled    ${DESTINATION_FIELD}    timeout=10
@@ -24,18 +16,6 @@ I click on destination field
     Click Element    ${DESTINATION_FIELD}
     Sleep    2s
 
-# I will see the list of popular nearby destinations
-#     Log    ${DESTINATION_LIST}
-#     Wait Until Element Is Visible    ${DESTINATION_LIST}
-
-The list of destinations is displayed
-    Wait Until Element Is Visible    ${DESTINATION_LIST}
-    @{destination_items}    Get WebElements    ${DESTINATION_LIST}
-    ${l}=    Get Length    ${destination_items}
-    Set Global Variable    @{destination_items}
-    Set Global Variable    ${l}
-    RETURN    ${destination_items}    ${l}
-
 When I enter "${B}" "${A}" in the input field
     Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_FIELD}    ${B}
     Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_FIELD}    ${A}
@@ -43,6 +23,14 @@ When I enter "${B}" "${A}" in the input field
     ${input}    Convert To Lower Case    ${input}
     Set Global Variable    ${input}
     RETURN    ${input}
+
+The list of destinations is displayed
+    Wait Until Element Is Visible    ${DESTINATION_LIST}
+    @{destination_items}    Get WebElements    ${DESTINATION_LIST}${CITY_NAMES}
+    ${l}=    Get Length    ${destination_items}
+    Set Global Variable    @{destination_items}
+    Set Global Variable    ${l}
+    RETURN    ${destination_items}    ${l}
 
 The list of destinations matching the input
     FOR    ${i}    IN RANGE    ${l}
