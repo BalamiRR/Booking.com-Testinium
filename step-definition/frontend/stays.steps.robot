@@ -16,6 +16,14 @@ I click on destination field
     Click Element    ${DESTINATION_FIELD}
     Sleep    2s
 
+The list of destinations is displayed
+    Wait Until Element Is Visible    ${DESTINATION_CITIES}
+    @{destination_items}    Get WebElements    ${DESTINATION_CITIES}
+    ${l}=    Get Length    ${destination_items}
+    Set Global Variable    @{destination_items}
+    Set Global Variable    ${l}
+    RETURN    ${destination_items}    ${l}
+
 When I enter "${B}" "${A}" in the input field
     Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_FIELD}    ${B}
     Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_FIELD}    ${A}
@@ -24,18 +32,11 @@ When I enter "${B}" "${A}" in the input field
     Set Global Variable    ${input}
     RETURN    ${input}
 
-The list of destinations is displayed
-    Wait Until Element Is Visible    ${DESTINATION_LIST}
-    @{destination_items}    Get WebElements    ${DESTINATION_LIST}${CITY_NAMES}
-    ${l}=    Get Length    ${destination_items}
-    Set Global Variable    @{destination_items}
-    Set Global Variable    ${l}
-    RETURN    ${destination_items}    ${l}
-
 The list of destinations matching the input
     FOR    ${i}    IN RANGE    ${l}
         ${destination}=    Get Text    ${destination_items}[${i}]
         ${destination_lower}=    Convert To Lower Case    ${destination}
+        Wait Until Element Contains    ${DESTINATION_CITIES}    BA
         Should Contain    ${destination_lower}    ${input}
     END
 
