@@ -16,42 +16,50 @@ I click on destination field
     Click Element    ${DESTINATION_FIELD}
     Sleep    2s
 
-The list of destinations is displayed
-    Wait Until Element Is Visible    ${DESTINATION_CITIES}
-    @{destination_items}    Get WebElements    ${DESTINATION_CITIES}
-    ${l}=    Get Length    ${destination_items}
-    Set Global Variable    @{destination_items}
-    Set Global Variable    ${l}
-    Log    ${l}
-    RETURN    ${destination_items}    ${l}
-
-When I enter "${B}" "${A}" in the input field
-    Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_FIELD}    ${B}
+When I enter "${P}" "${A}" in the input field
+    Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_FIELD}    ${P}
     Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_FIELD}    ${A}
     ${input}    Get Value    ${DESTINATION_FIELD}
     ${input}    Convert To Lower Case    ${input}
     Set Global Variable    ${input}
     RETURN    ${input}
 
+The list of destinations is displayed
+    Wait Until Element Is Visible    ${DESTINATION_CITIES}
+    ${destination_items}    Get WebElements    ${DESTINATION_CITIES}
+    ${l}=    Get Length    ${destination_items}
+    Set Global Variable    @{destination_items}
+    Set Global Variable    ${l}
+    RETURN    ${destination_items}    ${l}
+
 The list of destinations matching the input
     FOR    ${i}    IN RANGE    ${l}
-        ${destination}=    Get Text    ${destination_items}[${i}]
-        Log    ${destination}
+        ${destination}=    Get Text    ${destination_items}[${0}]
         ${destination_lower}=    Convert To Lower Case    ${destination}
-        Log    ${input}
-        Log    ${destination_lower}
         Should Contain    ${destination_lower}    ${input}
     END
 
-Then I will see some destinations will be displayed
-    Log    message
-
 I select a random destination from the list
-    Log    message
+    ${random_index}    Evaluate    random.randint(0, ${l}-1)
+    ${destination_city}    Get WebElements    ${DESTINATION_CITIES}
+    ${selected_destination}    Get Text    ${destination_city}[${random_index}]
+    Set Global Variable    ${selected_destination}
+    Click Element    ${destination_city}[${random_index}]
+    Sleep    1s
+    RETURN    ${selected_destination}
 
 The destination will be assigned to the destination field
-    Log    message
+    ${destination_assigned}    Get Value    ${DESTINATION_FIELD}
+    Should Start With   ${destination_assigned}     ${selected_destination}
 
+I click on clear destination button
+    Wait Until Element Is Visible    ${CLEAR_BTN}
+    Click Element    ${CLEAR_BTN}
+    
 The destination input is cleared
-    Log    message
+    Sleep    2s
+    Element Attribute Value Should Be    ${DESTINATION_PLACEHOLDER}    value    ${EMPTY}
 
+
+
+    

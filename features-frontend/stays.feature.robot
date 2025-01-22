@@ -25,7 +25,7 @@ Scenario: Verify the list of destination field after entering input
      ...    Verify that the list of destinations on the stays page is displayed after inputing a value on the "Destiona" field
     [Tags]    High    
     Given I click on destination field
-    When I enter "B" "A" in the input field
+    When I enter "P" "A" in the input field
     And The list of destinations matching the input
 
 Scenario: Assign a new destination to a destination field
@@ -34,7 +34,6 @@ Scenario: Assign a new destination to a destination field
      ...    Ensure that the new destination is assigned to the destination field 
     [Tags]    Medium
     Given I click on destination field
-    Then I will see some destinations will be displayed
     When I select a random destination from the list
     Then The destination will be assigned to the destination field
 
@@ -42,7 +41,9 @@ Scenario: Clear the destination input field
     [Documentation]
      ...    Clear the input via Cross button 
     [Tags]    Medium    
-    Given I click on destination field
+    When I click on clear destination button
     Then The destination input is cleared
+
+
 
 
