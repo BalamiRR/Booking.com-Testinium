@@ -55,10 +55,10 @@ The destination will be assigned to the destination field
 I click on clear destination button
     Wait Until Element Is Visible    ${CLEAR_BTN}
     Click Element    ${CLEAR_BTN}
-    
+
 The destination input is cleared
     Sleep    2s
-    Element Attribute Value Should Be    ${DESTINATION_PLACEHOLDER}    value    ${EMPTY}
+    Element Attribute Value Should Be    ${DESTINATION_FIELD}    value    ${EMPTY}
 
 
 

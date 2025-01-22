@@ -6,11 +6,6 @@ Test Teardown    Run Keyword If Test Failed    Capture Page Screenshot
 Suite Teardown    Close All Browsers
 
 *** Test Cases ***
-# Scenario: The language selection 
-#     [Documentation]
-#      ...    The language selection for booking
-#     [Tags]    High
-#     Given The language selection
 
 Scenario: Searching for the destinations field
     [Documentation]    
