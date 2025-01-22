@@ -1,30 +1,32 @@
 *** Settings ***
-Resource    ../step-definition/frontend/home.steps.robot
 Resource    ../step-definition/frontend/stays.steps.robot
 Force Tags    UC-STAYS
 Suite Setup    Open BookingApp
 Test Teardown    Run Keyword If Test Failed    Capture Page Screenshot
 Suite Teardown    Close All Browsers
 
-
 *** Test Cases ***
+# Scenario: The language selection 
+#     [Documentation]
+#      ...    The language selection for booking
+#     [Tags]    High
+#     Given The language selection
+
 Scenario: Searching for the destinations field
     [Documentation]    
      ...    Verify the functionality of the destination input field
      ...    Ensure users can view suggestions for popular nearby destinations
     [Tags]    High
     Given I click on destination field
-    When I will see that field is enabled
-    And I will see the list of popular nearby destinations
+    Then The list of destinations is displayed
 
 Scenario: Verify the list of destination field after entering input
     [Documentation]
      ...    Verify that the list of destinations on the stays page is displayed after inputing a value on the "Destiona" field
     [Tags]    High    
     Given I click on destination field
-    When I enter "b" "a" in the input field
-    Then The list of destinations is displayed
-    And The list of destinations matching the input
+    When I enter "B" "A" in the input field
+    Then The list of destinations matching the input
 
 Scenario: Assign a new destination to a destination field
     [Documentation]

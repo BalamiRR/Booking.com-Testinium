@@ -21,8 +21,8 @@ Create Chrome browser
    Call Method   ${chrome_options}   add_argument   --disable-extensions
    Call Method   ${chrome_options}   add_argument   --disable-dev-shm-usage
    Open Browser   ${URL}   browser=${BROWSER}   options=${chrome_options}
-   ${width}   ${height}=   Split String   ${RESOLUTION}   x
-   Set Window Size   ${width}   ${height}
+   # ${width}   ${height}=   Split String   ${RESOLUTION}   x
+   # Set Window Size   ${width}   ${height}
    Set Global Variable    ${URL}
    RETURN   ${URL}
 

@@ -9,7 +9,8 @@ Successfull redirection
 
 Verify element text
     [Arguments]    ${webelement}
-    ${text_is}=    Wait Until Page Contains Element    ${webelement}    20s
+    Wait Until Page Contains Element    ${webelement}    20s
+    ${text_is}=    Get Text    ${webelement}
     RETURN    ${text_is}
 
 

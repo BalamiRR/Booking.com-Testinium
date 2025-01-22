@@ -6,9 +6,11 @@ Resource    pages/bookingHomePage.robot
 
 *** Keywords ***
 Open BookingApp
-    ${URL} =    Run Keyword If    "${BROWSER}" == 'chrome'
+    ${URL}=    Run Keyword If    "${BROWSER}" == 'chrome'
         ...    Create Chrome browser    ${BROWSER}
         ...    ELSE IF    "${BROWSER}" == 'edge'
+        ...    Run Keyword    Create edge browser    ${BROWSER}
+        ...    ELSE IF    "${BROWSER}" == 'firefox'
         ...    Run Keyword    Create edge browser    ${BROWSER}
         ...    ELSE
         ...    Fail    The browser selection is not valid
