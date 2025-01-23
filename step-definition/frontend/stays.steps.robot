@@ -60,12 +60,15 @@ The destination input is cleared
     Sleep    2s
     Element Attribute Value Should Be    ${DESTINATION_FIELD}    value    ${EMPTY}
 
-I access to the Check-in and out Date
+I access to the check-in and check-out dates
     Log    message
+
 The date is displayed with current date
     Log    message
+
 I enter a valid date 
     Log    message
-The valid date is displayed in the due date field
+
+The valid date is displayed in the date field
     Log    message
     

@@ -49,12 +49,12 @@ Scenario: Clear the destination input field
 Scenario: Verify Default Check-in and out Date in the Date picker for Review step
     [Documentation]    Verify that the date picker appears when accessing the Due Date field, with the current date selected by Default
     [Tags]    Medium
-    Given I access to the Check-in and out Date
+    Given I access to the check-in and check-out dates
     Then The date is displayed with current date
 
-Scenario: Update Check-in and out Date
+Scenario: Update Check-in and Check-out Dates
     [Documentation]    Verify that when a vaid date is selected, the date appears in the field
     [Tags]    High
     Given I enter a valid date 
-    Then The valid date is displayed in the due date field
+    Then The valid date is displayed in the date field
 
