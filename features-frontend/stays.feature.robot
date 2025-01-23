@@ -48,6 +48,6 @@ Scenario: Verify Default Check-in and out Date in the Date picker for Review ste
 Scenario: Update Check-in and Check-out Dates
     [Documentation]    Verify that when a vaid date is selected, the date appears in the field
     [Tags]    High
-    Given I enter a valid date 
+    Given I select departure and return dates for my trip
     Then The valid date is displayed in the date field
 

@@ -72,7 +72,7 @@ The date is displayed with current date
     Log    ${current_date}
     Should Be Equal    ${SELECTED_DATE}    ${current_date}
     
-I enter a valid date 
+I select departure and return dates for my trip
     Log    message
 
 The valid date is displayed in the date field
