@@ -39,6 +39,22 @@ Scenario: Clear the destination input field
     When I click on clear destination button
     Then The destination input is cleared
 
+Scenario: Clear the destination input field
+    [Documentation]
+     ...    Clear the input via Cross button 
+    [Tags]    Medium    
+    When I click on clear destination button
+    Then The destination input is cleared
 
+Scenario: Verify Default Check-in and out Date in the Date picker for Review step
+    [Documentation]    Verify that the date picker appears when accessing the Due Date field, with the current date selected by Default
+    [Tags]    Medium
+    Given I access to the Check-in and out Date
+    Then The date is displayed with current date
 
+Scenario: Update Check-in and out Date
+    [Documentation]    Verify that when a vaid date is selected, the date appears in the field
+    [Tags]    High
+    Given I enter a valid date 
+    Then The valid date is displayed in the due date field
 
