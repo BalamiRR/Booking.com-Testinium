@@ -53,15 +53,17 @@ The destination will be assigned to the destination field
     Should Start With   ${destination_assigned}     ${selected_destination}
 
 I click on clear destination button
-    Wait Until Element Is Visible    ${CLEAR_BTN}
+    Wait Until Element Is Visible    ${CLEAR_BTN}    5s
     Click Element    ${CLEAR_BTN}
 
 The destination input is cleared
-    Sleep    2s
     Element Attribute Value Should Be    ${DESTINATION_FIELD}    value    ${EMPTY}
 
 I access to the check-in and check-out dates
-    Log    message
+    Wait Until Element Is Visible    ${DATE_PICKER}
+    Click Element    ${DATE_PICKER}
+    ${DATE_PICKER}    Get Value    ${DATE_PICKER}
+    Set Global Variable    ${DATE_PICKER}
 
 The date is displayed with current date
     Log    message
