@@ -1,5 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
+Library    DateTime
 Resource    home.steps.robot
 Resource    pages/webdrivers.robot
 Variables    webelements.py
@@ -62,12 +63,15 @@ The destination input is cleared
 I access to the check-in and check-out dates
     Wait Until Element Is Visible    ${DATE_PICKER}
     Click Element    ${DATE_PICKER}
-    ${DATE_PICKER}    Get Value    ${DATE_PICKER}
-    Set Global Variable    ${DATE_PICKER}
+    ${SELECTED_DATE}    Get Element Attribute    ${SELECTED_DATE}    data-date
+    Log    ${SELECTED_DATE}
+    Set Global Variable    ${SELECTED_DATE}
 
 The date is displayed with current date
-    Log    message
-
+    ${current_date}    Get Current Date    result_format=%#Y-%m-%#d
+    Log    ${current_date}
+    Should Be Equal    ${SELECTED_DATE}    ${current_date}
+    
 I enter a valid date 
     Log    message
 
