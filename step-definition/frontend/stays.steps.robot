@@ -1,6 +1,7 @@
 *** Settings ***
 Library    SeleniumLibrary
 Library    DateTime
+Library    XML
 Resource    home.steps.robot
 Resource    pages/webdrivers.robot
 Variables    webelements.py
@@ -63,23 +64,22 @@ I access to the check-in and check-out dates
     Wait Until Element Is Visible    ${DATE_PICKER}
     Click Element    ${DATE_PICKER}
     ${SELECTED_DATE}    Get Element Attribute    ${SELECTED_DATE}    data-date
-    Log    ${SELECTED_DATE}
     Set Global Variable    ${SELECTED_DATE}
 
 The date is displayed with current date
     ${current_date}    Get Current Date    result_format=%#Y-%m-%#d
     Set Global Variable    ${current_date}
-    Log    ${current_date}
     Should Be Equal    ${SELECTED_DATE}    ${current_date}
 
 I select a departure and return dates for my trip
     ${departure_date}    Add Time To Date    ${current_date}    5 days    result_format=%#Y-%m-%#d
-    ${return_date}    Add Time To Date    ${departure_date}    10 days    result_format=%#Y-%m-%#d    
+    ${departure_locator}    Get Element Attribute    xpath=//span[@data-date='${departure_date}']    ${departure_date} 
+    Click Element    ${departure_locator}
     #${departure_date}=    Get Current Date    result_format=%Y-%m-%d    increment=5 days
-    Scroll Element Into View    ${departure_date} 
-    Click Element    ${departure_date} 
-    Scroll Element Into View    ${return_date} 
-    Click Element    ${return_date}
+    ${return_date}    Add Time To Date    ${departure_date}    10 days    result_format=%#Y-%m-%#d    
+    ${return_locator}    Get Element Attribute    xpath=//span[@data-date='${return_date}']    ${return_date}
+    Wait Until Element Is Visible    ${return_locator}
+    Click Element    ${return_locator}
 
 The selected date is displayed in the date field
     Log    message
