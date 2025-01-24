@@ -7,9 +7,10 @@ Variables    webelements.py
 
 *** Variables ***
 ${DESTINATION_PLACEHOLDER_TEXT}    Où allez-vous ?
+${DEPARTURE_DATE_FROM_NOW}    5
+${RETURN_DAYS_FROM_NOW}    10    
 
 *** Keywords ***
-
 I click on destination field
     Wait Until Element Is Enabled    ${DESTINATION_FIELD}    timeout=10
     ${dest_placeholder_text}    Get Element Attribute    ${DESTINATION_FIELD}    placeholder
@@ -69,12 +70,36 @@ I access to the check-in and check-out dates
 
 The date is displayed with current date
     ${current_date}    Get Current Date    result_format=%#Y-%m-%#d
+    Set Global Variable    ${current_date}
     Log    ${current_date}
     Should Be Equal    ${SELECTED_DATE}    ${current_date}
-    
-I select departure and return dates for my trip
-    Log    message
 
-The valid date is displayed in the date field
+I select a random departure and return dates for my trip
+    ${departure_date}    Add Time To Date    ${current_date}    ${DEPARTURE_DATE_FROM_NOW}
+    ${return_date}    Add Time To Date    ${departure_date}    ${RETURN_DAYS_FROM_NOW}
+    #${departure}    //span[@data-date='${departure_date}']
+
+    Wait Until Element Is Visible    //span[@data-date='${departure_date}']
+    Click Element    //span[@data-date='${departure_date}']
+
+    Wait Until Element Is Visible    //span[@data-date='${return_date}']
+    Click Element    //span[@data-date='${return_date}']
+
+# Get Future Date
+#     [Arguments]    ${days_from_now}
+#     ${current_date}    Get Current Date    result_format=%#Y-%m-%#d
+#     ${future_date}    Convert Date    ${current_date}    add_days=${days_from_now}
+#     [Return]    ${future_date}
+
+# I select a random departure and return dates for my trip
+#     ${departure_date}    Get Future Date    ${DEPARTURE_DATE_FROM_NOW}
+#     ${return_date}    Get Future Date    ${RETURN_DAYS_FROM_NOW}
+#     ${dynamic}    Dynamic Date Locator    ${departure_date}
+#     Log    ${dynamic}
+#     Click Element    ${dynamic}
+
+The selected date is displayed in the date field
     Log    message
     
+
+
