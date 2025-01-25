@@ -28,4 +28,4 @@ The header contains the navigation menu
     ${tabs}=    Get WebElement    ${NAV_MENU}
     
 Accept Cookies
-    Click Element    css=#onetrust-accept-btn-handler
+    Click Element    css=${ACCEPT_COOKIES}
