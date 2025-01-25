@@ -7,6 +7,9 @@ Suite Teardown    Close All Browsers
 
 *** Test Cases ***
 
+Scenario: The language
+    Given The language preferences
+    
 Scenario: Searching for the destinations field
     [Documentation]    
      ...    Verify the functionality of the destination input field
