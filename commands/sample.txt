@@ -4,6 +4,8 @@
 #Execute a test suite
 > robot --outputdir results --variable BROWSER:chrome --variable ENVIRONMENT:DEV --variable RESOLUTION:1920x1080 features-frontend/new.feature.robot
 
+> robot --outputdir results --variable BROWSER:chrome --variable ENVIRONMENT:DEV features-frontend/stays.feature.robot
+
 #Execute a specific testcase
 > robot --outputdir reports --test "Scenario" features/sanity/sanity.feature.robot
 

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.13.1 on win32)" generated="2025-01-25T23:29:05.333726" rpa="false" schemaversion="5">
+<suite id="s1" name="Stays.Feature" source="C:\Testinium-Booking\features-frontend\stays.feature.robot">
+<kw name="Open BookingApp" owner="home.steps" type="SETUP">
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Create Chrome browser" owner="webdrivers">
+<kw name="Get Main Url" owner="readProperty">
+<msg time="2025-01-25T23:29:05.791944" level="INFO">${URL} = https://www.booking.com/</msg>
+<var>${URL}</var>
+<arg>${ENVIRONMENT}</arg>
+<status status="PASS" start="2025-01-25T23:29:05.791740" elapsed="0.000255"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-01-25T23:29:05.792461" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000002A11B7E12B0&gt;</msg>
+<var>${chrome_options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-01-25T23:29:05.792184" elapsed="0.000309"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-01-25T23:29:05.792751" elapsed="0.000194"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-gpu</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-01-25T23:29:05.793087" elapsed="0.000123"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-infobars</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-01-25T23:29:05.793303" elapsed="0.000092"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-extensions</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-01-25T23:29:05.793489" elapsed="0.000087"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-dev-shm-usage</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-01-25T23:29:05.793665" elapsed="0.000098"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-01-25T23:29:05.794156" level="INFO">Opening browser 'chrome' to base url 'https://www.booking.com/'.</msg>
+<arg>${URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<arg>options=${chrome_options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-01-25T23:29:05.793898" elapsed="3.411630"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-01-25T23:29:09.205947" level="INFO">${URL} = https://www.booking.com/</msg>
+<arg>${URL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-01-25T23:29:09.205730" elapsed="0.000260"/>
+</kw>
+<return>
+<value>${URL}</value>
+<status status="PASS" start="2025-01-25T23:29:09.206052" elapsed="0.000063"/>
+</return>
+<arg>${BROWSER}</arg>
+<status status="PASS" start="2025-01-25T23:29:05.791511" elapsed="3.414745"/>
+</kw>
+<msg time="2025-01-25T23:29:09.206329" level="INFO">${URL} = https://www.booking.com/</msg>
+<var>${URL}</var>
+<arg>"${BROWSER}" == 'chrome'</arg>
+<arg>Create Chrome browser</arg>
+<arg>${BROWSER}</arg>
+<arg>ELSE IF</arg>
+<arg>"${BROWSER}" == 'edge'</arg>
+<arg>Run Keyword</arg>
+<arg>Create edge browser</arg>
+<arg>${BROWSER}</arg>
+<arg>ELSE IF</arg>
+<arg>"${BROWSER}" == 'firefox'</arg>
+<arg>Run Keyword</arg>
+<arg>Create edge browser</arg>
+<arg>${BROWSER}</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>The browser selection is not valid</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-01-25T23:29:05.791124" elapsed="3.415226"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-01-25T23:29:09.206520" elapsed="0.050255"/>
+</kw>
+<kw name="Accept Cookies" owner="home.steps">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-01-25T23:29:09.258133" level="INFO">Clicking element 'css=#onetrust-accept-btn-handler'.</msg>
+<arg>css=${ACCEPT_COOKIES}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-25T23:29:09.257619" elapsed="0.614882"/>
+</kw>
+<status status="PASS" start="2025-01-25T23:29:09.257212" elapsed="0.615605"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-01-25T23:29:09.873226" level="INFO">${URL} = https://www.booking.com/</msg>
+<arg>${URL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-01-25T23:29:09.873007" elapsed="0.000263"/>
+</kw>
+<return>
+<value>${URL}</value>
+<status status="PASS" start="2025-01-25T23:29:09.873353" elapsed="0.000056"/>
+</return>
+<status status="PASS" start="2025-01-25T23:29:05.790376" elapsed="4.083144"/>
+</kw>
+<test id="s1-t1" name="Scenario: The language" line="10">
+<kw name="Given The language preferences" owner="stays.steps">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-01-25T23:29:09.875024" level="INFO">Clicking element 'css=.f419a93f12:nth-child(2) .e3fa9175ee'.</msg>
+<arg>${LANGUAGE_PREF_DRAWER}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-25T23:29:09.874801" elapsed="1.238025"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-01-25T23:29:16.114242" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-01-25T23:29:11.113110" elapsed="5.001288"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-01-25T23:29:16.115014" level="INFO">Clicking element 'css=.abced745f1'.</msg>
+<arg>${LANGUAGE_ENG}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-25T23:29:16.114676" elapsed="1.459552"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-01-25T23:29:22.575086" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-01-25T23:29:17.574406" elapsed="5.000823"/>
+</kw>
+<status status="PASS" start="2025-01-25T23:29:09.874170" elapsed="12.701286"/>
+</kw>
+<kw name="Run Keyword If Test Failed" owner="BuiltIn" type="TEARDOWN">
+<arg>Capture Page Screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" start="2025-01-25T23:29:22.576354" elapsed="0.000134"/>
+</kw>
+<tag>UC-STAYS</tag>
+<status status="PASS" start="2025-01-25T23:29:09.873598" elapsed="12.703068"/>
+</test>
+<test id="s1-t2" name="Scenario: Searching for the destinations field" line="13">
+<kw name="Given I click on destination field" owner="stays.steps">
+<kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
+<msg time="2025-01-25T23:29:33.073333" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-01-25T23:29:33.073497" level="FAIL">Element with locator '//input[contains(@aria-label,'Where are you going?')]' not found.</msg>
+<arg>${DESTINATION_FIELD}</arg>
+<arg>timeout=10</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="FAIL" start="2025-01-25T23:29:22.578188" elapsed="10.499806">Element with locator '//input[contains(@aria-label,'Where are you going?')]' not found.</status>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<var>${dest_placeholder_text}</var>
+<arg>${DESTINATION_FIELD}</arg>
+<arg>placeholder</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="NOT RUN" start="2025-01-25T23:29:33.078393" elapsed="0.000051"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${DESTINATION_PLACEHOLDER_TEXT}</arg>
+<arg>${dest_placeholder_text}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-01-25T23:29:33.078552" elapsed="0.000020"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${DESTINATION_FIELD}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-01-25T23:29:33.078655" elapsed="0.000016"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-01-25T23:29:33.078739" elapsed="0.000016"/>
+</kw>
+<status status="FAIL" start="2025-01-25T23:29:22.577941" elapsed="10.500920">Element with locator '//input[contains(@aria-label,'Where are you going?')]' not found.</status>
+</kw>
+<kw name="Then The list of destinations is displayed" owner="stays.steps">
+<status status="NOT RUN" start="2025-01-25T23:29:33.079420" elapsed="0.000040"/>
+</kw>
+<kw name="Run Keyword If Test Failed" owner="BuiltIn" type="TEARDOWN">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-01-25T23:29:33.401399" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-01-25T23:29:33.080006" elapsed="0.321546"/>
+</kw>
+<arg>Capture Page Screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" start="2025-01-25T23:29:33.079836" elapsed="0.321843"/>
+</kw>
+<doc>Verify the functionality of the destination input field
+Ensure users can view suggestions for popular nearby destinations</doc>
+<tag>High</tag>
+<tag>UC-STAYS</tag>
+<status status="FAIL" start="2025-01-25T23:29:22.577394" elapsed="10.824653">Element with locator '//input[contains(@aria-label,'Where are you going?')]' not found.</status>
+</test>
+<test id="s1-t3" name="Scenario: Verify the list of destination field after entering input" line="21">
+<kw name="Given I click on destination field" owner="stays.steps">
+<kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
+<errors>
+<msg time="2025-01-25T23:29:38.065520" level="ERROR">Execution stopped by user.</msg>
+</errors>
+</robot>
