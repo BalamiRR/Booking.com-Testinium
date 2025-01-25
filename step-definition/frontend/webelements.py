@@ -1,6 +1,6 @@
 NAV_MENU="css=.Header_bar"
 APP_LOGO="css=span[data-testid='header-logo']"
-DESTINATION_FIELD="//input[contains(@aria-label,'Où allez-vous ?')]"
+DESTINATION_FIELD="//input[contains(@aria-label,'Where are you going?')]"
 DESTINATION_LISTBOX="//div[@role='listbox']//ul//li"
 DESTINATION_CITIES="//ul/li//div[contains(@class, 'a3332d346a')]"
 CLEAR_BTN="css=.a83ed08757 > .fcd9eec8fb:nth-child(1) > svg"

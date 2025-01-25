@@ -7,7 +7,7 @@ Resource    pages/webdrivers.robot
 Variables    webelements.py
 
 *** Variables ***
-${DESTINATION_PLACEHOLDER_TEXT}    Où allez-vous ?
+${DESTINATION_PLACEHOLDER_TEXT}    Where are you going?
 
 *** Keywords ***
 I click on destination field
