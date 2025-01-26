@@ -10,5 +10,10 @@ DATE_PICKER="//button[@data-testid='date-display-field-start']"
 SELECTED_DATE="//span[contains(@tabindex,'0')]"
 ACCEPT_COOKIES="#onetrust-accept-btn-handler"
 ADVERTISEMENT_CLOSE_BTN="css=button.a83ed08757.c21c56c305.f38b6daa18.d691166b09.ab98298258.f4552b6561"
+FLIGHTS_PAGE="//a[@id='flights']"
+DESTINATION_FLIGHT="(//span[contains(@class,'SbZm6')])[1]"
+DESTINATION_OPTION="//span[@class='Tags-module__text___90E7G']"
+
+#(//span[contains(@class,'SbZm6')])[1]
 # DESTINATION_CITIES="//div[@data-testid='autocomplete-result']//div[contains(@class, 'a3332d346a')]"
 

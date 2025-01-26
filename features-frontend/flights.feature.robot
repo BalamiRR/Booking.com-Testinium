@@ -11,8 +11,9 @@ Suite Teardown    Close All Browsers
 Scenario: Searching for the destination field
     [Documentation]    
     ...    Verify the functionality of the destination in the flight search form
-    ...    Ensure that users can find their  desired location
+    ...    Ensure that users can find their desired location
     [Tags]    High
-    Given I click on the destination field where I want to go
+    Given I click on the "Flights" button
+    Then I click on the destination field where I want to go
     When I enter "I" "S" in the "Where from?" field
     Then I should see a list of destinations matching the input
