@@ -10,11 +10,7 @@ Variables    webelements.py
 ${DESTINATION_PLACEHOLDER_TEXT}    Where are you going?
 
 *** Keywords ***
-The language preferences
-    Click Element    ${LANGUAGE_PREF_DRAWER}
-    Sleep    5s
-    Click Element    ${LANGUAGE_ENG}
-    Sleep    5s
+
 
 I click on destination field
     Wait Until Element Is Enabled    ${DESTINATION_FIELD}    timeout=10

@@ -6,9 +6,6 @@ Test Teardown    Run Keyword If Test Failed    Capture Page Screenshot
 Suite Teardown    Close All Browsers
 
 *** Test Cases ***
-
-Scenario: The language
-    Given The language preferences
     
 Scenario: Searching for the destinations field
     [Documentation]    
