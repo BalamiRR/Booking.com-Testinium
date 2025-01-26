@@ -17,7 +17,8 @@ Open BookingApp
         ...    Fail    The browser selection is not valid
     Maximize Browser Window
     Accept Cookies
-    The language preferences
+    Set language preferences
+    Close the Advertisement
     Set Global Variable    ${URL}
     RETURN    ${URL}
 
@@ -32,8 +33,15 @@ The header contains the navigation menu
 Accept Cookies
     Click Element    css=${ACCEPT_COOKIES}
 
-The language preferences
+Set language preferences
     Click Element    ${LANGUAGE_PREF_DRAWER}
     Wait Until Element Is Visible    ${LANGUAGE_ENG}
     Click Element    ${LANGUAGE_ENG}
     Sleep    5s
+
+Close the Advertisement
+    ${is_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${ADVERTISEMENT_CLOSE_BTN}
+    Run Keyword If    ${is_visible}    Handle Pop-Up
+
+Handle Pop-up
+    Click Element    ${ADVERTISEMENT_CLOSE_BTN}
