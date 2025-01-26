@@ -9,4 +9,6 @@ CLEAR_BTN="css=.a83ed08757 > .fcd9eec8fb:nth-child(1) > svg"
 DATE_PICKER="//button[@data-testid='date-display-field-start']"
 SELECTED_DATE="//span[contains(@tabindex,'0')]"
 ACCEPT_COOKIES="#onetrust-accept-btn-handler"
+ADVERTISEMENT_CLOSE_BTN="css=button.a83ed08757.c21c56c305.f38b6daa18.d691166b09.ab98298258.f4552b6561"
 # DESTINATION_CITIES="//div[@data-testid='autocomplete-result']//div[contains(@class, 'a3332d346a')]"
+
