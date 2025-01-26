@@ -7,7 +7,7 @@ Resource    pages/webdrivers.robot
 Variables    webelements.py
 
 *** Variables ***
-${DESTINATION_OPTION_MESSAGE}    Select multiple airports at once and compare flights
+${DESTINATION_MESSAGE}    Airport or city
 
 
 *** Keywords ***
@@ -20,10 +20,21 @@ I click on the "Flights" button
 
 I click on the destination field where I want to go
     Click Element    ${DESTINATION_FLIGHT}
+    ${destination_text}    Get Element Attribute    ${DESTINATION_TO}    placeholder
+    Should Be Equal As Strings    ${DESTINATION_MESSAGE}    ${destination_text}
     Click Element    ${DESTINATION_OPTION}
     Sleep    2s
 
-I enter "I" "S" in the "Where from?" field
-    Log    message
+I enter "${I}" "${S}" in the "Where from?" field
+    Click Element    ${DESTINATION_TO}
+    Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_TO}    ${I}
+    Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_TO}    ${S}
+    ${input}    Get Value    ${DESTINATION_TO}
+    ${input}    Convert To Lower Case    ${input}
+    Set Global Variable    ${input}
+    RETURN    ${input}
+    Wait Until Element Is Enabled    ${input}    timeout=10
+
+    
 I should see a list of destinations matching the input
     Log    message
