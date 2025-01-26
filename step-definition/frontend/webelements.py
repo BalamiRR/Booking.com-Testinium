@@ -13,7 +13,7 @@ ADVERTISEMENT_CLOSE_BTN="css=button.a83ed08757.c21c56c305.f38b6daa18.d691166b09.
 FLIGHTS_PAGE="//a[@id='flights']"
 DESTINATION_FLIGHT="(//span[contains(@class,'SbZm6')])[1]"
 DESTINATION_OPTION="//span[@class='Tags-module__text___90E7G']"
+DESTINATION_TO="//input[@placeholder='Airport or city']"
 
-#(//span[contains(@class,'SbZm6')])[1]
 # DESTINATION_CITIES="//div[@data-testid='autocomplete-result']//div[contains(@class, 'a3332d346a')]"
 
