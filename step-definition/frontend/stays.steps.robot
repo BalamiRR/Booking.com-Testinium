@@ -10,7 +10,6 @@ Variables    webelements.py
 ${DESTINATION_PLACEHOLDER_TEXT}    Where are you going?
 
 *** Keywords ***
-
 I click on destination field
     Wait Until Element Is Enabled    ${DESTINATION_FIELD}    timeout=10
     ${dest_placeholder_text}    Get Element Attribute    ${DESTINATION_FIELD}    placeholder
@@ -73,17 +72,36 @@ The date is displayed with current date
     Should Be Equal    ${SELECTED_DATE}    ${current_date}
 
 I select a departure and return dates for my trip
-    ${departure_date}    Add Time To Date    ${current_date}    5 days    result_format=%#Y-%m-%#d
-    ${departure_locator}    Get Element Attribute    xpath=//span[@data-date='${departure_date}']    ${departure_date} 
-    Click Element    ${departure_locator}
-    #${departure_date}=    Get Current Date    result_format=%Y-%m-%d    increment=5 days
-    ${return_date}    Add Time To Date    ${departure_date}    10 days    result_format=%#Y-%m-%#d    
-    ${return_locator}    Get Element Attribute    xpath=//span[@data-date='${return_date}']    ${return_date}
-    Wait Until Element Is Visible    ${return_locator}
-    Click Element    ${return_locator}
+    ${departure_day}    Add Time To Date    ${current_date}    5 days    result_format=%#d
+    Log    ${departure_day}   
+    Wait Until Element Is Visible    //span[text()='${departure_day}']
+    Click Element    //span[text()='${departure_day}']
+    Log    ${departure_day} 
+    ${return_day}    Add Time To Date    ${current_date}    10 days    result_format=%#d
+    Log    ${return_day}   
+    Wait Until Element Is Visible    //span[text()='${return_day}']
+    Click Element    //span[text()='${return_day}']
+    Log    ${return_day} 
+    Sleep    10s
+
+
+#//span[@data-date='${current_date}']//span[text()='departure_day']
+#//span[@data-date='${current_date}']//span[text()='return_day']
+
+
+    # ${departure_day}    Add Time To Date    ${current_date}    5 days    result_format=%#d
+    # Log    ${departure_day}   
+    # Click Element    xpath=//span[text()='${departure_day}']
+    # Log    ${departure_day} 
+ 
+    # ${return_day}    Add Time To Date    ${current_date}    10 days    result_format=%#d
+    # Log    ${return_day}   
+    # Click Element    xpath=//span[text()='${return_day}']
+    # Log    ${return_day} 
+    # Sleep    10s
 
 The selected date is displayed in the date field
     Log    message
-    
+
 
 
