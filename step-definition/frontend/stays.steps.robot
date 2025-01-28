@@ -17,7 +17,7 @@ I click on destination field
     Click Element    ${DESTINATION_FIELD}
     Sleep    2s
 
-When I enter "${P}" "${A}" in the input field
+I enter "${P}" "${A}" in the input field
     Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_FIELD}    ${P}
     Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_FIELD}    ${A}
     ${input}    Get Value    ${DESTINATION_FIELD}
@@ -71,37 +71,39 @@ The date is displayed with current date
     Set Global Variable    ${current_date}
     Should Be Equal    ${SELECTED_DATE}    ${current_date}
 
-I select a departure and return dates for my trip
-    ${departure_day}    Add Time To Date    ${current_date}    5 days    result_format=%#d
-    Log    ${departure_day}   
-    Wait Until Element Is Visible    //span[text()='${departure_day}']
-    Click Element    //span[text()='${departure_day}']
-    Log    ${departure_day} 
-    ${return_day}    Add Time To Date    ${current_date}    10 days    result_format=%#d
-    Log    ${return_day}   
-    Wait Until Element Is Visible    //span[text()='${return_day}']
-    Click Element    //span[text()='${return_day}']
-    Log    ${return_day} 
-    Sleep    10s
+I select a departure and a return dates for my trip
+    ${current_date}    Get Current Date    result_format=%#d
+    ${DEPARTURE_DATE}    Set Variable    xpath=//span[text()='${current_date}']
+    Wait Until Element Is Visible    ${DEPARTURE_DATE}    
+    Double Click Element    ${DEPARTURE_DATE}  
+    Sleep    5s
 
-
-#//span[@data-date='${current_date}']//span[text()='departure_day']
-#//span[@data-date='${current_date}']//span[text()='return_day']
-
-
+    
     # ${departure_day}    Add Time To Date    ${current_date}    5 days    result_format=%#d
     # Log    ${departure_day}   
-    # Click Element    xpath=//span[text()='${departure_day}']
+    # Wait Until Element Is Visible    //span[contains(text(),'${departure_day}')]
+    # Double Click Element    xpath=//td/span/span[text()='${departure_day}']
+    # Sleep    2s
     # Log    ${departure_day} 
- 
     # ${return_day}    Add Time To Date    ${current_date}    10 days    result_format=%#d
     # Log    ${return_day}   
-    # Click Element    xpath=//span[text()='${return_day}']
+    # Wait Until Element Is Visible    //span[contains(text(),'${return_day}')]
+    # Double Click Element    xpath=//td/span/span[contains(text(),'${return_day}')]
     # Log    ${return_day} 
     # Sleep    10s
+
 
 The selected date is displayed in the date field
     Log    message
 
+# I select a departure and return dates for my trip
+#     ${departure_day}    Add Time To Date    ${current_date}    5 days    result_format=%#d
+#     Wait Until Element Is Visible    //span[text()='${departure_day}']
+#     Click Element    //span[text()='${departure_day}']
+#     Sleep    2s
+    
+#     ${return_day}    Add Time To Date    ${current_date}    10 days    result_format=%#d
+#     Wait Until Element Is Visible    //span[text()='${return_day}']
+#     Click Element    //span[text()='${return_day}']
 
 
