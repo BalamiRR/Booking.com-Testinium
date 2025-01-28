@@ -56,3 +56,10 @@ Scenario: Verify default values for adults, children, and rooms
     Given I click on the guest selection field
     Then I will see the displayed default value as "2 adults · 0 children · 1 room"
 
+Scenario: Attempt to enter less than 1 adult
+    [Documentation]    Verify that the system does not allow the number of adults to drop below 1, and the '-' button is appropriately enabled or disabled based on the value.
+    [Tags]    High
+    Given I see that the '-' button is disabled when the number of adults is 1
+    When I click the '+' button for adults
+    Then I see the number of adults increase by 1
+    And I see that the '-' button is enabled
