@@ -44,10 +44,15 @@ Scenario: Verify Default Check-in and out Date in the Date picker for Review ste
     Given I access to the check-in and check-out dates
     Then The date is displayed with current date
 
-Scenario: Update Check-in and Check-out Dates
+Scenario: Check-in and Check-out Dates
     [Documentation]    Verify that when a vaid date is selected, the date appears in the field
     [Tags]    High
     Given I select a departure and a return date for my trip
     Then The selected date is displayed in the date field
 
+Scenario: Verify default values for adults, children, and rooms
+    [Documentation]    Ensure the default summary is displayed correctly when no changes are made.
+    [Tags]    Medium
+    Given I click on the guest selection field
+    Then I will see the displayed default value as "2 adults · 0 children · 1 room"
 
