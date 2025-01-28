@@ -78,6 +78,12 @@ I select a departure and a return dates for my trip
     Double Click Element    ${DEPARTURE_DATE}  
     Sleep    5s
 
+    ${current_date}=    Get Current Date
+    ${date}=    Add Time To Date    ${current_date}    1 days    result_format=%#d
+    ${RETURN_DATE}    Set Variable    xpath=//span[text()='${date}']
+    Wait Until Element Is Visible    ${RETURN_DATE}
+    Double Click Element    ${RETURN_DATE}
+    Sleep    2s
     
     # ${departure_day}    Add Time To Date    ${current_date}    5 days    result_format=%#d
     # Log    ${departure_day}   

@@ -15,6 +15,6 @@ DESTINATION_FLIGHT="(//span[contains(@class,'SbZm6')])[1]"
 DESTINATION_OPTION="//span[@class='Tags-module__text___90E7G']"
 DESTINATION_TO="//input[@placeholder='Airport or city']"
 
-
+#DEPARTURE_5_DAYS_LATER=css=tr:nth-child(2) > .b80d5adb18:nth-child(1) > .ef091eb985
 
 # DESTINATION_CITIES="//div[@data-testid='autocomplete-result']//div[contains(@class, 'a3332d346a')]"
