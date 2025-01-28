@@ -1,7 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
 Library    DateTime
-Library    XML
 Resource    home.steps.robot
 Resource    pages/webdrivers.robot
 Variables    webelements.py
@@ -71,45 +70,28 @@ The date is displayed with current date
     Set Global Variable    ${current_date}
     Should Be Equal    ${SELECTED_DATE}    ${current_date}
 
-I select a departure and a return dates for my trip
+I select a departure and a return date for my trip
     ${current_date}    Get Current Date    result_format=%#d
     ${DEPARTURE_DATE}    Set Variable    xpath=//span[text()='${current_date}']
     Wait Until Element Is Visible    ${DEPARTURE_DATE}    
     Double Click Element    ${DEPARTURE_DATE}  
-    Sleep    5s
+    Set Global Variable    ${DEPARTURE_DATE}
 
     ${current_date}=    Get Current Date
     ${date}=    Add Time To Date    ${current_date}    1 days    result_format=%#d
     ${RETURN_DATE}    Set Variable    xpath=//span[text()='${date}']
+    Set Global Variable    ${RETURN_DATE}
     Wait Until Element Is Visible    ${RETURN_DATE}
     Double Click Element    ${RETURN_DATE}
-    Sleep    2s
-    
-    # ${departure_day}    Add Time To Date    ${current_date}    5 days    result_format=%#d
-    # Log    ${departure_day}   
-    # Wait Until Element Is Visible    //span[contains(text(),'${departure_day}')]
-    # Double Click Element    xpath=//td/span/span[text()='${departure_day}']
-    # Sleep    2s
-    # Log    ${departure_day} 
-    # ${return_day}    Add Time To Date    ${current_date}    10 days    result_format=%#d
-    # Log    ${return_day}   
-    # Wait Until Element Is Visible    //span[contains(text(),'${return_day}')]
-    # Double Click Element    xpath=//td/span/span[contains(text(),'${return_day}')]
-    # Log    ${return_day} 
-    # Sleep    10s
-
+    Log    ${RETURN_DATE}
 
 The selected date is displayed in the date field
-    Log    message
-
-# I select a departure and return dates for my trip
-#     ${departure_day}    Add Time To Date    ${current_date}    5 days    result_format=%#d
-#     Wait Until Element Is Visible    //span[text()='${departure_day}']
-#     Click Element    //span[text()='${departure_day}']
-#     Sleep    2s
+    ${field_departure}    Get Text    ${DEPARTURE_FIELD}
+    ${field_return}    Get Text    ${RETURN_FIELD}
+    ${destination_field}    Set Variable    ${field_departure} — ${field_return}
     
-#     ${return_day}    Add Time To Date    ${current_date}    10 days    result_format=%#d
-#     Wait Until Element Is Visible    //span[text()='${return_day}']
-#     Click Element    //span[text()='${return_day}']
-
-
+    ${formatted_departure_date}    Convert Date    ${current_date}    result_format=%a, %b %d
+    ${date}=    Add Time To Date    ${current_date}    1 days    result_format=%#Y-%m-%#d
+    ${formatted_return_date}    Convert Date    ${date}    result_format=%a, %b %d
+    ${formatted_destination}    Set Variable    ${formatted_departure_date} — ${formatted_return_date}
+    Should Be Equal As Strings    ${formatted_destination}    ${destination_field} 

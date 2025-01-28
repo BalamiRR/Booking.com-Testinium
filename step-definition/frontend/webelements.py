@@ -14,7 +14,5 @@ FLIGHTS_PAGE="//a[@id='flights']"
 DESTINATION_FLIGHT="(//span[contains(@class,'SbZm6')])[1]"
 DESTINATION_OPTION="//span[@class='Tags-module__text___90E7G']"
 DESTINATION_TO="//input[@placeholder='Airport or city']"
-
-#DEPARTURE_5_DAYS_LATER=css=tr:nth-child(2) > .b80d5adb18:nth-child(1) > .ef091eb985
-
-# DESTINATION_CITIES="//div[@data-testid='autocomplete-result']//div[contains(@class, 'a3332d346a')]"
+DEPARTURE_FIELD="xpath=//*[@id='indexsearch']/div[2]/div/form/div/div[2]/div/div[1]/button[1]/span"
+RETURN_FIELD="xpath=//*[@id='indexsearch']/div[2]/div/form/div/div[2]/div/div[1]/button[2]/span"
