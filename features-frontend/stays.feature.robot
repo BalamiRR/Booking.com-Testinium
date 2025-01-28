@@ -63,3 +63,13 @@ Scenario: Attempt to enter less than 1 adult
     When I click the '+' button for adults
     Then I see the number of adults increase by 1
     And I see that the '-' button is enabled
+
+Scenario: Select minimum number of guests without rooms
+    [Documentation]    Verify the system handles the case where guests are selected without increasing the number of rooms and ensures the default room value is maintained.
+    [Tags]    Low    
+    Given I click the '-' button for room
+    Then I see that the '-' button for rooms is disabled by default
+    When I click the Done button
+    Then I see the selected number of guests and the default room number displayed in the field
+
+    
