@@ -87,9 +87,9 @@ Scenario: Select minimum number of children
 Scenario: Select a random age for children
     [Documentation]    This scenario verifies that when the "+" button for children is clicked, the number of children increases by 1 and the "Age needed" field appears.
     [Tags]    Medium
-    Given I click on the guest selection field
-    And There are no children selected
-    When I click the '+' button for children
-    Then I see the number of children increase by 1
-    And I see the "Age needed" field is displayed for the added child
-
+    Given I click the "Age needed" field
+    Then I will see the list of ages 
+    When I select a random age from the list
+    Then The age will be assigned to the field
+    When I click the Done button
+    Then I see the selected number of child is displayed in the field
