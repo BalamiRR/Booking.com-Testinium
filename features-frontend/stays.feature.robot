@@ -59,7 +59,8 @@ Scenario: Verify default values for adults, children, and rooms
 Scenario: Attempt to enter less than 1 adult
     [Documentation]    Verify that the system does not allow the number of adults to drop below 1, and the '-' button is appropriately enabled or disabled based on the value.
     [Tags]    High
-    Given I see that the '-' button is disabled when the number of adults is 1
+    Given I click on the guest selection field
+    And I see that the '-' button is disabled when the number of adults is 1
     When I click the '+' button for adults
     Then I see the number of adults increase by 1
     And I see that the '-' button is enabled
@@ -67,9 +68,28 @@ Scenario: Attempt to enter less than 1 adult
 Scenario: Select minimum number of guests without rooms
     [Documentation]    Verify the system handles the case where guests are selected without increasing the number of rooms and ensures the default room value is maintained.
     [Tags]    Low    
-    Given I click the '-' button for room
+    Given I click on the guest selection field
+    When I click the '-' button for room
     Then I see that the '-' button for rooms is disabled by default
     When I click the Done button
     Then I see the selected number of guests and the default room number displayed in the field
 
     
+Scenario: Select minimum number of children
+    [Documentation]    This scenario verifies that when the "+" button for children is clicked, the number of children increases by 1 and the "Age needed" field appears.
+    [Tags]    Medium
+    Given I click on the guest selection field
+    And There are no children selected
+    When I click the '+' button for children
+    Then I see the number of children increase by 1
+    And I see the "Age needed" field is displayed for the added child
+    
+Scenario: Select a random age for children
+    [Documentation]    This scenario verifies that when the "+" button for children is clicked, the number of children increases by 1 and the "Age needed" field appears.
+    [Tags]    Medium
+    Given I click on the guest selection field
+    And There are no children selected
+    When I click the '+' button for children
+    Then I see the number of children increase by 1
+    And I see the "Age needed" field is displayed for the added child
+
