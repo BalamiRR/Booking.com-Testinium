@@ -120,3 +120,12 @@ I click the Done button
     Log    message
 I see the selected number of guests and the default room number displayed in the field
     Log    message
+
+There are no children selected
+    Log    message
+I click the '+' button for children
+    Log    message
+I see the number of children increase by 1
+    Log    message
+I see the "Age needed" field is displayed for the added child
+    Log    message

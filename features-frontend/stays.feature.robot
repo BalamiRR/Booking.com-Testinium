@@ -73,7 +73,6 @@ Scenario: Select minimum number of guests without rooms
     Then I see that the '-' button for rooms is disabled by default
     When I click the Done button
     Then I see the selected number of guests and the default room number displayed in the field
-
     
 Scenario: Select minimum number of children
     [Documentation]    This scenario verifies that when the "+" button for children is clicked, the number of children increases by 1 and the "Age needed" field appears.
