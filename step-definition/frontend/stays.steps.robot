@@ -95,3 +95,9 @@ The selected date is displayed in the date field
     ${formatted_return_date}    Convert Date    ${date}    result_format=%a, %b %d
     ${formatted_destination}    Set Variable    ${formatted_departure_date} — ${formatted_return_date}
     Should Be Equal As Strings    ${formatted_destination}    ${destination_field} 
+
+
+I click on the guest selection field
+    Log    message
+I will see the displayed default value as "2 adults · 0 children · 1 room"
+    Log    message
