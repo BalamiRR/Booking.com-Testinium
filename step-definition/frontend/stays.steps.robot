@@ -101,3 +101,22 @@ I click on the guest selection field
     Log    message
 I will see the displayed default value as "2 adults · 0 children · 1 room"
     Log    message
+
+
+I see that the '-' button is disabled when the number of adults is 1
+    Log    message
+I click the '+' button for adults
+    Log    message
+I see the number of adults increase by 1
+    Log    message
+I see that the '-' button is enabled
+    Log    message
+
+I click the '-' button for room
+    Log    message
+I see that the '-' button for rooms is disabled by default
+    Log    message
+I click the Done button
+    Log    message
+I see the selected number of guests and the default room number displayed in the field
+    Log    message
