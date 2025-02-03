@@ -96,11 +96,12 @@ The selected date is displayed in the date field
     ${field_departure}    Get Text    ${DEPARTURE_FIELD}
     ${field_return}    Get Text    ${RETURN_FIELD}
     ${destination_field}    Set Variable    ${field_departure} — ${field_return}
-
+    
+    Sleep    2s
     ${current_date}    Get Current Date    result_format=%Y-%m-%d
     ${formatted_departure_date}    Evaluate    "{:%a, %b %d}".format(datetime.datetime.strptime("${current_date}", "%Y-%m-%d")).replace(" 0", " ")    modules=datetime
-    ${date}    Add Time To Date    ${current_date}    2 days    result_format=%Y-%m-%d
-    ${formatted_return_date}    Evaluate    "{:%a, %b %d}".format(datetime.datetime.strptime("${current_date}", "%Y-%m-%d")).replace(" 0", " ")    modules=datetime
+    ${date}    Add Time To Date    ${current_date}    1 days    result_format=%Y-%m-%d
+    ${formatted_return_date}    Evaluate    "{:%a, %b %d}".format(datetime.datetime.strptime("${date}", "%Y-%m-%d")).replace(" 0", " ")    modules=datetime
 
     ${formatted_destination}    Set Variable    ${formatted_departure_date} — ${formatted_return_date}
     Should Be Equal As Strings    ${formatted_destination}    ${destination_field} 
@@ -110,6 +111,7 @@ I click on the guest selection field
 
 I will see the displayed default value as "${adults}" adults · "${children}" children · "${room}" room
     ${adults_value}    Get Element Attribute    ${ADULTS_NUMBER}    value
+    Set Global Variable    ${adults_value}
     Should Be Equal As Strings    ${adults_value}    ${adults}
 
     ${children_value}    Get Element Attribute    ${CHILDREN_NUMBER}    value
@@ -117,21 +119,25 @@ I will see the displayed default value as "${adults}" adults · "${children}" ch
 
     ${rooms_value}    Get Element Attribute    ${ROOM_NUMBER}    value
     Should Be Equal As Strings    ${rooms_value}    ${room}
-
     # ${summary_value}    Get Text    ${GUEST_FIELD}
     # Should Be Equal As Strings    ${summary_value}    "2 adults · 0 children · 1 room"
 
-I see that the '-' button is disabled when the number of adults is 1
-    Log    message
-
-I click the '+' button for adults
-    Log    message
-
-I see the number of adults increase by 1
-    Log    message
-
 I see that the '-' button is enabled
-    Log    message
+    Element Should Be Enabled    ${ADULT_MINUS_BTN}
+
+When I click the '-' button for adults
+    Click Element    ${ADULT_MINUS_BTN}
+
+I see the number of adults decrease by 1
+    ${new_adults}    Get Element Attribute    ${ADULTS_NUMBER}    value
+    ${expected_adults}    Evaluate    ${adults_value} - 1
+    Should Be Equal As Strings    ${new_adults}    ${expected_adults}
+
+I see that the '-' button is disabled
+    Element Should Not Be Visible    ${ADULT_MINUS_BTN}
+
+# I click the '+' button for adults
+#     Click Element    ${ADULT_PLUS_BTN}
 
 # I click the '-' button for room
 #     Log    message
