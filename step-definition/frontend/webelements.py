@@ -5,6 +5,7 @@ LANGUAGE_ENG="css=.c624d7469d:nth-child(1) > .c624d7469d:nth-child(1) > .Picker_
 DESTINATION_FIELD="//input[contains(@aria-label,'Where are you going?')]"
 DESTINATION_LISTBOX="//div[@role='listbox']//ul//li"
 DESTINATION_CITIES="//ul/li//div[contains(@class, 'a3332d346a')]"
+# DESTINATION_CITIES="//div[@class='a7edcddad6 eb112f9f9a d8074b5e44' and @data-testid='autocomplete-results']"
 CLEAR_BTN="css=.a83ed08757 > .fcd9eec8fb:nth-child(1) > svg"
 DATE_PICKER="//button[@data-testid='date-display-field-start']"
 SELECTED_DATE="//span[contains(@tabindex,'0')]"

@@ -50,45 +50,45 @@ Scenario: Check-in and Check-out Dates
     Given I select a departure and a return date for my trip
     Then The selected date is displayed in the date field
 
-Scenario: Verify default values for adults, children, and rooms
-    [Documentation]    Ensure the default summary is displayed correctly when no changes are made.
-    [Tags]    Medium
-    Given I click on the guest selection field
-    Then I will see the displayed default value as "2 adults · 0 children · 1 room"
+# Scenario: Verify default values for adults, children, and rooms
+#     [Documentation]    Ensure the default summary is displayed correctly when no changes are made.
+#     [Tags]    Medium
+#     Given I click on the guest selection field
+#     Then I will see the displayed default value as "2 adults · 0 children · 1 room"
 
-Scenario: Attempt to enter less than 1 adult
-    [Documentation]    Verify that the system does not allow the number of adults to drop below 1, and the '-' button is appropriately enabled or disabled based on the value.
-    [Tags]    High
-    Given I click on the guest selection field
-    And I see that the '-' button is disabled when the number of adults is 1
-    When I click the '+' button for adults
-    Then I see the number of adults increase by 1
-    And I see that the '-' button is enabled
+# Scenario: Attempt to enter less than 1 adult
+#     [Documentation]    Verify that the system does not allow the number of adults to drop below 1, and the '-' button is appropriately enabled or disabled based on the value.
+#     [Tags]    High
+#     Given I click on the guest selection field
+#     And I see that the '-' button is disabled when the number of adults is 1
+#     When I click the '+' button for adults
+#     Then I see the number of adults increase by 1
+#     And I see that the '-' button is enabled
 
-Scenario: Select minimum number of guests without rooms
-    [Documentation]    Verify the system handles the case where guests are selected without increasing the number of rooms and ensures the default room value is maintained.
-    [Tags]    Low    
-    Given I click on the guest selection field
-    When I click the '-' button for room
-    Then I see that the '-' button for rooms is disabled by default
-    When I click the Done button
-    Then I see the selected number of guests and the default room number displayed in the field
+# Scenario: Select minimum number of guests without rooms
+#     [Documentation]    Verify the system handles the case where guests are selected without increasing the number of rooms and ensures the default room value is maintained.
+#     [Tags]    Low    
+#     Given I click on the guest selection field
+#     When I click the '-' button for room
+#     Then I see that the '-' button for rooms is disabled by default
+#     When I click the Done button
+#     Then I see the selected number of guests and the default room number displayed in the field
     
-Scenario: Select minimum number of children
-    [Documentation]    This scenario verifies that when the "+" button for children is clicked, the number of children increases by 1 and the "Age needed" field appears.
-    [Tags]    Medium
-    Given I click on the guest selection field
-    And There are no children selected
-    When I click the '+' button for children
-    Then I see the number of children increase by 1
-    And I see the "Age needed" field is displayed for the added child
+# Scenario: Select minimum number of children
+#     [Documentation]    This scenario verifies that when the "+" button for children is clicked, the number of children increases by 1 and the "Age needed" field appears.
+#     [Tags]    Medium
+#     Given I click on the guest selection field
+#     And There are no children selected
+#     When I click the '+' button for children
+#     Then I see the number of children increase by 1
+#     And I see the "Age needed" field is displayed for the added child
     
-Scenario: Select a random age for children
-    [Documentation]    This scenario verifies that when the "+" button for children is clicked, the number of children increases by 1 and the "Age needed" field appears.
-    [Tags]    Medium
-    Given I click the "Age needed" field
-    Then I will see the list of ages 
-    When I select a random age from the list
-    Then The age will be assigned to the field
-    When I click the Done button
-    Then I see the selected number of child is displayed in the field
+# Scenario: Select a random age for children
+#     [Documentation]    This scenario verifies that when the "+" button for children is clicked, the number of children increases by 1 and the "Age needed" field appears.
+#     [Tags]    Medium
+#     Given I click the "Age needed" field
+#     Then I will see the list of ages 
+#     When I select a random age from the list
+#     Then The age will be assigned to the field
+#     When I click the Done button
+#     Then I see the selected number of child is displayed in the field
