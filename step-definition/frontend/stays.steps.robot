@@ -121,18 +121,17 @@ I will see the displayed default value as "${adults}" adults · "${children}" ch
     # ${summary_value}    Get Text    ${GUEST_FIELD}
     # Should Be Equal As Strings    ${summary_value}    "2 adults · 0 children · 1 room"
 
-    # ${destination_items}    Get WebElements    ${DESTINATION_CITIES}
-# I see that the '-' button is disabled when the number of adults is 1
-#     Log    message
+I see that the '-' button is disabled when the number of adults is 1
+    Log    message
 
-# I click the '+' button for adults
-#     Log    message
+I click the '+' button for adults
+    Log    message
 
-# I see the number of adults increase by 1
-#     Log    message
+I see the number of adults increase by 1
+    Log    message
 
-# I see that the '-' button is enabled
-#     Log    message
+I see that the '-' button is enabled
+    Log    message
 
 # I click the '-' button for room
 #     Log    message
