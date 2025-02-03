@@ -97,10 +97,11 @@ The selected date is displayed in the date field
     ${field_return}    Get Text    ${RETURN_FIELD}
     ${destination_field}    Set Variable    ${field_departure} — ${field_return}
 
-    ${current_date}    Get Current Date    result_format=%#m/%#d/%Y
-    ${formatted_departure_date}    Convert Date    ${current_date}    result_format=%a, %b %d
-    ${date}=    Add Time To Date    ${current_date}    1 days    result_format=%#Y-%m-%#d
-    ${formatted_return_date}    Convert Date    ${date}    result_format=%a, %b %d
+    ${current_date}    Get Current Date    result_format=%Y-%m-%d
+    ${formatted_departure_date}    Evaluate    "{:%a, %b %d}".format(datetime.datetime.strptime("${current_date}", "%Y-%m-%d")).replace(" 0", " ")    modules=datetime
+    ${date}    Add Time To Date    ${current_date}    1 days    result_format=%Y-%m-%d
+    ${formatted_return_date}    Evaluate    "{:%a, %b %d}".format(datetime.datetime.strptime("${date}", "%Y-%m-%d")).replace(" 0", " ")    modules=datetime
+
     ${formatted_destination}    Set Variable    ${formatted_departure_date} — ${formatted_return_date}
     Should Be Equal As Strings    ${formatted_destination}    ${destination_field} 
 
