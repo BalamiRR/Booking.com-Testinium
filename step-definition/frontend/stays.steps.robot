@@ -99,24 +99,38 @@ The selected date is displayed in the date field
 
     ${current_date}    Get Current Date    result_format=%Y-%m-%d
     ${formatted_departure_date}    Evaluate    "{:%a, %b %d}".format(datetime.datetime.strptime("${current_date}", "%Y-%m-%d")).replace(" 0", " ")    modules=datetime
-    ${date}    Add Time To Date    ${current_date}    1 days    result_format=%Y-%m-%d
-    ${formatted_return_date}    Evaluate    "{:%a, %b %d}".format(datetime.datetime.strptime("${date}", "%Y-%m-%d")).replace(" 0", " ")    modules=datetime
+    ${date}    Add Time To Date    ${current_date}    2 days    result_format=%Y-%m-%d
+    ${formatted_return_date}    Evaluate    "{:%a, %b %d}".format(datetime.datetime.strptime("${current_date}", "%Y-%m-%d")).replace(" 0", " ")    modules=datetime
 
     ${formatted_destination}    Set Variable    ${formatted_departure_date} — ${formatted_return_date}
     Should Be Equal As Strings    ${formatted_destination}    ${destination_field} 
 
+I click on the guest selection field
+    Click Element    ${GUEST_OPTION_BTN}
 
-# I click on the guest selection field
-#     Log    message
-# I will see the displayed default value as "2 adults · 0 children · 1 room"
-#     Log    message
+I will see the displayed default value as "${adults}" adults · "${children}" children · "${room}" room
+    ${adults_value}    Get Element Attribute    ${ADULTS_NUMBER}    value
+    Should Be Equal As Strings    ${adults_value}    ${adults}
 
+    ${children_value}    Get Element Attribute    ${CHILDREN_NUMBER}    value
+    Should Be Equal As Strings    ${children_value}    ${children}
+
+    ${rooms_value}    Get Element Attribute    ${ROOM_NUMBER}    value
+    Should Be Equal As Strings    ${rooms_value}    ${room}
+
+    # ${summary_value}    Get Text    ${GUEST_FIELD}
+    # Should Be Equal As Strings    ${summary_value}    "2 adults · 0 children · 1 room"
+
+    # ${destination_items}    Get WebElements    ${DESTINATION_CITIES}
 # I see that the '-' button is disabled when the number of adults is 1
 #     Log    message
+
 # I click the '+' button for adults
 #     Log    message
+
 # I see the number of adults increase by 1
 #     Log    message
+
 # I see that the '-' button is enabled
 #     Log    message
 

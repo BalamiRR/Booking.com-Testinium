@@ -50,11 +50,11 @@ Scenario: Check-in and Check-out Dates
     Given I select a departure and a return date for my trip
     Then The selected date is displayed in the date field
 
-# Scenario: Verify default values for adults, children, and rooms
-#     [Documentation]    Ensure the default summary is displayed correctly when no changes are made.
-#     [Tags]    Medium
-#     Given I click on the guest selection field
-#     Then I will see the displayed default value as "2 adults · 0 children · 1 room"
+Scenario: Verify default values for adults, children, and rooms
+    [Documentation]    Ensure the default summary is displayed correctly when no changes are made.
+    [Tags]    Medium
+    Given I click on the guest selection field
+    Then I will see the displayed default value as "2" adults · "0" children · "1" room
 
 # Scenario: Attempt to enter less than 1 adult
 #     [Documentation]    Verify that the system does not allow the number of adults to drop below 1, and the '-' button is appropriately enabled or disabled based on the value.
