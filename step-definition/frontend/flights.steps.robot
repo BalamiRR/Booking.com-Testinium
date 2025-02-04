@@ -37,4 +37,10 @@ I enter "${I}" "${S}" in the "Where from?" field
 
     
 I should see a list of destinations matching the input
-    Log    message
+    Wait Until Element Is Visible    ${DESTINATION_FROM_CITIES}
+    ${destination_from_items}    Get WebElements    ${DESTINATION_FROM_CITIES}
+    ${l}=    Get Length    ${destination_from_items}
+    Set Global Variable    @{destination_from_items}
+    Set Global Variable    ${l}
+    RETURN    ${destination_from_items}    ${l}
+
