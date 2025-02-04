@@ -84,16 +84,15 @@ Scenario: Select minimum number of guests without rooms
     Then I see the number of rooms increase by 1 
     And I see the '-' button for rooms is enabled
 
-# Scenario: Select minimum number of children
-#     [Documentation]    This scenario verifies that when the "+" button for children is clicked, the number of children increases by 1 and the "Age needed" field appears.
-#     [Tags]    Medium
-#     Given I click on the guest selection field
-#     And There are no children selected
-#     When I click the '+' button for children
-#     Then I see the number of children increase by 1
-#     And I see the "Age needed" field is displayed for the added child
+Scenario: Select minimum number of children
+    [Documentation]    This scenario verifies that when the "+" button for children is clicked, the number of children increases by 1 and the "Age needed" field appears.
+    [Tags]    Medium
+    Given I see "0" displayed default for children
+    When I click the '+' button for children
+    Then I see the number of children increase by 1
+    And I see the "Age needed" field is displayed for the added child
     
-# Scenario: Select a random age for children
+# Scenario: Select a random age needed for children
 #     [Documentation]    This scenario verifies that when the "+" button for children is clicked, the number of children increases by 1 and the "Age needed" field appears.
 #     [Tags]    Medium
 #     Given I click the "Age needed" field

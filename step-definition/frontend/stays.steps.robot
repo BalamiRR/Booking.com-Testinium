@@ -119,9 +119,8 @@ I will see the displayed default value as "${adults}" adults · "${children}" ch
 
     ${rooms_value}    Get Element Attribute    ${ROOM_NUMBER}    value
     Should Be Equal As Strings    ${rooms_value}    ${room}
+    Set Global Variable    ${rooms_value}
     Set Global Variable    ${room}
-    # ${summary_value}    Get Text    ${GUEST_FIELD}
-    # Should Be Equal As Strings    ${summary_value}    "2 adults · 0 children · 1 room"
 
 I see that the '-' button is enabled
     Element Should Be Enabled    ${ADULT_MINUS_BTN}
@@ -140,8 +139,8 @@ I see the number of adults decrease by 1
     Should Be Equal As Strings    ${new_adults}    ${expected_adults}
 
 I see that the '-' button is disabled
-    # Element Should Not Be Visible    ${ADULT_MINUS_BTN}
     Element Should Be Disabled    ${ADULT_MINUS_BTN}
+
 I click the '+' button for adults
     Click Element    ${ADULT_PLUS_BTN}
 
@@ -158,13 +157,35 @@ I click the '+' button for rooms
 
 I see the number of rooms increase by 1 
     ${new_rooms}    Get Element Attribute    ${ROOM_NUMBER}    value
-    ${expected_adults}    Evaluate    ${new_rooms}
-    Should Be Equal As Strings    ${room}    ${expected_adults}
-
+    ${expected_adults}    Evaluate    ${rooms_value} + 1
+    Should Be Equal As Strings    ${new_rooms}    ${expected_adults}
+    
 I see the '-' button for rooms is enabled
     Element Should Be Enabled    ${ROOMS_MINUS_BTN}
-# I click the Done button
-#     Log    message
+
+I see "${children}" displayed default for children
+    Sleep    2s
+    ${children_value}    Get Element Attribute    ${CHILDREN_NUMBER}    value
+    Set Global Variable    ${children_value}
+    Should Be Equal As Strings    ${children_value}    ${children}
+
+I click the '+' button for children
+    Click Element    ${CHILDREN_PLUS_BTN}
+    Log    ${CHILDREN_NUMBER}
+
+I see the number of children increase by 1
+    ${updated_children_value}    Get Element Attribute    ${CHILDREN_NUMBER}    value
+    ${expected_children}    Evaluate    ${children_value} + 1
+    Should Be Equal As Strings    ${updated_children_value}    ${expected_children}
+
+I see the "Age needed" field is displayed for the added child
+    Element Should Be Visible    ${AGE_NEEDED_FIELD}
+
+# I click the "Age needed" field
+#     Click Element    ${AGE_NEEDED_FIELD}
+
+# I will see the list of ages 
+#     Element Should Be Visible    ${AGE_NEEDED_LIST}
 
 *** Comments ***
 The date is displayed with current date
