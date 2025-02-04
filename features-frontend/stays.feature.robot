@@ -60,10 +60,10 @@ Scenario: Attempt to enter less than 1 adult
     [Documentation]    Verify that the system does not allow the number of adults to drop below 1, and the '-' button is appropriately enabled or disabled based on the value.
     [Tags]    High
     And I see that the '-' button is enabled
+    And I see the displayed default value as "2"
     When I click the '-' button for adults
     Then I see the number of adults decrease by 1
     And I see that the '-' button is disabled
-
 
 # Scenario: Attempt to enter less than 1 adult
 #     [Documentation]    Verify that the system does not allow the number of adults to drop below 1, and the '-' button is appropriately enabled or disabled based on the value.

@@ -125,6 +125,11 @@ I will see the displayed default value as "${adults}" adults · "${children}" ch
 I see that the '-' button is enabled
     Element Should Be Enabled    ${ADULT_MINUS_BTN}
 
+I see the displayed default value as "${adults}"
+    ${adults_value}    Get Element Attribute    ${ADULTS_NUMBER}    value
+    Set Global Variable    ${adults_value}
+    Should Be Equal As Strings    ${adults_value}    ${adults}
+
 When I click the '-' button for adults
     Click Element    ${ADULT_MINUS_BTN}
 
