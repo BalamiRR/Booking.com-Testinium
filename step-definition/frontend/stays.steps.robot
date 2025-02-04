@@ -119,6 +119,7 @@ I will see the displayed default value as "${adults}" adults · "${children}" ch
 
     ${rooms_value}    Get Element Attribute    ${ROOM_NUMBER}    value
     Should Be Equal As Strings    ${rooms_value}    ${room}
+    Set Global Variable    ${room}
     # ${summary_value}    Get Text    ${GUEST_FIELD}
     # Should Be Equal As Strings    ${summary_value}    "2 adults · 0 children · 1 room"
 
@@ -139,8 +140,8 @@ I see the number of adults decrease by 1
     Should Be Equal As Strings    ${new_adults}    ${expected_adults}
 
 I see that the '-' button is disabled
-    Element Should Not Be Visible    ${ADULT_MINUS_BTN}
-
+    # Element Should Not Be Visible    ${ADULT_MINUS_BTN}
+    Element Should Be Disabled    ${ADULT_MINUS_BTN}
 I click the '+' button for adults
     Click Element    ${ADULT_PLUS_BTN}
 
@@ -149,7 +150,22 @@ I see the number of adults increase by 1
     ${expected_adults}    Evaluate    ${adults_value}
     Should Be Equal As Strings    ${new_adults}    ${expected_adults}
 
-    
+I see that the '-' button for rooms is disabled by default
+    Element Should Be Disabled    ${ROOMS_MINUS_BTN}
+
+I click the '+' button for rooms
+    Click Element    ${ROOMS_PLUS_BTN}
+
+I see the number of rooms increase by 1 
+    ${new_rooms}    Get Element Attribute    ${ROOM_NUMBER}    value
+    ${expected_adults}    Evaluate    ${new_rooms}
+    Should Be Equal As Strings    ${room}    ${expected_adults}
+
+I see the '-' button for rooms is enabled
+    Element Should Be Enabled    ${ROOMS_MINUS_BTN}
+# I click the Done button
+#     Log    message
+
 *** Comments ***
 The date is displayed with current date
     ${current_date}    Get Current Date    result_format=%#Y-%m-%#d
