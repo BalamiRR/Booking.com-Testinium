@@ -57,7 +57,7 @@ Scenario: Verify default values for adults, children, and rooms
     Then I will see the displayed default value as "2" adults · "0" children · "1" room
 
 Scenario: Attempt to enter less than 1 adult
-    [Documentation]    Verify that the system does not allow the number of adults to drop below 1, and the '-' button is appropriately enabled or disabled based on the value.
+    [Documentation]    Verify that the system does not allow the number of adults to drop below 1, and the '-' button is appropriately disabled 
     [Tags]    High
     And I see that the '-' button is enabled
     And I see the displayed default value as "2"
@@ -65,15 +65,12 @@ Scenario: Attempt to enter less than 1 adult
     Then I see the number of adults decrease by 1
     And I see that the '-' button is disabled
 
-# Scenario: Attempt to enter less than 1 adult
-#     [Documentation]    Verify that the system does not allow the number of adults to drop below 1, and the '-' button is appropriately enabled or disabled based on the value.
-#     [Tags]    High
-#     Given I click on the guest selection field
-#     And I see that the '-' button is enabled
-#     And I see that the '-' button is disabled when the number of adults is 1
-#     When I click the '+' button for adults
-#     Then I see the number of adults increase by 1
-#     And I see that the '-' button is enabled
+Scenario: Attempt to enter more than 1 adult
+    [Documentation]    Verify that the system allows increasing the number of adults and ensures the '-' button is enabled when the value is greater than 1.
+    [Tags]    High
+    Given I click the '+' button for adults
+    Then I see the number of adults increase by 1
+    And I see that the '-' button is enabled
 
 # Scenario: Select minimum number of guests without rooms
 #     [Documentation]    Verify the system handles the case where guests are selected without increasing the number of rooms and ensures the default room value is maintained.

@@ -141,48 +141,15 @@ I see the number of adults decrease by 1
 I see that the '-' button is disabled
     Element Should Not Be Visible    ${ADULT_MINUS_BTN}
 
-# I click the '+' button for adults
-#     Click Element    ${ADULT_PLUS_BTN}
+I click the '+' button for adults
+    Click Element    ${ADULT_PLUS_BTN}
 
-# I click the '-' button for room
-#     Log    message
+I see the number of adults increase by 1
+    ${new_adults}    Get Element Attribute    ${ADULTS_NUMBER}    value
+    ${expected_adults}    Evaluate    ${adults_value}
+    Should Be Equal As Strings    ${new_adults}    ${expected_adults}
 
-# I see that the '-' button for rooms is disabled by default
-#     Log    message
-
-# I click the Done button
-#     Log    message
-
-# I see the selected number of guests and the default room number displayed in the field
-#     Log    message
-
-# There are no children selected
-#     Log    message
-
-# I click the '+' button for children
-#     Log    message
-
-# I see the number of children increase by 1
-#     Log    message
-
-# I see the "Age needed" field is displayed for the added child
-#     Log    message
-
-# I click the "Age needed" field
-#     Log    message
-
-# I will see the list of ages 
-#     Log    message
-
-# I select a random age from the list
-#     Log    message
-
-# The age will be assigned to the field
-#     Log    message
     
-# I see the selected number of child is displayed in the field
-#     Log    message
-
 *** Comments ***
 The date is displayed with current date
     ${current_date}    Get Current Date    result_format=%#Y-%m-%#d

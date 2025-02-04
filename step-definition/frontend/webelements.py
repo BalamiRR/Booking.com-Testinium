@@ -24,4 +24,6 @@ CHILDREN_NUMBER="//input[@id='group_children']"
 ROOM_NUMBER="//input[@id='no_rooms']"
 GUEST_FIELD="css=//span[@class='a8887b152e c7ce171153']"
 ADULT_MINUS_BTN="//div/button[@class='a83ed08757 c21c56c305 f38b6daa18 d691166b09 ab98298258 bb803d8689 e91c91fa93'][1]"
-ADULT_PLUS_BTN=""
+ADULT_PLUS_BTN="(//div[@class='bfb38641b0'])[1]//button[contains(@class, 'f4d78af12a')]"
+
+# ADULT_PLUS_BTN="(//div[@class='bfb38641b0'])[1]//button[@class='a83ed08757 c21c56c305 f38b6daa18 d691166b09 ab98298258 bb803d8689 f4d78af12a']"
