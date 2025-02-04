@@ -101,3 +101,11 @@ Scenario: Select minimum number of children
 #     Then The age will be assigned to the field
 #     When I click the Done button
 #     Then I see the selected number of child is displayed in the field
+
+# Scenario: Search for available accomaidation 
+#     [Documentation]    this 
+#     [Tags]    Medium
+#     Given I click on search button
+#     Then I will see mandatory field warning for destination city
+#     When I select a random destionation city
+#     Then I will be redirected to the page

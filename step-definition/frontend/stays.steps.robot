@@ -181,6 +181,12 @@ I see the number of children increase by 1
 I see the "Age needed" field is displayed for the added child
     Element Should Be Visible    ${AGE_NEEDED_FIELD}
 
+# I select a random destionation city
+#     I click on destination field
+#     I enter "P" "A" in the input field
+#     I select a random destination from the list
+#     The destination will be assigned to the destination field
+
 # I click the "Age needed" field
 #     Click Element    ${AGE_NEEDED_FIELD}
 
