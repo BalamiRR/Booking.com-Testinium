@@ -191,6 +191,8 @@ I select a random age from the list
     ${options}    Get List Items    ${AGE_NEEDED_FIELD}
     ${random_age}    Evaluate    random.choice(${options})    modules=random
     Select From List By Label    ${AGE_NEEDED_FIELD}    ${random_age}
+    Log    ${AGE_NEEDED_FIELD}
+    Log    ${random_age}
 
 The age will be assigned to the field
     ${age_value}    Get Value    ${AGE_NEEDED_FIELD}
@@ -203,17 +205,25 @@ I see the selected number of "${children}" is displayed in the field
     ${children}    Convert To Integer    ${children}
     Should Be Equal    ${children_value}    ${children}
 
-# I select a random destionation city
-#     I click on destination field
-#     I enter "P" "A" in the input field
-#     I select a random destination from the list
-#     The destination will be assigned to the destination field
+I click on search button
+    Sleep    2s
+    Click Element    ${SEARCH_BTN}
 
-# I click the "Age needed" field
-#     Click Element    ${AGE_NEEDED_FIELD}
+I will see mandatory field warning for destination city
+    Wait Until Element Is Visible    ${SEARCHBOX_ALERT}
 
-# I will see the list of ages 
-#     Element Should Be Visible    ${AGE_NEEDED_LIST}
+I select a random destionation city
+    I click on destination field
+    I enter "P" "A" in the input field
+    I select a random destination from the list
+    The destination will be assigned to the destination field
+
+I will be redirected to the page
+    I click on search button
+    Wait Until Element Is Visible    ${SEARCH_RESULT}
+    Should Contain    ${URL}/searchresults.html    searchresults.html
+    Capture Page Screenshot
+    Sleep    5s
 
 *** Comments ***
 The date is displayed with current date
