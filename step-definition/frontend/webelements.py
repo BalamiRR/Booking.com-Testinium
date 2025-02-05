@@ -21,7 +21,7 @@ RETURN_FIELD="xpath=//*[@id='indexsearch']/div[2]/div/form/div/div[2]/div/div[1]
 GUEST_OPTION_BTN="(//div[@class='e22b782521'])[3]"
 GUEST_POP_UP=" //div[@class='b067f3afe2 b3c059c742']"
 ADULTS_NUMBER="//input[@id='group_adults']"
-# CHILDREN_NUMBER="//input[@id='group_children']"
+# CHILDREN_NO="//input[@id='group_children']"
 CHILDREN_NUMBER="//div[2]/input"
 ROOM_NUMBER="//input[@id='no_rooms']"
 GUEST_FIELD="css=//span[@class='a8887b152e c7ce171153']"
@@ -35,3 +35,4 @@ ROOMS_MINUS_BTN="(//div[@class='bfb38641b0'])[3]//button[contains(@class, 'e91c9
 ROOMS_PLUS_BTN="(//div[@class='bfb38641b0'])[3]//button[contains(@class, 'f4d78af12a')]"
 AGE_NEEDED_FIELD="//select[@class='ebf4591c8e']"
 AGE_NEEDED_LIST="//select[@class='ebf4591c8e']/option"
+DONE_BTN="//button[contains(.,'Done')]"
