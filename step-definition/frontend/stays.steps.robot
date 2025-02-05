@@ -115,6 +115,7 @@ I will see the displayed default value as "${adults}" adults · "${children}" ch
     Should Be Equal As Strings    ${adults_value}    ${adults}
 
     ${children_value}    Get Element Attribute    ${CHILDREN_NUMBER}    value
+    Set Global Variable    ${children_value}
     Should Be Equal As Strings    ${children_value}    ${children}
 
     ${rooms_value}    Get Element Attribute    ${ROOM_NUMBER}    value
@@ -171,7 +172,6 @@ I see "${children}" displayed default for children
 
 I click the '+' button for children
     Click Element    ${CHILDREN_PLUS_BTN}
-    Log    ${CHILDREN_NUMBER}
 
 I see the number of children increase by 1
     ${updated_children_value}    Get Element Attribute    ${CHILDREN_NUMBER}    value
@@ -180,6 +180,28 @@ I see the number of children increase by 1
 
 I see the "Age needed" field is displayed for the added child
     Element Should Be Visible    ${AGE_NEEDED_FIELD}
+
+I click the "Age needed" field
+    Click Element    ${AGE_NEEDED_FIELD}
+
+I will see the list of ages 
+    Element Should Be Visible    ${AGE_NEEDED_LIST}
+
+I select a random age from the list
+    ${options}    Get List Items    ${AGE_NEEDED_FIELD}
+    ${random_age}    Evaluate    random.choice(${options})    modules=random
+    Select From List By Label    ${AGE_NEEDED_FIELD}    ${random_age}
+
+The age will be assigned to the field
+    ${age_value}    Get Value    ${AGE_NEEDED_FIELD}
+
+I click the Done button
+    Click ELement    ${DONE_BTN}
+
+I see the selected number of "${children}" is displayed in the field
+    ${children_value}    Evaluate    ${children_value} + 1
+    ${children}    Convert To Integer    ${children}
+    Should Be Equal    ${children_value}    ${children}
 
 # I select a random destionation city
 #     I click on destination field
