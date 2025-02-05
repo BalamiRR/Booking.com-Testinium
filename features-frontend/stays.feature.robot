@@ -102,10 +102,10 @@ Scenario: Select a random age needed for children
     When I click the Done button
     Then I see the selected number of "1" is displayed in the field
 
-# Scenario: Search for available accomaidation 
-#     [Documentation]    this 
-#     [Tags]    Medium
-#     Given I click on search button
-#     Then I will see mandatory field warning for destination city
-#     When I select a random destionation city
-#     Then I will be redirected to the page
+Scenario: Search for available accommodation 
+    [Documentation]    this 
+    [Tags]    Medium
+    Given I click on search button
+    Then I will see mandatory field warning for destination city
+    When I select a random destionation city
+    Then I will be redirected to the page

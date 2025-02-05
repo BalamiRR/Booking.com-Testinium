@@ -36,3 +36,6 @@ ROOMS_PLUS_BTN="(//div[@class='bfb38641b0'])[3]//button[contains(@class, 'f4d78a
 AGE_NEEDED_FIELD="//select[@class='ebf4591c8e']"
 AGE_NEEDED_LIST="//select[@class='ebf4591c8e']/option"
 DONE_BTN="//button[contains(.,'Done')]"
+SEARCH_BTN="//span[@class='e4adce92df'][contains(.,'Search')]"
+SEARCHBOX_ALERT="//div[@data-testid='searchbox-alert']"
+SEARCH_RESULT="//span/div[@class='abf093bdfe']"
