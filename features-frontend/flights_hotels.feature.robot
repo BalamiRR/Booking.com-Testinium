@@ -12,7 +12,7 @@ Scenario: Searching for the departure field
      ...    Ensures that users can click on the departure field and see it ready for input.
      ...    enter at least one letter, relevant city or airport suggestions appear.
     [Tags]    High
-    Given I am redirected to the Flights and Hotel page  
+    Given I will be redirected to the Flight and Hotel page
     When I click on the departure field  
     Then I see that the field is ready for input  
     When I enter at least one letter  
