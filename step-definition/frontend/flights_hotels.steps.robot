@@ -42,8 +42,8 @@ I see related cities or airports as suggestions
     Set Global Variable    ${l}
     RETURN    ${departure_items}    ${l}
 
-# I select a random departure from the list
-#     Log    message
+I select a random departure from the list
+    Log    message
 
-# The departure will be assigned to the departure field
-#     Log    message
+The departure will be assigned to the departure field
+    Log    message

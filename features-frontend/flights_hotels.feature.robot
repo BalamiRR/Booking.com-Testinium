@@ -19,10 +19,10 @@ Scenario: Searching for the departure field
     When I enter at least one letter "O"
     Then I see related cities or airports as suggestions
 
-# Scenario: Assign a new departure to a departure field
-#     [Documentation]
-#      ...    Select a departure randomly from the item proposed in the list
-#      ...    Ensure that the new departure is assigned to the departure field 
-#     [Tags]    Medium
-#     Given I select a random departure from the list
-#     Then The departure will be assigned to the departure field
+Scenario: Assign a new departure to a departure field
+    [Documentation]
+     ...    Select a departure randomly from the item proposed in the list
+     ...    Ensure that the new departure is assigned to the departure field 
+    [Tags]    Medium
+    Given I select a random departure from the list
+    Then The departure will be assigned to the departure field
