@@ -7,7 +7,6 @@ Variables    webelements.py
 
 *** Variables ***
 
-
 *** Keywords ***
 I will be redirected to the Flight and Hotel page
     Click Element    ${FLIGHT_HOTEL_BTN}
@@ -23,6 +22,9 @@ I select the english language on the top
 I click on the departure field
     Click Element    ${DEPARTURE_FLIGHT_HOTEL_FIELD}
 
+I see that the field is active
+    Element Should Be Enabled    ${DEPARTURE_FLIGHT_HOTEL_FIELD}
+
 I see that the field is ready for input
     Element Should Be Enabled    ${DEPARTURE_FLIGHT_HOTEL_FIELD}
 
@@ -35,6 +37,28 @@ I enter at least one letter "${O}"
     RETURN    ${input}
 
 I see related cities or airports as suggestions
+    Sleep    2s
+    Wait Until Element Is Visible    ${LIST_OF_DEPARTURE}
+    ${departure_items}    Get WebElements    ${LIST_OF_DEPARTURE}
+    ${l}=    Get Length    ${departure_items}
+    RETURN    ${departure_items}    ${l}
+
+I select a random departure from the list
+    ${departure_items}    ${departure_count}    I see related cities or airports as suggestions
+    ${random_index}    Evaluate    random.randint(0, ${departure_count}-1)
+    ${selected_departure}    Get Text    ${departure_items}[${random_index}]
+    Click Element    ${departure_items}[${random_index}]
+    Sleep    1s
+    Set Global Variable    ${selected_departure}
+    [Return]    ${selected_departure}
+
+The departure will be assigned to the departure field
+    ${departure_assigned}    Get Value    ${ASSIGNED_DEPARTURE}
+    Should Start With   ${selected_departure}    ${departure_assigned}
+
+
+*** Comments ***
+I see related cities or airports as suggestions
     Wait Until Element Is Visible    ${LIST_OF_DEPARTURE}
     ${departure_items}    Get WebElements    ${LIST_OF_DEPARTURE}
     ${l}=    Get Length    ${departure_items}
@@ -43,7 +67,10 @@ I see related cities or airports as suggestions
     RETURN    ${departure_items}    ${l}
 
 I select a random departure from the list
-    Log    message
-
-The departure will be assigned to the departure field
-    Log    message
+    ${random_index}    Evaluate    random.randint(0, ${l}-1)
+    ${departure_city}    Get WebElements    ${LIST_OF_DEPARTURE}
+    ${selected_departure}    Get Text    ${departure_city}[${random_index}]
+    Set Global Variable    ${selected_departure}
+    Click Element    ${departure_city}[${random_index}]
+    Sleep    1s
+    RETURN    ${selected_departure}
