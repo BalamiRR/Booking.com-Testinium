@@ -7,15 +7,16 @@ Suite Teardown    Close All Browsers
 
 *** Test Cases ***
 Scenario: Searching for the departure field
-    [Documentation]    
+    [Documentation]
      ...    Verify the functionality of the departure input field on the Flights and Hotel page.
      ...    Ensures that users can click on the departure field and see it ready for input.
      ...    enter at least one letter, relevant city or airport suggestions appear.
     [Tags]    High
-    Given I am redirected to the Flights and Hotel page  
-    When I click on the departure field  
-    Then I see that the field is ready for input  
-    When I enter at least one letter  
+    Given I will be redirected to the Flight and Hotel page
+    And I select the english language on the top
+    When I click on the departure field
+    Then I see that the field is ready for input
+    When I enter at least one letter "O"
     Then I see related cities or airports as suggestions
 
 Scenario: Assign a new departure to a departure field
