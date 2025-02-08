@@ -87,10 +87,23 @@ The destination will be assigned to the destination field
     ${destination_assigned}    Get Value    ${ASSIGNED_DESTINATION}
     Should Start With   ${selected_destination}    ${destination_assigned}
 
+I click the clear button for the departure field
+    Click Element    ${CLEAR_DEPARTURE_DESTINATION}
+
+The departure field input is cleared
+    Element Attribute Value Should Be    ${DEPARTURE_FLIGHT_HOTEL_FIELD}    value    ${EMPTY}
+
+I click the clear button for the destination field
+    Sleep    2s
+    Click Element    ${CLEAR_DEPARTURE_DESTINATION}
+
+The destination field input is cleared
+    Element Attribute Value Should Be    ${DESTINATION_FLIGHT_HOTEL_FIELD}    value    ${EMPTY}
+
+
 # I click on clear destination button
 #     Wait Until Element Is Visible    ${a}    5s
 #     Click Element    ${a}
-
 
 *** Comments ***
 I see related cities or airports as suggestions

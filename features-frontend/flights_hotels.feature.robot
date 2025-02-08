@@ -46,15 +46,15 @@ Scenario: Assign a new destination to a destination field
     Given I select a random destination from the list
     Then The destination will be assigned to the destination field
 
-# Scenario: Clear button for departure and destination
-#     [Documentation]
-#      ...    Verify that clearing the departure or destination field works correctly.  
-#     [Tags]    Medium
-#     Given The departure will be assigned to the departure field
-#     And The destination will be assigned to the destination field
-#     When I click the clear button for the departure field
-#     Then The departure field input is cleared  
-#     When I click the clear button for the destination field
-#     Then The destination field input is cleared
+Scenario: Clear button for departure and destination
+    [Documentation]
+     ...    Verify that clearing the departure or destination field works correctly.  
+    [Tags]    Medium
+    Given The departure will be assigned to the departure field
+    And The destination will be assigned to the destination field
+    When I click the clear button for the departure field
+    Then The departure field input is cleared  
+    When I click the clear button for the destination field
+    Then The destination field input is cleared
 
     
