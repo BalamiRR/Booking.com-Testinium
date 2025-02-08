@@ -22,7 +22,7 @@ I select the english language on the top
 I click on the departure field
     Click Element    ${DEPARTURE_FLIGHT_HOTEL_FIELD}
 
-I see that the field is active
+I see that the departure field is active
     Element Should Be Enabled    ${DEPARTURE_FLIGHT_HOTEL_FIELD}
 
 I see that the field is ready for input
@@ -56,6 +56,20 @@ The departure will be assigned to the departure field
     ${departure_assigned}    Get Value    ${ASSIGNED_DEPARTURE}
     Should Start With   ${selected_departure}    ${departure_assigned}
 
+I click on the destination field
+    Log    message
+
+I see that the destination field is active
+    Log    message
+
+I see that the destination field is ready for input
+    Log    message
+
+I enter a letter "I"
+    Log    message
+ 
+I see related cities or airports for destination
+    Log    message
 
 *** Comments ***
 I see related cities or airports as suggestions
