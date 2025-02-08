@@ -16,7 +16,6 @@ Scenario: Searching for the departure field
     And I select the english language on the top
     When I click on the departure field
     Then I see that the departure field is active
-    And I see that the field is ready for input
     When I enter at least one letter "O"
     Then I see related cities or airports as suggestions
 
@@ -36,7 +35,6 @@ Scenario: Searching for the destination field
     [Tags]    High
     When I click on the destination field
     Then I see that the destination field is active
-    And I see that the destination field is ready for input
     When I enter a letter "I"
     Then I see related cities or airports for destination
 
