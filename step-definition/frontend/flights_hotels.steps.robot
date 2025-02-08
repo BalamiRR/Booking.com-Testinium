@@ -74,6 +74,23 @@ I see related cities or airports for destination
     ${lenght_destination}=    Get Length    ${destination_items}
     RETURN    ${destination_items}    ${lenght_destination}
 
+I select a random destination from the list
+    ${destination_items}    ${destination_count}    I see related cities or airports for destination
+    ${random_index}    Evaluate    random.randint(0, ${destination_count}-1)
+    ${selected_destination}    Get Text    ${destination_items}[${random_index}]
+    Click Element    ${destination_items}[${random_index}]
+    Sleep    1s
+    Set Global Variable    ${selected_destination}
+    [Return]    ${selected_destination}
+
+The destination will be assigned to the destination field
+    ${destination_assigned}    Get Value    ${ASSIGNED_DESTINATION}
+    Should Start With   ${selected_destination}    ${destination_assigned}
+
+# I click on clear destination button
+#     Wait Until Element Is Visible    ${a}    5s
+#     Click Element    ${a}
+
 
 *** Comments ***
 I see related cities or airports as suggestions

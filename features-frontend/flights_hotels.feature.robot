@@ -38,4 +38,23 @@ Scenario: Searching for the destination field
     When I enter a letter "I"
     Then I see related cities or airports for destination
 
+Scenario: Assign a new destination to a destination field
+    [Documentation]
+     ...    Select a destination randomly from the item proposed in the list
+     ...    Ensure that the new destination is assigned to the destination field 
+    [Tags]    Medium
+    Given I select a random destination from the list
+    Then The destination will be assigned to the destination field
 
+# Scenario: Clear button for departure and destination
+#     [Documentation]
+#      ...    Verify that clearing the departure or destination field works correctly.  
+#     [Tags]    Medium
+#     Given The departure will be assigned to the departure field
+#     And The destination will be assigned to the destination field
+#     When I click the clear button for the departure field
+#     Then The departure field input is cleared  
+#     When I click the clear button for the destination field
+#     Then The destination field input is cleared
+
+    
