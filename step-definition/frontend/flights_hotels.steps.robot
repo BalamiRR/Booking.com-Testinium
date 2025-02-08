@@ -22,10 +22,7 @@ I select the english language on the top
 I click on the departure field
     Click Element    ${DEPARTURE_FLIGHT_HOTEL_FIELD}
 
-I see that the field is active
-    Element Should Be Enabled    ${DEPARTURE_FLIGHT_HOTEL_FIELD}
-
-I see that the field is ready for input
+I see that the departure field is active
     Element Should Be Enabled    ${DEPARTURE_FLIGHT_HOTEL_FIELD}
 
 I enter at least one letter "${O}" 
@@ -56,6 +53,27 @@ The departure will be assigned to the departure field
     ${departure_assigned}    Get Value    ${ASSIGNED_DEPARTURE}
     Should Start With   ${selected_departure}    ${departure_assigned}
 
+I click on the destination field
+    Click Element    ${DESTINATION_FLIGHT_HOTEL_FIELD}
+
+I see that the destination field is active
+    Element Should Be Enabled    ${DESTINATION_FLIGHT_HOTEL_FIELD}
+
+I enter a letter "${I}"
+    Clear Element Text    ${DESTINATION_FLIGHT_HOTEL_FIELD}
+    Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_FLIGHT_HOTEL_FIELD}    ${I}
+    ${input_destination}    Get Value    ${DESTINATION_FLIGHT_HOTEL_FIELD}
+    ${input_destination}    Convert To Lower Case    ${input_destination}
+    Set Global Variable    ${input_destination}
+    RETURN    ${input_destination}
+
+I see related cities or airports for destination
+    Wait Until Element Is Visible    ${LIST_OF_DESTINATION}    3s
+    ${destination_items}    Get WebElements    ${LIST_OF_DESTINATION}
+    Log    ${destination_items}
+    ${lenght_destination}=    Get Length    ${destination_items}
+    RETURN    ${destination_items}    ${lenght_destination}
+
 
 *** Comments ***
 I see related cities or airports as suggestions
@@ -74,3 +92,13 @@ I select a random departure from the list
     Click Element    ${departure_city}[${random_index}]
     Sleep    1s
     RETURN    ${selected_departure}
+
+
+
+
+
+
+
+
+
+
