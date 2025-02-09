@@ -11,21 +11,24 @@ ${DESTINATION_MESSAGE}    Airport or city
 
 
 *** Keywords ***
-I click on the "Flights" button
+I click on the "Flights" tab
     Wait Until Element Is Enabled    ${DESTINATION_FIELD}    timeout=10
     Click Element    ${FLIGHTS_PAGE}
-    Sleep    2s
+
+I should be redirected to the flights page
     ${url}=    Get Location
     Should Contain    ${url}    flights
 
-I click on the destination field where I want to go
+I click on the destination field
     Click Element    ${DESTINATION_FLIGHT}
+
+I will see the selected airport or an empty input
     ${destination_text}    Get Element Attribute    ${DESTINATION_TO}    placeholder
     Should Be Equal As Strings    ${DESTINATION_MESSAGE}    ${destination_text}
     Click Element    ${DESTINATION_OPTION}
     Sleep    2s
 
-I enter "${I}" "${S}" in the "Where from?" field
+I type "${I}" "${S}" in the "Where from?" field
     Click Element    ${DESTINATION_TO}
     Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_TO}    ${I}
     Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_TO}    ${S}
@@ -35,7 +38,6 @@ I enter "${I}" "${S}" in the "Where from?" field
     RETURN    ${input}
     Wait Until Element Is Enabled    ${input}    timeout=10
 
-    
 I should see a list of destinations matching the input
     Wait Until Element Is Visible    ${DESTINATION_FROM_CITIES}
     ${destination_from_items}    Get WebElements    ${DESTINATION_FROM_CITIES}
