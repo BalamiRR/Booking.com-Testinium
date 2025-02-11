@@ -35,6 +35,7 @@ ROOMS_MINUS_BTN="(//div[@class='bfb38641b0'])[3]//button[contains(@class, 'e91c9
 ROOMS_PLUS_BTN="(//div[@class='bfb38641b0'])[3]//button[contains(@class, 'f4d78af12a')]"
 AGE_NEEDED_FIELD="//select[@class='ebf4591c8e']"
 AGE_NEEDED_LIST="//select[@class='ebf4591c8e']/option"
+DESTINATION_DP_FLIGHT="(//span[contains(@class,'7cHHf')])[3]"
 DONE_BTN="//button[contains(.,'Done')]"
 SEARCH_BTN="//span[@class='e4adce92df'][contains(.,'Search')]"
 SEARCHBOX_ALERT="//div[@data-testid='searchbox-alert']"
