@@ -38,8 +38,8 @@ Scenario: Clear the destination input field
     When I click on clear destination button
     Then The destination input is cleared
 
-Scenario: Verify Default Check-in and out Date in the Date picker for Review step
-    [Documentation]    Verify that the date picker appears when accessing the Due Date field, 
+Scenario: Verify Default Check-in and out Date in the Date picker
+    [Documentation]    Verify that the date picker appears when accessing the Date field, 
      ...    with the current date selected by Default
     [Tags]    Medium
     Given I access to the check-in and check-out dates
