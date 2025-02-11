@@ -19,7 +19,7 @@ I should be redirected to the flights page
     Should Contain    ${url}    flights
 
 I click on the departure field
-    Click Element    ${DESTINATION_FLIGHT}
+    Click Element    ${DEPARTURE_FLIGHT}
 
 I will see the selected airport or an empty input in the departure field
     ${destination_text}    Get Element Attribute    ${DESTINATION_TO}    placeholder
@@ -46,7 +46,7 @@ I should see a list of destinations matching the input
     RETURN    ${destination_from_items}    ${l}
 
 I click on the destination field
-    Click Element    ${DESTINATION_DP_FLIGHT}
+    Click Element    ${DESTINATION_FLIGHT}
 
 I will see the selected airport or an empty input in the destination field
     ${destination_text}    Get Element Attribute    ${DESTINATION_TO}    placeholder
@@ -62,3 +62,29 @@ I type "${I}" "${S}" in the "Where to?" destination field
     Set Global Variable    ${input}
     RETURN    ${input}
     Wait Until Element Is Enabled    ${input}    timeout=10
+
+I click on the switch button 
+    ${departure_before}    Get Text    ${DEPARTURE_FLIGHT}
+    Set Global Variable    ${departure_before}
+    ${destination_before}  Get Text    ${DESTINATION_FLIGHT}
+    Set Global Variable    ${destination_before}
+    Click Element    ${SWITCH_BUTTON}
+  
+I should see that the destination and departure are switched  
+    ${departure_after}    Get Text    ${DEPARTURE_FLIGHT}
+    ${destination_after}  Get Text    ${DESTINATION_FLIGHT} 
+    Should Be Equal    ${departure_before}    ${destination_after}
+    Should Be Equal    ${destination_before}  ${departure_after}
+
+
+*** Comments ***
+I click on the switch button 
+    Set Global Variable    ${departure_before}    Get Element    ${DEPARTURE_FLIGHT}
+    Set Global Variable    ${destination_before}  Get Element    ${DESTINATION_FLIGHT}
+    Click Element    ${SWITCH_BUTTON}
+  
+I should see that the destination and departure are switched 
+    ${departure_after}    Get Text    ${DESTINATION_FLIGHT}
+    ${destination_after}  Get Text    ${DEPARTURE_FLIGHT} 
+    Should Be Equal    ${departure_before}    ${destination_after}
+    Should Be Equal    ${destination_before}  ${departure_after}
