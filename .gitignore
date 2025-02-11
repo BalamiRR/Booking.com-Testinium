@@ -1,5 +1,6 @@
 log.html
 output.xml
 report.html
-__pycache__/*.pyc
-selenium-screenshot-x.png
+configuration/__pycache__/
+.png
+frontend/__pycache__/
