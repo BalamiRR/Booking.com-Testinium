@@ -1,6 +1,6 @@
 log.html
 output.xml
 report.html
-configuration/__pycache__/
-.png
-frontend/__pycache__/
+__pycache__/
+**/__pycache__/
+*.png
