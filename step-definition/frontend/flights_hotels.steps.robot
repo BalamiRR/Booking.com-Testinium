@@ -88,18 +88,25 @@ The destination will be assigned to the destination field
     Should Start With   ${selected_destination}    ${destination_assigned}
 
 I click the clear button for the departure field
+    Wait Until Element Is Visible    ${CLEAR_DEPARTURE_DESTINATION}    5s
     Click Element    ${CLEAR_DEPARTURE_DESTINATION}
 
 The departure field input is cleared
     Element Attribute Value Should Be    ${DEPARTURE_FLIGHT_HOTEL_FIELD}    value    ${EMPTY}
 
 I click the clear button for the destination field
-    Sleep    2s
+    Wait Until Element Is Visible    ${CLEAR_DEPARTURE_DESTINATION}    5s
     Click Element    ${CLEAR_DEPARTURE_DESTINATION}
 
 The destination field input is cleared
     Element Attribute Value Should Be    ${DESTINATION_FLIGHT_HOTEL_FIELD}    value    ${EMPTY}
 
+I access to the calender
+    Click Element    ${DATE_PICKER_FLIGHTS_HOTELS}
+
+I see the selected dates by default
+    ${selected_date}    Get Element Attribute    ${DATE_PICKER_FLIGHTS_HOTELS}    value
+    Log    ${selected_date}
 
 # I click on clear destination button
 #     Wait Until Element Is Visible    ${a}    5s

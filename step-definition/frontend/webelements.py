@@ -55,3 +55,4 @@ DESTINATION_FLIGHT_HOTEL_FIELD="//input[@placeholder='Where do you want to go?']
 LIST_OF_DESTINATION="//ul[@id=':R3a6j6lalqmt2mmH2:']/li/ul/li"
 ASSIGNED_DESTINATION="(//div[@class='d-28ke2m ed5mks93'])[2]/input"
 CLEAR_DEPARTURE_DESTINATION="(//button[@class='d-l65ey4 ed5mks91'])[1]"
+DATE_PICKER_FLIGHTS_HOTELS="(//button[@aria-label='When?'])[1]"
