@@ -13,4 +13,6 @@ Verify element text
     ${text_is}=    Get Text    ${webelement}
     RETURN    ${text_is}
 
-
+Successfull redirection to the flight and hotel page
+    [Arguments]    ${url_flight_hotel}
+    Location Should Contain    ${url_flight_hotel}    timeout=15
