@@ -35,6 +35,9 @@ ROOMS_MINUS_BTN="(//div[@class='bfb38641b0'])[3]//button[contains(@class, 'e91c9
 ROOMS_PLUS_BTN="(//div[@class='bfb38641b0'])[3]//button[contains(@class, 'f4d78af12a')]"
 AGE_NEEDED_FIELD="//select[@class='ebf4591c8e']"
 AGE_NEEDED_LIST="//select[@class='ebf4591c8e']/option"
+<<<<<<< HEAD
+DESTINATION_DP_FLIGHT="(//span[contains(@class,'7cHHf')])[3]"
+=======
 DONE_BTN="//button[contains(.,'Done')]"
 SEARCH_BTN="//span[@class='e4adce92df'][contains(.,'Search')]"
 SEARCHBOX_ALERT="//div[@data-testid='searchbox-alert']"
@@ -54,3 +57,4 @@ DESTINATION_FLIGHT_HOTEL_FIELD="//input[@placeholder='Where do you want to go?']
 LIST_OF_DESTINATION="//ul[@id=':R3a6j6lalqmt2mmH2:']/li/ul/li"
 ASSIGNED_DESTINATION="(//div[@class='d-28ke2m ed5mks93'])[2]/input"
 CLEAR_DEPARTURE_DESTINATION="(//button[@class='d-l65ey4 ed5mks91'])[1]"
+>>>>>>> 11f589c19915c055d9f78dbf7e20b5e6aa7b2e30

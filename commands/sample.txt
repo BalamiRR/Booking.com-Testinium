@@ -9,3 +9,5 @@
 #Execute a specific testcase
 > robot --outputdir reports --test "Scenario" features/sanity/sanity.feature.robot
 
+
+> robot --outputdir results --variable BROWSER:chrome --variable ENVIRONMENT:DEV --test "Searching for the destination field" features-frontend/flights.feature.robot
