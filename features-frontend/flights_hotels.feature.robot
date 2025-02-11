@@ -61,3 +61,4 @@ Scenario: Verify Default Check-in and out Date in the Date picker
     [Tags]    Medium
     Given I access to the calender
     Then I see the selected dates by default
+
