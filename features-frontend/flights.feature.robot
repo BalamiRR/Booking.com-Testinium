@@ -29,9 +29,17 @@ Scenario: Searching for the destination field
     ...    Verify the functionality of the destination in the flight search form
     ...    Ensure that users can find their desired location
     [Tags]    High
-    Given I click on the "Flights" tab
-    Then I should be redirected to the flights page
-    When I click on the destination field
+    Given I click on the destination field
     Then I will see the selected airport or an empty input in the destination field
-    When I type "I" "S" in the "Where to?" destination field
+    When I type "P" "A" in the "Where to?" destination field
     Then I should see a list of destinations matching the input
+
+
+Scenario: Switch origin and return destinations
+    [Documentation]    
+    ...    Ensure that the destination and departure fields have been switched or not
+    [Tags]    High 
+    Given I click on the switch button  
+    Then I should see that the destination and departure are switched  
+
+
