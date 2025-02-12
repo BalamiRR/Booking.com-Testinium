@@ -101,12 +101,24 @@ I click the clear button for the destination field
 The destination field input is cleared
     Element Attribute Value Should Be    ${DESTINATION_FLIGHT_HOTEL_FIELD}    value    ${EMPTY}
 
-I access to the calender
-    Click Element    ${DATE_PICKER_FLIGHTS_HOTELS}
+I click on the calender button
+    Click Element    ${CALENDER}
 
 I see the selected dates by default
-    ${selected_date}    Get Element Attribute    ${DATE_PICKER_FLIGHTS_HOTELS}    value
-    Log    ${selected_date}
+    Wait Until Page Contains Element    ${SELECTED_DATE_FOR_FLIGHTS_HOTELS}
+    ${selected_dates}=    Get WebElements    ${SELECTED_DATE_FOR_FLIGHTS_HOTELS}
+    ${length}=    Get Length    ${selected_dates}
+
+    Should Be True    ${length} >= 2
+
+    FOR    ${index}    IN RANGE    ${length}
+        ${date}=    Get From List    ${selected_dates}    ${index}
+        ${text}=    Get Text    ${date}
+        Log    Selected date: ${text}
+    END
+
+    ${departure_date}=    Get Text    ${selected_dates[0]}
+    ${return_date}=    Get Text    ${selected_dates[-1]}
 
 # I click on clear destination button
 #     Wait Until Element Is Visible    ${a}    5s
@@ -132,10 +144,52 @@ I select a random departure from the list
 
 
 
+========== PURUSH ==========
+
+I access sample definition view and add multiple candidats
+   Wait Until Page Contains Element    ${BTN_SAMPLE_DEFINITONS}    10s
+   Click Button    ${BTN_SAMPLE_DEFINITONS}
+   Wait Until Element Is Visible    ${ADD_CANDIDATE_BTN}
+   Click Element    ${ADD_CANDIDATE_BTN}   
+   Sleep    5s
+   # OTHER TAB: From Line 22 TO Line 23
+   # Click Element    ${OTHER_TAB}
+   # Sleep    5s
+
+   Click Element    ${OTHER_TAB}
+   Sleep    5s
+   FOR    ${i}    IN RANGE    0    10
+      ${j}    Evaluate    ${i}+1
+      ${i}    Convert To String    ${i} 
+      ${FORMULA_DESCRIPTION_DEL_TEMP}    Replace In String    ${FORMULA_DESCRIPTION_GEN}    ${i}
+      ${Value_Input} =	Catenate	formula description	${j}
+      Input Text    ${FORMULA_DESCRIPTION_DEL_TEMP}    ${Value_Input}
+      Click Element    ${ADD_ANOTHER_FORMULA_BTN}	     
+   END 
+   Click Element    ${ADD_CANDIDATE_DRAWER_BTN}
+   Sleep    8s
+   Click Element    ${EXIT_CANDIDATE_DRAWER_CROSS}
 
 
 
 
+The Table of the application Sample contains "${Number of Items}" "${Trial No.}" "${Formula Code and Mix Components}" "${Oil availability}" "${Base dosage}" "${Packaging}" "${Actions}" 
+    ${Sample_Tab_head_lists}=    Create List    ${Number of Items}     ${Trial No.}    ${Formula Code and Mix Components}    ${Oil availability}    ${Base dosage}    ${Packaging}    ${Actions}     
+    Wait Until Page Contains Element    ${APP_SAMPLES_TAB}    20s
+    ${App_Samples_Tab_Count}    Get Element Count    ${APP_SAMPLES_TAB}
+    ${App_Samples_Tab_Count}    Convert To Integer    ${App_Samples_Tab_Count}    
+    ${random_table_number}    Evaluate    random.randint(1,${App_Samples_Tab_Count})    
+    ${random_table_number}    Convert To String    ${random_table_number}    
+    ${APP_SAMPLES_HEADER_RANDOM}    Replace In String    ${APP_SAMPLES_TAB_HEADER}    ${random_table_number}  
+    ${APP_SAMPLES_HEADER_COUNT}    Get Element Count    ${APP_SAMPLES_HEADER_RANDOM}    
+    FOR    ${index}    IN RANGE    1    ${APP_SAMPLES_HEADER_COUNT}+1 
+        ${App_Samples_Tab_Heads}    Catenate    SEPARATOR=    ${APP_SAMPLES_HEADER_RANDOM}    :nth-child(${index})        
+        ${App_Samples_Tab_Head_Text}    Get Text    ${App_Samples_Tab_Heads}       
+        List Should Contain Value    ${Sample_Tab_head_lists}    ${App_Samples_Tab_Head_Text}
+    END 
+
+
+=======
 
 
 
