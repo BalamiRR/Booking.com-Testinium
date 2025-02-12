@@ -30,12 +30,12 @@ Scenario: Searching for the departure field
     Then I should see a list of destinations matching the input
 
 
-Scenario: Verify random airport selection from search
+Scenario: Verify random departure airport selection from search
     [Documentation]    
-    ...    Ensure the destination field updates with a randomly chosen airport from the search results
+    ...    Ensure the departure field updates with a randomly chosen airport from the search results
     [Tags]    High
-    Given I select a random destination from the list
-    Then The destination will be assigned to the destination field
+    Given I select a random departure from the list
+    Then The departure will be assigned to the departure field
 
 
 Scenario: Searching for the destination field 
@@ -47,6 +47,14 @@ Scenario: Searching for the destination field
     Then I will see the selected airport or an empty input in the destination field
     When I type "P" "A" in the "Where to?" destination field
     Then I should see a list of destinations matching the input
+
+
+Scenario: Verify random destination airport selection from search
+    [Documentation]    
+    ...    Ensure the destination field updates with a randomly chosen airport from the search results
+    [Tags]    High
+    Given I select a random destination from the list
+    Then The destination will be assigned to the destination field
 
 
 # Scenario: Switch origin and return destinations

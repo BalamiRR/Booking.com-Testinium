@@ -14,6 +14,7 @@ ADVERTISEMENT_CLOSE_BTN="css=button.a83ed08757.c21c56c305.f38b6daa18.d691166b09.
 FLIGHTS_PAGE="//a[@id='flights']"
 DEPARTURE_FLIGHT="(//span[contains(@class,'SbZm6')])[1]"
 DEPARTURE_FLIGHT_DETAIL="(//span[contains(@class,'7cHHf')])[1]/b"
+DESTINATION_FLIGHT_DETAIL="(//span[contains(@class,'7cHHf')])[3]/b"
 DESTINATION_OPTION="//span[@class='Tags-module__text___90E7G']"
 DESTINATION_TO="//input[@placeholder='Airport or city']"
 DESTINATION_FROM_CITIES="//ul[@id='flights-searchbox_suggestions']/li/span[2]"
