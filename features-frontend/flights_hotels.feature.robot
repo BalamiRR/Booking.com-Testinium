@@ -59,6 +59,6 @@ Scenario: Verify Default Check-in and out Date in the Date picker
     [Documentation]    Verify that the date picker appears when accessing the Date field, 
      ...    with the current date selected by Default
     [Tags]    Medium
-    Given I access to the calender
+    Given I click on the calender button
     Then I see the selected dates by default
 
