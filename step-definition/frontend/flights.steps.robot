@@ -43,6 +43,8 @@ I should see a list of destinations matching the input
     ${l}=    Get Length    ${destination_from_items}
     Set Global Variable    @{destination_from_items}
     Set Global Variable    ${l}
+    Sleep    2s
+
     RETURN    ${destination_from_items}    ${l}
 
 I click on the destination field
@@ -75,6 +77,20 @@ I should see that the destination and departure are switched
     ${destination_after}  Get Text    ${DESTINATION_FLIGHT} 
     Should Be Equal    ${departure_before}    ${destination_after}
     Should Be Equal    ${destination_before}  ${departure_after}
+
+I select a random destination from the list
+    ${random_index}    Evaluate    random.randint(0, ${l}-1)
+    ${destination_from_city}    Get WebElements    ${DESTINATION_LIST}
+    ${selected_destination}    Get Text    ${destination_from_city}[${random_index}]
+    Set Global Variable    ${selected_destination}
+    Click Element    ${destination_from_city}[${random_index}]
+    Log  ${selected_destination}
+    Sleep    1s
+    RETURN    ${selected_destination}
+
+The destination will be assigned to the destination field
+    ${destination_assigned}    Get Text    ${DEPARTURE_FLIGHT_DETAIL}
+    Should Be Equal  ${destination_assigned}     ${selected_destination}
 
 
 *** Comments ***
