@@ -1,6 +1,7 @@
 *** Settings ***
 Library    SeleniumLibrary
 Library    DateTime
+Library    pages/tests/CommonStringOperation.py
 Resource    home.steps.robot
 Resource    pages/webdrivers.robot
 Variables    webelements.py
@@ -119,6 +120,30 @@ I see the selected dates by default
 
     ${departure_date}=    Get Text    ${selected_dates[0]}
     ${return_date}=    Get Text    ${selected_dates[-1]}
+
+I click on travallers and flights class button
+    Click Element    ${TRAVELLERS_FLIGHT_FIELD}
+
+I will see the default number of "${travellers}" travellers, "${room}" room, and ${any_class} class displayed
+    Sleep    2s
+    ${travellers_value}    Get Value    ${TRAVELLER_COUNT}    
+    Should Be Equal As Strings    ${travellers_value}    ${travellers}
+
+    ${room_number}    Get Value    ${TRAVELLERS_ROOM_NUMBER}    
+    Should Be Equal As Strings    ${room_number}    ${room}
+
+    ${flight_class}    Get Text    ${ANY_FLIGHT}
+    Should Be Equal As Strings    ${flight_class}    ${any_class}
+
+I will see the '-' and '+' buttons enabled for adults when any class is selected
+    # Element Should Be Enabled    ${TRAVELLERS_FLIGHT_FIELD}
+
+I will see adults "-" and "+" buttons are enabled
+    
+
+I will see the any class option is selected as default
+    
+
 
 # I click on clear destination button
 #     Wait Until Element Is Visible    ${a}    5s
