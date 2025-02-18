@@ -5,6 +5,9 @@ Suite Setup    Open BookingApp
 Test Teardown    Run Keyword If Test Failed    Capture Page Screenshot
 Suite Teardown    Close All Browsers
 
+*** Keywords ***
+    
+
 *** Test Cases ***
 Scenario: Searching for the departure field
     [Documentation]
@@ -61,4 +64,16 @@ Scenario: Verify Default Check-in and out Date in the Date picker
     [Tags]    Medium
     Given I click on the calender button
     Then I see the selected dates by default
+
+Scenario: Adding number of travallers and flight class
+    [Documentation]    This scenario verifies the functionality of selecting the number of
+    ...    travellers and choosing the flight class on Booking.com. It ensures that the user
+    ...    can accurately specify the number of adults, children, and infants, as well as 
+    ...    select the desired flight class e.g., Economy, Premium Economy, Business, or First Class
+    [Tags]    Medium
+    Given I click on travallers and flights class button 
+    When I will see the default number of "2" travellers, "1" room, and "Any class" class displayed
+    Then I will see adults "-" and "+" buttons are enabled
+    And I will see the any class option is selected as default
+
 
