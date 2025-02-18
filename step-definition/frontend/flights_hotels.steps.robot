@@ -124,27 +124,30 @@ I see the selected dates by default
 I click on travallers and flights class button
     Click Element    ${TRAVELLERS_FLIGHT_FIELD}
 
-I will see the default number of "${travellers}" travellers, "${room}" room, and ${any_class} class displayed
+Extract Room Number
+    [Arguments]    ${text}
+    ${room_number}=    Evaluate    re.search(r'(\\d+)$', '''${text}''').group(1)    modules=re
+    [Return]    ${room_number}
+
+I will see the default number of "${travellers}" travellers, "${room}" room, and "${any_class}" class displayed
     Sleep    2s
-    ${travellers_value}    Get Value    ${TRAVELLER_COUNT}    
+    ${travellers_value}    Get Text    ${TRAVELLER_COUNT}    
     Should Be Equal As Strings    ${travellers_value}    ${travellers}
 
-    ${room_number}    Get Value    ${TRAVELLERS_ROOM_NUMBER}    
+    ${room_number}    Get Text    ${TRAVELLERS_ROOM_NUMBER}    
+    ${room_number}=    Extract Room Number    ${room_number}
     Should Be Equal As Strings    ${room_number}    ${room}
 
     ${flight_class}    Get Text    ${ANY_FLIGHT}
     Should Be Equal As Strings    ${flight_class}    ${any_class}
-
-I will see the '-' and '+' buttons enabled for adults when any class is selected
-    # Element Should Be Enabled    ${TRAVELLERS_FLIGHT_FIELD}
-
-I will see adults "-" and "+" buttons are enabled
     
+I will see adults "-" and "+" buttons are enabled
+    Element Should Be Enabled    ${FH_MINUS_BTN}
+    Element Should Be Enabled    ${FH_PLUS_BTN}
 
 I will see the any class option is selected as default
+    Element Should Be Enabled    ${ANY_FLIGHT}
     
-
-
 # I click on clear destination button
 #     Wait Until Element Is Visible    ${a}    5s
 #     Click Element    ${a}

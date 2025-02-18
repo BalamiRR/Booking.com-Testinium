@@ -72,7 +72,7 @@ Scenario: Adding number of travallers and flight class
     ...    select the desired flight class e.g., Economy, Premium Economy, Business, or First Class
     [Tags]    Medium
     Given I click on travallers and flights class button 
-    When I will see the default number of "2" travellers, "1" room, and "any class" class displayed
+    When I will see the default number of "2" travellers, "1" room, and "Any class" class displayed
     Then I will see adults "-" and "+" buttons are enabled
     And I will see the any class option is selected as default
 
