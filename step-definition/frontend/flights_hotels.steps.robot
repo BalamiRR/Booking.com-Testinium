@@ -150,7 +150,14 @@ I will see the any class option is selected as default
     
 I click on the "Add a Room" button
     Log    message
+    
 I should see the newly added room displayed next to the first one
+    Log    message
+
+I click on the "Add a child" option
+    Log    message
+
+I will see the ages til 12 years
     Log    message
 
 *** Comments ***
