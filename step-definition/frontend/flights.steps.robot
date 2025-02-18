@@ -27,10 +27,11 @@ I will see the selected airport or an empty input in the departure field
     Click Element    ${DESTINATION_OPTION}
     Sleep    2s
 
-I type "${I}" "${S}" in the "Where from?" in the departure field
+I type "${T}" "${I}" "${R}" in the "Where from?" in the departure field
     Click Element    ${DESTINATION_TO}
+    Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_TO}    ${T}
     Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_TO}    ${I}
-    Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_TO}    ${S}
+    Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_TO}    ${R}
     ${input}    Get Value    ${DESTINATION_TO}
     ${input}    Convert To Lower Case    ${input}
     Set Global Variable    ${input}
@@ -40,7 +41,7 @@ I type "${I}" "${S}" in the "Where from?" in the departure field
 I should see a list of destinations matching the input
     Wait Until Element Is Visible    ${DESTINATION_FROM_CITIES}
     ${destination_from_items}    Get WebElements    ${DESTINATION_FROM_CITIES}
-    ${l}=    Get Length    ${destination_from_items}
+    ${l} =    Get Length    ${destination_from_items}
     Set Global Variable    @{destination_from_items}
     Set Global Variable    ${l}
     Sleep    2s
@@ -54,31 +55,19 @@ I will see the selected airport or an empty input in the destination field
     Should Be Equal As Strings    ${DESTINATION_MESSAGE}    ${destination_text}
     Sleep    2s
 
-I type "${I}" "${S}" in the "Where to?" destination field
+I type "${S}" "${A}" "${M}" in the "Where to?" destination field
     Click Element    ${DESTINATION_TO}
-    Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_TO}    ${I}
     Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_TO}    ${S}
+    Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_TO}    ${A}
+    Wait Until Keyword Succeeds    1s    2s    Press Key    ${DESTINATION_TO}    ${M}
     ${input}    Get Value    ${DESTINATION_TO}
     ${input}    Convert To Lower Case    ${input}
     Set Global Variable    ${input}
     RETURN    ${input}
     Wait Until Element Is Enabled    ${input}    timeout=10
 
-I click on the switch button 
-    ${departure_before}    Get Text    ${DEPARTURE_FLIGHT}
-    Set Global Variable    ${departure_before}
-    ${destination_before}  Get Text    ${DESTINATION_FLIGHT}
-    Set Global Variable    ${destination_before}
-    Click Element    ${SWITCH_BUTTON}
-  
-I should see that the destination and departure are switched  
-    ${departure_after}    Get Text    ${DEPARTURE_FLIGHT}
-    ${destination_after}  Get Text    ${DESTINATION_FLIGHT} 
-    Should Be Equal    ${departure_before}    ${destination_after}
-    Should Be Equal    ${destination_before}  ${departure_after}
-
 I select a random departure from the list
-    ${random_index}    Evaluate    random.randint(0, ${l}-1)
+    ${random_index}    Evaluate    random.randint(0, ${l})
     ${destination_from_city}    Get WebElements    ${DESTINATION_LIST}
     ${selected_destination}    Get Text    ${destination_from_city}[${random_index}]
     Set Global Variable    ${selected_destination}
@@ -94,6 +83,7 @@ The departure will be assigned to the departure field
 I select a random destination from the list
     ${random_index}    Evaluate    random.randint(0, ${l}-1)
     ${destination_to_city}    Get WebElements    ${DESTINATION_LIST}
+    Log    ${destination_to_city}
     ${selected_destination_to}    Get Text    ${destination_to_city}[${random_index}]
     Set Global Variable    ${selected_destination_to}
     Click Element    ${destination_to_city}[${random_index}]
@@ -106,8 +96,36 @@ The destination will be assigned to the destination field
     Should Be Equal  ${selected_destination_to}     ${selected_destination_to}
 
 
+I click the multi-city radio button
+    Click Element    ${MULTI_CITY_RADIO_BUTTON}
+
+
+#I should see two departures and destinations search boxes
+#//div[contains(@class,'KY3KT')]
+
+
+
 
 *** Comments ***
+I click on the switch button 
+    ${departure_before}    Get Text    ${DEPARTURE_FLIGHT}
+    Set Global Variable    ${departure_before}
+    ${destination_before}  Get Text    ${DESTINATION_FLIGHT}
+    Set Global Variable    ${destination_before}
+    Click Element    ${SWITCH_BUTTON}
+  
+I should see that the destination and departure are switched  
+    ${departure_after}    Get Text    ${DEPARTURE_FLIGHT}
+    ${destination_after}  Get Text    ${DESTINATION_FLIGHT} 
+    Should Be Equal    ${departure_before}    ${destination_after}
+    Should Be Equal    ${destination_before}  ${departure_after}
+
+
+
+
+
+
+    
 I click on the switch button 
     Set Global Variable    ${departure_before}    Get Element    ${DEPARTURE_FLIGHT}
     Set Global Variable    ${destination_before}  Get Element    ${DESTINATION_FLIGHT}
