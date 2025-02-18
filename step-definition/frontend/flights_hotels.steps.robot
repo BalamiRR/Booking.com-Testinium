@@ -148,9 +148,10 @@ I will see adults "-" and "+" buttons are enabled
 I will see the any class option is selected as default
     Element Should Be Enabled    ${ANY_FLIGHT}
     
-# I click on clear destination button
-#     Wait Until Element Is Visible    ${a}    5s
-#     Click Element    ${a}
+I click on the "Add a Room" button
+    Log    message
+I should see the newly added room displayed next to the first one
+    Log    message
 
 *** Comments ***
 I see related cities or airports as suggestions

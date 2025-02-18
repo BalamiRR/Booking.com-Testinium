@@ -76,4 +76,8 @@ Scenario: Adding number of travallers and flight class
     Then I will see adults "-" and "+" buttons are enabled
     And I will see the any class option is selected as default
 
-
+Scenario: Adding a new room
+    [Documentation]    This scenario verifies that a new room can be added successfully and appears next to the first room.
+    [Tags]    Low
+    Given I click on the "Add a Room" button
+    Then I should see the newly added room displayed next to the first one
