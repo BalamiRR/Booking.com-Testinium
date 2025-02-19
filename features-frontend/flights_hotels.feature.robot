@@ -1,5 +1,6 @@
 *** Settings ***
 Resource    ../step-definition/frontend/flights_hotels.steps.robot
+Resource    ../step-definition/frontend/stays.steps.robot
 Force Tags    UC-FLIGHTS-HOTELS
 Suite Setup    Open BookingApp
 Test Teardown    Run Keyword If Test Failed    Capture Page Screenshot
@@ -43,8 +44,8 @@ Scenario: Assign a new destination to a destination field
      ...    Select a destination randomly from the item proposed in the list
      ...    Ensure that the new destination is assigned to the destination field 
     [Tags]    Medium
-    Given I select a random destination from the list
-    Then The destination will be assigned to the destination field
+    Given I select a random destination for hotels and flights from the list
+    Then I will see that destination will be assigned to the destination field
 
 Scenario: Clear button for departure and destination
     [Documentation]
@@ -81,6 +82,8 @@ Scenario: Adding a child and selecting a random child age
     [Tags]    Low
     Given I click on the "Add a child" option
     Then I will see the list of ages til 12 years
+    When I select a random age for the child from the list
+    Then I will see the newly added child's age displayed
 
 Scenario: Adding a new room
     [Documentation]    This scenario verifies that a new room can be added successfully and appears next to the first room.
