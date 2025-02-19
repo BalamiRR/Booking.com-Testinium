@@ -75,7 +75,7 @@ I see related cities or airports for destination
     ${lenght_destination}=    Get Length    ${destination_items}
     RETURN    ${destination_items}    ${lenght_destination}
 
-I select a random destination from the list
+ I select a random destination for hotels and flights from the list
     ${destination_items}    ${destination_count}    I see related cities or airports for destination
     ${random_index}    Evaluate    random.randint(0, ${destination_count}-1)
     ${selected_destination}    Get Text    ${destination_items}[${random_index}]
@@ -84,7 +84,7 @@ I select a random destination from the list
     Set Global Variable    ${selected_destination}
     [Return]    ${selected_destination}
 
-The destination will be assigned to the destination field
+I will see that destination will be assigned to the destination field
     ${destination_assigned}    Get Value    ${ASSIGNED_DESTINATION}
     Should Start With   ${selected_destination}    ${destination_assigned}
 
@@ -151,13 +151,25 @@ I will see the any class option is selected as default
 I click on the "Add a child" option
     Click Element    ${ADD_CHILD_BTN}
     
-I will see the ages til 12 years
+I will see the list of ages til 12 years
     Wait Until Element Is Visible    ${AGE_LIST}
     ${age_items}    Get WebElements    ${AGE_LIST}
-    ${l}=    Get Length    ${age_items}
+    ${length_of_ages}=    Get Length    ${age_items}
     Set Global Variable    @{age_items}
-    Set Global Variable    ${l}
-    RETURN    ${age_items}    ${l}
+    Set Global Variable    ${length_of_ages}
+    RETURN    ${age_items}    ${length_of_ages}
+
+I select a random age for the child from the list
+    ${age_items}    ${age_numbers}    I will see the list of ages til 12 years
+    ${random_age}    Evaluate    random.randint(0,${age_numbers}-1)
+    ${selected_age}    Get Text    ${age_items}[${random_age}]
+    Click Element    ${age_items}[${random_age}]
+    Sleep    1s
+    Set Global Variable    ${selected_age}
+    [Return]    ${selected_age}
+    
+I will see the newly added child's age displayed
+    Log    message
 
 I click on the "Add a Room" button
     Log    message
