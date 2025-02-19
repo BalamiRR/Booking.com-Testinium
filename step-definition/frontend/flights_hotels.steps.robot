@@ -147,18 +147,25 @@ I will see adults "-" and "+" buttons are enabled
 
 I will see the any class option is selected as default
     Element Should Be Enabled    ${ANY_FLIGHT}
+
+I click on the "Add a child" option
+    Click Element    ${ADD_CHILD_BTN}
     
+I will see the ages til 12 years
+    Wait Until Element Is Visible    ${AGE_LIST}
+    ${age_items}    Get WebElements    ${AGE_LIST}
+    ${l}=    Get Length    ${age_items}
+    Set Global Variable    @{age_items}
+    Set Global Variable    ${l}
+    RETURN    ${age_items}    ${l}
+
 I click on the "Add a Room" button
     Log    message
-    
+
 I should see the newly added room displayed next to the first one
     Log    message
 
-I click on the "Add a child" option
-    Log    message
 
-I will see the ages til 12 years
-    Log    message
 
 *** Comments ***
 I see related cities or airports as suggestions
