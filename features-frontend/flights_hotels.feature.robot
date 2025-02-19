@@ -80,7 +80,7 @@ Scenario: Adding a child and selecting a random child age
     ...    random age can be selected from the available options up to 12 years.
     [Tags]    Low
     Given I click on the "Add a child" option
-    Then I will see the ages til 12 years
+    Then I will see the list of ages til 12 years
 
 Scenario: Adding a new room
     [Documentation]    This scenario verifies that a new room can be added successfully and appears next to the first room.
