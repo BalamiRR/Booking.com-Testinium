@@ -66,10 +66,9 @@ Scenario: Checking multi-city option displays required fields
 
 
 
-
 #Add several flight
 #Delete flight randomly
-#At least two letters randomly ekle and select randomlşy
+#At least two letters randomly ekle and select randomly
 
 
 # Scenario: Switch origin and return destinations

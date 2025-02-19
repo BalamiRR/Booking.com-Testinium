@@ -100,8 +100,10 @@ I click the multi-city radio button
     Click Element    ${MULTI_CITY_RADIO_BUTTON}
 
 
-#I should see two departures and destinations search boxes
-#//div[contains(@class,'KY3KT')]
+I should see two departures and destinations search boxes
+    ${search_multi_dest}  Get WebElements  ${SEARCH_MULTI_DESTINATION_BOXES}
+    Length Should Be    ${search_multi_dest}    2
+
 
 
 
