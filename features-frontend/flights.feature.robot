@@ -26,16 +26,16 @@ Scenario: Searching for the departure field
     [Tags]    High
     Given I click on the departure field
     Then I will see the selected airport or an empty input in the departure field
-    When I type "I" "S" in the "Where from?" in the departure field
+    When I type "T" "I" "R" in the "Where from?" in the departure field
     Then I should see a list of destinations matching the input
 
 
-Scenario: Verify random airport selection from search
+Scenario: Verify random departure airport selection from search
     [Documentation]    
-    ...    Ensure the destination field updates with a randomly chosen airport from the search results
+    ...    Ensure the departure field updates with a randomly chosen airport from the search results
     [Tags]    High
-    Given I select a random destination from the list
-    Then The destination will be assigned to the destination field
+    Given I select a random departure from the list
+    Then The departure will be assigned to the departure field
 
 
 Scenario: Searching for the destination field 
@@ -45,8 +45,30 @@ Scenario: Searching for the destination field
     [Tags]    High
     Given I click on the destination field
     Then I will see the selected airport or an empty input in the destination field
-    When I type "P" "A" in the "Where to?" destination field
+    When I type "S" "A" "M" in the "Where to?" destination field
     Then I should see a list of destinations matching the input
+
+
+Scenario: Verify random destination airport selection from search
+    [Documentation]    
+    ...    Ensure the destination field updates with a randomly chosen airport from the search results
+    [Tags]    High
+    Given I select a random destination from the list
+    Then The destination will be assigned to the destination field
+
+
+Scenario: Checking multi-city option displays required fields
+    [Documentation]    
+    ...    Ensure that selecting the multi-city option displays two sets of departure and destination search boxes. 
+    [Tags]    High
+    Given I click the multi-city radio button
+    Then I should see two departures and destinations search boxes
+
+
+
+#Add several flight
+#Delete flight randomly
+#At least two letters randomly ekle and select randomly
 
 
 # Scenario: Switch origin and return destinations
