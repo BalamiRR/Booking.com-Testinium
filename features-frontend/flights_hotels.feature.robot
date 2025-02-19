@@ -1,5 +1,6 @@
 *** Settings ***
 Resource    ../step-definition/frontend/flights_hotels.steps.robot
+Resource    ../step-definition/frontend/stays.steps.robot
 Force Tags    UC-FLIGHTS-HOTELS
 Suite Setup    Open BookingApp
 Test Teardown    Run Keyword If Test Failed    Capture Page Screenshot
@@ -43,8 +44,8 @@ Scenario: Assign a new destination to a destination field
      ...    Select a destination randomly from the item proposed in the list
      ...    Ensure that the new destination is assigned to the destination field 
     [Tags]    Medium
-    Given I select a random destination from the list
-    Then The destination will be assigned to the destination field
+    Given I select a random destination for hotels and flights from the list
+    Then I will see that destination will be assigned to the destination field
 
 Scenario: Clear button for departure and destination
     [Documentation]
@@ -61,4 +62,32 @@ Scenario: Verify Default Check-in and out Date in the Date picker
     [Tags]    Medium
     Given I click on the calender button
     Then I see the selected dates by default
+
+Scenario: Adding number of travallers and flight class
+    [Documentation]    
+    ...    This scenario verifies the functionality of selecting the number of
+    ...    travellers and choosing the flight class on Booking.com. It ensures that the user
+    ...    can accurately specify the number of adults, children, and infants, as well as 
+    ...    select the desired flight class e.g., Economy, Premium Economy, Business, or First Class
+    [Tags]    Medium
+    Given I click on travallers and flights class button 
+    When I will see the default number of "2" travellers, "1" room, and "Any class" class displayed
+    Then I will see adults "-" and "+" buttons are enabled
+    And I will see the any class option is selected as default
+
+Scenario: Adding a child and selecting a random child age
+    [Documentation]    
+    ...    This scenario verifies that a child can be added successfully and a 
+    ...    random age can be selected from the available options up to 12 years.
+    [Tags]    Low
+    Given I click on the "Add a child" option
+    Then I will see the list of ages til 12 years
+    When I select a random age for the child from the list
+    Then I will see the newly added child's age displayed
+
+Scenario: Adding a new room
+    [Documentation]    This scenario verifies that a new room can be added successfully and appears next to the first room.
+    [Tags]    Low
+    Given I click on the "Add a Room" button
+    Then I should see the newly added room displayed next to the first one
 

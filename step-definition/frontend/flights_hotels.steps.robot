@@ -1,6 +1,7 @@
 *** Settings ***
 Library    SeleniumLibrary
 Library    DateTime
+Library    pages/tests/CommonStringOperation.py
 Resource    home.steps.robot
 Resource    pages/webdrivers.robot
 Variables    webelements.py
@@ -74,7 +75,7 @@ I see related cities or airports for destination
     ${lenght_destination}=    Get Length    ${destination_items}
     RETURN    ${destination_items}    ${lenght_destination}
 
-I select a random destination from the list
+ I select a random destination for hotels and flights from the list
     ${destination_items}    ${destination_count}    I see related cities or airports for destination
     ${random_index}    Evaluate    random.randint(0, ${destination_count}-1)
     ${selected_destination}    Get Text    ${destination_items}[${random_index}]
@@ -83,7 +84,7 @@ I select a random destination from the list
     Set Global Variable    ${selected_destination}
     [Return]    ${selected_destination}
 
-The destination will be assigned to the destination field
+I will see that destination will be assigned to the destination field
     ${destination_assigned}    Get Value    ${ASSIGNED_DESTINATION}
     Should Start With   ${selected_destination}    ${destination_assigned}
 
@@ -120,9 +121,63 @@ I see the selected dates by default
     ${departure_date}=    Get Text    ${selected_dates[0]}
     ${return_date}=    Get Text    ${selected_dates[-1]}
 
-# I click on clear destination button
-#     Wait Until Element Is Visible    ${a}    5s
-#     Click Element    ${a}
+I click on travallers and flights class button
+    Click Element    ${TRAVELLERS_FLIGHT_FIELD}
+
+Extract Room Number
+    [Arguments]    ${text}
+    ${room_number}=    Evaluate    re.search(r'(\\d+)$', '''${text}''').group(1)    modules=re
+    [Return]    ${room_number}
+
+I will see the default number of "${travellers}" travellers, "${room}" room, and "${any_class}" class displayed
+    Sleep    2s
+    ${travellers_value}    Get Text    ${TRAVELLER_COUNT}    
+    Should Be Equal As Strings    ${travellers_value}    ${travellers}
+
+    ${room_number}    Get Text    ${TRAVELLERS_ROOM_NUMBER}    
+    ${room_number}=    Extract Room Number    ${room_number}
+    Should Be Equal As Strings    ${room_number}    ${room}
+
+    ${flight_class}    Get Text    ${ANY_FLIGHT}
+    Should Be Equal As Strings    ${flight_class}    ${any_class}
+    
+I will see adults "-" and "+" buttons are enabled
+    Element Should Be Enabled    ${FH_MINUS_BTN}
+    Element Should Be Enabled    ${FH_PLUS_BTN}
+
+I will see the any class option is selected as default
+    Element Should Be Enabled    ${ANY_FLIGHT}
+
+I click on the "Add a child" option
+    Click Element    ${ADD_CHILD_BTN}
+    
+I will see the list of ages til 12 years
+    Wait Until Element Is Visible    ${AGE_LIST}
+    ${age_items}    Get WebElements    ${AGE_LIST}
+    ${length_of_ages}=    Get Length    ${age_items}
+    Set Global Variable    @{age_items}
+    Set Global Variable    ${length_of_ages}
+    RETURN    ${age_items}    ${length_of_ages}
+
+I select a random age for the child from the list
+    ${age_items}    ${age_numbers}    I will see the list of ages til 12 years
+    ${random_age}    Evaluate    random.randint(0,${age_numbers}-1)
+    ${selected_age}    Get Text    ${age_items}[${random_age}]
+    Click Element    ${age_items}[${random_age}]
+    Sleep    1s
+    Set Global Variable    ${selected_age}
+    [Return]    ${selected_age}
+    
+I will see the newly added child's age displayed
+    Log    message
+
+I click on the "Add a Room" button
+    Log    message
+
+I should see the newly added room displayed next to the first one
+    Log    message
+
+
 
 *** Comments ***
 I see related cities or airports as suggestions
