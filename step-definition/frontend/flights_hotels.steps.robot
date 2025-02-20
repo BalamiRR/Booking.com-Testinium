@@ -169,13 +169,13 @@ I select a random age for the child from the list
     [Return]    ${selected_age}
     
 I will see the newly added child's age displayed
-    Log    message
+    Element Should Be Visible    ${ADDED_CHILD_FIELD}
 
 I click on the "Add a Room" button
-    Log    message
+    Click Element    ${ADD_ROOM_BTN}
 
 I should see the newly added room displayed next to the first one
-    Log    message
+    Element Should Be Visible    ${ADDED_NEW_ROOM}
 
 
 
