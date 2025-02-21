@@ -16,3 +16,7 @@ Verify element text
 Successfull redirection to the flight and hotel page
     [Arguments]    ${url_flight_hotel}
     Location Should Contain    ${url_flight_hotel}    timeout=15
+    
+Successfull redirection to flight and hotel result
+    [Arguments]    ${fh_url}
+    Location Should Contain    ${fh_url}    timeout=15

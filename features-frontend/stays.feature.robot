@@ -16,7 +16,8 @@ Scenario: Searching for the destinations field
 
 Scenario: Verify the list of destination field after entering input
     [Documentation]
-     ...    Verify that the list of destinations on the stays page is displayed after inputing a value on the "Destiona" field
+     ...    Verify that the list of destinations on the stays page is displayed 
+     ...    after inputing a value on the "Destiona" field
     [Tags]    High    
     Given I click on destination field
     When I enter "P" "A" in the input field
@@ -52,7 +53,8 @@ Scenario: Check-in and Check-out Dates
     Then The selected date is displayed in the date field
 
 Scenario: Verify default values for adults, children, and rooms
-    [Documentation]    Ensure the default summary is displayed correctly when no changes are made.
+    [Documentation]    
+    ...    Ensure the default summary is displayed correctly when no changes are made.
     [Tags]    Medium
     Given I click on the guest selection field
     Then I will see the displayed default value as "2" adults · "0" children · "1" room
@@ -68,7 +70,8 @@ Scenario: Attempt to enter less than 1 adult
     And I see that the '-' button is disabled
 
 Scenario: Attempt to enter more than 1 adult
-    [Documentation]    Verify that the system allows increasing the number of adults and ensures the 
+    [Documentation]    
+     ...    Verify that the system allows increasing the number of adults and ensures the 
      ...    '-' button is enabled when the value is greater than 1.
     [Tags]    High
     Given I click the '+' button for adults
@@ -76,7 +79,8 @@ Scenario: Attempt to enter more than 1 adult
     And I see that the '-' button is enabled
 
 Scenario: Select minimum number of guests without rooms
-    [Documentation]    Verify the system handles the case where guests are selected without increasing
+    [Documentation]    
+     ...    Verify the system handles the case where guests are selected without increasing
      ...    the number of rooms and ensures the default room value is maintained.
     [Tags]    Medium    
     Given I see that the '-' button for rooms is disabled by default
@@ -85,7 +89,9 @@ Scenario: Select minimum number of guests without rooms
     And I see the '-' button for rooms is enabled
 
 Scenario: Select minimum number of children
-    [Documentation]    This scenario verifies that when the "+" button for children is clicked, the number of children increases by 1 and the "Age needed" field appears.
+    [Documentation]    
+    ...    This scenario verifies that when the "+" button for children is clicked, the 
+    ...    number of children increases by 1 and the "Age needed" field appears.
     [Tags]    Medium
     Given I see "0" displayed default for children
     When I click the '+' button for children
@@ -93,7 +99,9 @@ Scenario: Select minimum number of children
     And I see the "Age needed" field is displayed for the added child
     
 Scenario: Select a random age needed for children
-    [Documentation]    This scenario verifies that when the "+" button for children is clicked, the number of children increases by 1 and the "Age needed" field appears.
+    [Documentation]    
+    ...    This scenario verifies that when the "+" button for children is clicked, the number
+    ...    of children increases by 1 and the "Age needed" field appears.
     [Tags]    Medium
     Given I click the "Age needed" field
     Then I will see the list of ages 
@@ -103,9 +111,12 @@ Scenario: Select a random age needed for children
     Then I see the selected number of "1" is displayed in the field
 
 Scenario: Search for available accommodation 
-    [Documentation]    this 
+    [Documentation]    
+    ...    This scenario verifies the search functionality for accommodations. It ensures
+    ...    that users receive a mandatory field warning when no destination city is selected
+    ...    and that they are successfully redirected to the results page upon selecting a destination.   
     [Tags]    Medium
     Given I click on search button
     Then I will see mandatory field warning for destination city
     When I select a random destionation city
-    Then I will be redirected to the page
+    Then I will be redirected to the stay page

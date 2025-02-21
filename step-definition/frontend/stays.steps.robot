@@ -218,7 +218,7 @@ I select a random destionation city
     I select a random destination from the list
     The destination will be assigned to the destination field
 
-I will be redirected to the page
+I will be redirected to the stay page
     I click on search button
     Wait Until Element Is Visible    ${SEARCH_RESULT}
     Should Contain    ${URL}/searchresults.html    searchresults.html
