@@ -14,10 +14,12 @@ class readProperty:
         properties = readProperty.get_env(env)
         return properties.get('url')
     
-    @staticmethod
-    def dynamic_date_locator(date):
-        return  "//span[@data-date='${date}']"
+    # @staticmethod
+    # def dynamic_date_locator(date):
+    #     return  "//span[@data-date='${date}']"
     
-    @staticmethod
-    def get_date(self, days_from_now):
-        return (datetime.now() + timedelta(days=int(days_from_now))).strftime('%#Y-%m-%#d')
+    # @staticmethod
+    # def get_date(self, days_from_now):
+    #     return (datetime.now() + timedelta(days=int(days_from_now))).strftime('%#Y-%m-%#d')
+
+   

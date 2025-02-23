@@ -200,11 +200,9 @@ I select a random destionation and destination city
     I will see that destination will be assigned to the destination field
 
 I will be redirected to the flightpage
-    Sleep    2s
     I click on the search button
+    Wait Until Location Contains    ${FH_REDIRECTION_TO_SEARCH_RESULT}
     Wait Until Element Is Visible    ${FH_SEARCH_RESULT}
-    Successfull redirection to flight and hotel result    ${FH_REDIRECTION_TO_SEARCH_RESULT}
-    Sleep    2s
 
 *** Comments ***
 I see related cities or airports as suggestions
