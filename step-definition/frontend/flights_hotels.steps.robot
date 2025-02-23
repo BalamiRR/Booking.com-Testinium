@@ -149,6 +149,7 @@ I will see the any class option is selected as default
     Element Should Be Enabled    ${ANY_FLIGHT}
 
 I click on the "Add a child" option
+    Wait Until Element Is Visible    ${ADD_CHILD_BTN}
     Click Element    ${ADD_CHILD_BTN}
     
 I will see the list of ages til 12 years
@@ -172,12 +173,36 @@ I will see the newly added child's age displayed
     Element Should Be Visible    ${ADDED_CHILD_FIELD}
 
 I click on the "Add a Room" button
+    Wait Until Element Is Visible    ${ADD_ROOM_BTN}
     Click Element    ${ADD_ROOM_BTN}
 
 I should see the newly added room displayed next to the first one
     Element Should Be Visible    ${ADDED_NEW_ROOM}
 
+ I click on the search button
+    Sleep    2s
+    Click Button    ${FH_SEARCH_BTN}
 
+I will see mandatory fields
+    Element Should Be Visible    ${DEPARTURE_ALERT}
+    Element Should Be Visible    ${DESTINATION_ALERT}
+    ${departure_alert}    Get Text    ${DEPARTURE_ALERT}
+    ${destination_alert}    Get Text    ${DESTINATION_ALERT}
+
+    Should Be Equal As Strings    ${departure_alert}    Enter departure city or airport
+    Should Be Equal As Strings    ${destination_alert}    Enter a destination
+
+I select a random destionation and destination city
+    I enter at least one letter "O"
+    I select a random departure from the list
+    The departure will be assigned to the departure field
+    I select a random destination for hotels and flights from the list
+    I will see that destination will be assigned to the destination field
+
+I will be redirected to the flightpage
+    I click on the search button
+    Wait Until Location Contains    ${FH_REDIRECTION_TO_SEARCH_RESULT}
+    Wait Until Element Is Visible    ${FH_SEARCH_RESULT}
 
 *** Comments ***
 I see related cities or airports as suggestions

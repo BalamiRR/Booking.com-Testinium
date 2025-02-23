@@ -86,8 +86,22 @@ Scenario: Adding a child and selecting a random child age
     Then I will see the newly added child's age displayed
 
 Scenario: Adding a new room
-    [Documentation]    This scenario verifies that a new room can be added successfully and appears next to the first room.
+    [Documentation]    
+    ...    This scenario verifies that a new room can be added successfully 
+    ...    and appears next to the first room.
     [Tags]    Low
     Given I click on the "Add a Room" button
     Then I should see the newly added room displayed next to the first one
 
+Scenario: Search for available flights and hotels 
+    [Documentation]    
+    ...    This scenario verifies the search functionality for flights and hotels. 
+    ...    It ensures that users can select a departure location by entering at least
+    ...    one letter, choose a destination for both flights and hotels, and see the
+    ...    selected values assigned correctly to the respective fields.  
+    [Tags]    Medium  
+    Given I click on the search button
+    Then I will see mandatory fields
+    When I select a random destionation and destination city
+    Then I will be redirected to the flightpage
+    
