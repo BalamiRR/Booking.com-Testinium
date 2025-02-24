@@ -65,11 +65,17 @@ Scenario: Checking multi-city option displays required fields
     Then I should see two departures and destinations search boxes
 
 
+Scenario: Add a flight multi-city destination
+    [Documentation]    
+    ...    Ensure that selecting the multi-city option displays two sets of departure and destination search boxes. 
+    [Tags]    High
+    Given I click on the "Add a flight" button
+    ###Then I should see new departure and destination search boxes
+
 
 #Add several flight
 #Delete flight randomly
 #At least two letters randomly ekle and select randomly
-
 
 # Scenario: Switch origin and return destinations
 #     [Documentation]    

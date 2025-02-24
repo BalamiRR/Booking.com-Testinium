@@ -67,7 +67,7 @@ I type "${S}" "${A}" "${M}" in the "Where to?" destination field
     Wait Until Element Is Enabled    ${input}    timeout=10
 
 I select a random departure from the list
-    ${random_index}    Evaluate    random.randint(0, ${l})
+    ${random_index}    Evaluate    random.randint(0, ${l}-1)
     ${destination_from_city}    Get WebElements    ${DESTINATION_LIST}
     ${selected_destination}    Get Text    ${destination_from_city}[${random_index}]
     Set Global Variable    ${selected_destination}
@@ -95,46 +95,69 @@ The destination will be assigned to the destination field
     ${selected_destination_to}    Get Text    ${DESTINATION_FLIGHT_DETAIL}
     Should Be Equal  ${selected_destination_to}     ${selected_destination_to}
 
-
 I click the multi-city radio button
     Click Element    ${MULTI_CITY_RADIO_BUTTON}
-
 
 I should see two departures and destinations search boxes
     ${search_multi_dest}  Get WebElements  ${SEARCH_MULTI_DESTINATION_BOXES}
     Length Should Be    ${search_multi_dest}    2
+
+I click on the "Add a flight" button
+    ${click_count}    Evaluate    random.randint(1, 3)    modules=random
+    Sleep   2s
+    FOR    ${i}    IN RANGE    0    ${click_count}
+        Click Element    ${ADD_FLIGHT_BUTTON}
+        Sleep    2s
+    END
+    
+    ${total_flights}    Evaluate    1 + ${click_count}
+
+    FOR    ${i}    IN RANGE    1    ${total_flights}+1 
+
+        ${departure_index}    Evaluate    ${i} * 6 + 1
+        ${destination_index}    Evaluate    ${i} * 6 + 3
+
+        ${departure_xpath}    Set Variable   xpath=(//span[contains(@class,'SbZm6')])[${departure_index}]
+        Click Element    ${departure_xpath}
+        Click Element    ${DESTINATION_TO}
+        ${departure_text}    Evaluate    ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ', k=2))    modules=random,string
+        Input Text    ${DESTINATION_TO}    ${departure_text}
+        I should see a list of destinations matching the input
+        I select a random departure from the list
+
+        ${destination_xpath}    Set Variable   xpath=(//span[contains(@class,'SbZm6')])[${destination_index}]
+        Click Element    ${destination_xpath}
+        Click Element    ${DESTINATION_TO}
+        ${destination_text}    Evaluate    ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ', k=2))    modules=random,string
+        Input Text    ${DESTINATION_TO}    ${destination_text}
+        I should see a list of destinations matching the input
+        I select a random departure from the list
+
+    END 
+
 
 
 
 
 
 *** Comments ***
-I click on the switch button 
-    ${departure_before}    Get Text    ${DEPARTURE_FLIGHT}
-    Set Global Variable    ${departure_before}
-    ${destination_before}  Get Text    ${DESTINATION_FLIGHT}
-    Set Global Variable    ${destination_before}
-    Click Element    ${SWITCH_BUTTON}
-  
-I should see that the destination and departure are switched  
-    ${departure_after}    Get Text    ${DEPARTURE_FLIGHT}
-    ${destination_after}  Get Text    ${DESTINATION_FLIGHT} 
-    Should Be Equal    ${departure_before}    ${destination_after}
-    Should Be Equal    ${destination_before}  ${departure_after}
+
+    ${destination_xpath}    Set Variable  xpath=(//span[contains(@class,'SbZm6')])[${i * 6 + 3}]
+        Click Element    ${DESTINATION_TO}
+        ${destination_text}    Get WebElement     ${DESTINATION_TO}
+        ${destination_code}    Evaluate    ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ', k=2))    modules=random,string
+        Sleep    5s
 
 
+${destination_field}    Get WebElement    xpath=(//input[contains(@placeholder, 'Destination')])[${i + 1}]
 
+        # Rastgele 2 harfli kodlar oluştur
+        ${departure_code}    Evaluate    ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ', k=2))    modules=random,string
+        ${destination_code}    Evaluate    ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ', k=2))    modules=random,string
 
-
-
-    
-I click on the switch button 
-    Set Global Variable    ${departure_before}    Get Element    ${DEPARTURE_FLIGHT}
-    Set Global Variable    ${destination_before}  Get Element    ${DESTINATION_FLIGHT}
-    Click Element    ${SWITCH_BUTTON}
-  
-I should see that the destination and departure are switched 
-    ${departure_after}    Get Text    ${DESTINATION_FLIGHT}
-    ${destination_after}  Get Text    ${DEPARTURE_FLIGHT} 
-    Should Be Equal    ${departure_before}    ${destination_after}
-    Should Be Equal    ${destination_before}  ${departure_after}
+        # Departure ve Destination alanlarına rastgele yaz
+        Input Text    ${departure_field}    ${departure_code}
+        Sleep    1s
+        Input Text    ${destination_field}    ${destination_code}
+        Click Element    ${ADD_FLIGHT_BUTTON} 
+        Sleep    2s
