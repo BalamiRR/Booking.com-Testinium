@@ -187,9 +187,7 @@ I will see the popular cities contain "${Amsterdam Netherlands}" "${Tenerife Can
     ${list_number}    Convert To String    ${list_destination_count}   
     FOR    ${index}    IN RANGE    1    ${list_destination_count}
         ${random_destination_list_text}    Get Text    //ul[@class='d-1ip0gkj']//li[@id='listbox-option-${index}']
-        Log    ${random_destination_list_text}
         ${random_destination_list_text}    Replace String    ${random_destination_list_text}    \n    ${SPACE}
-        Log    ${random_destination_list_text}
         List Should Contain Value    ${destination_list}    ${random_destination_list_text}
     END
 
