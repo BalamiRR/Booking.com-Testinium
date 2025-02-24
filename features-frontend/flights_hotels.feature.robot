@@ -93,6 +93,12 @@ Scenario: Adding a new room
     Given I click on the "Add a Room" button
     Then I should see the newly added room displayed next to the first one
 
+Scenario: Verify that the popular cities are displayed correctly in the destination list
+    [Documentation]
+    [Tags]    High
+    Given I click on the destination field
+    Then I will see the popular cities contain "Amsterdam Netherlands" "Tenerife Canary Islands" "Dubai United Arab Emirates" "New York - Manhattan United States" "Barcelona Spain" "Lanzarote Canary Islands" "Paris France" "Prague Czech Republic" "Rome Italy" "Antalya region Turkey" 
+# ${Amsterdam Netherlands}" "${Tenerife Canary Islands}" "${Dubai United Arab Emirates}" "${New York - Manhattan United States}" "${Barcelona Spain}" "${Lanzarote Canary Islands}" "${Paris France}" "${Prague Czech Republic}" "${Rome Italy}" "${Antalya region Turkey}" 
 Scenario: Search for available flights and hotels 
     [Documentation]    
     ...    This scenario verifies the search functionality for flights and hotels. 

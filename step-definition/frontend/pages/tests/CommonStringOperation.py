@@ -6,4 +6,4 @@ class CommonStringOperation:
     
     @keyword
     def replace_in_string(self, inputstring, replacestr):
-        return inputstring.replace("xxxxx", replacestr)
+        return inputstring.replace("xx", replacestr).strip()

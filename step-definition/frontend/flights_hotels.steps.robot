@@ -179,6 +179,20 @@ I click on the "Add a Room" button
 I should see the newly added room displayed next to the first one
     Element Should Be Visible    ${ADDED_NEW_ROOM}
 
+I will see the popular cities contain "${Amsterdam Netherlands}" "${Tenerife Canary Islands}" "${Dubai United Arab Emirates}" "${New York - Manhattan United States}" "${Barcelona Spain}" "${Lanzarote Canary Islands}" "${Paris France}" "${Prague Czech Republic}" "${Rome Italy}" "${Antalya region Turkey}" 
+    ${destination_list}=    Create List    ${Amsterdam Netherlands}    ${Tenerife Canary Islands}     ${Dubai United Arab Emirates}    ${New York - Manhattan United States}    ${Barcelona Spain}    ${Lanzarote Canary Islands}    ${Paris France}    ${Prague Czech Republic}    ${Rome Italy}    ${Antalya region Turkey}     
+    Wait Until Page Contains Element    ${LIST_OF_DESTINATION}    20s
+    ${list_destination_count}    Get Element Count    ${LIST_OF_DESTINATION}
+    ${list_destination_count}    Convert To Integer    ${list_destination_count}     
+    ${list_number}    Convert To String    ${list_destination_count}   
+    FOR    ${index}    IN RANGE    1    ${list_destination_count}
+        ${random_destination_list_text}    Get Text    //ul[@class='d-1ip0gkj']//li[@id='listbox-option-${index}']
+        Log    ${random_destination_list_text}
+        ${random_destination_list_text}    Replace String    ${random_destination_list_text}    \n    ${SPACE}
+        Log    ${random_destination_list_text}
+        List Should Contain Value    ${destination_list}    ${random_destination_list_text}
+    END
+
  I click on the search button
     Sleep    2s
     Click Button    ${FH_SEARCH_BTN}
