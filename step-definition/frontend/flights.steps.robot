@@ -44,7 +44,7 @@ I should see a list of destinations matching the input
     ${l} =    Get Length    ${destination_from_items}
     Set Global Variable    @{destination_from_items}
     Set Global Variable    ${l}
-    Sleep    2s
+    Sleep    1s
     RETURN    ${destination_from_items}    ${l}
 
 I click on the destination field
@@ -112,28 +112,22 @@ I click on the "Add a flight" button
     
     ${total_flights}    Evaluate    1 + ${click_count}
 
-    FOR    ${i}    IN RANGE    1    ${total_flights}+1 
+    FOR    ${i}    IN RANGE    1    ${total_flights}+1
+        FOR    ${type}    IN    departure    destination
+            ${index}    Run Keyword If    '${type}' == 'departure'    Evaluate    ${i} * 6 + 1
+            ...    ELSE    Evaluate    ${i} * 6 + 3
 
-        ${departure_index}    Evaluate    ${i} * 6 + 1
-        ${destination_index}    Evaluate    ${i} * 6 + 3
+            ${xpath}    Set Variable    xpath=(//span[contains(@class,'SbZm6')])[${index}]
+            Click Element    ${xpath}
+            Click Element    ${DESTINATION_TO}
 
-        ${departure_xpath}    Set Variable   xpath=(//span[contains(@class,'SbZm6')])[${departure_index}]
-        Click Element    ${departure_xpath}
-        Click Element    ${DESTINATION_TO}
-        ${departure_text}    Evaluate    ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ', k=2))    modules=random,string
-        Input Text    ${DESTINATION_TO}    ${departure_text}
-        I should see a list of destinations matching the input
-        I select a random departure from the list
+            ${random_text}    Evaluate    ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ', k=2))    modules=random,string
+            Input Text    ${DESTINATION_TO}    ${random_text}
+            I should see a list of destinations matching the input
+            I select a random departure from the list
 
-        ${destination_xpath}    Set Variable   xpath=(//span[contains(@class,'SbZm6')])[${destination_index}]
-        Click Element    ${destination_xpath}
-        Click Element    ${DESTINATION_TO}
-        ${destination_text}    Evaluate    ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ', k=2))    modules=random,string
-        Input Text    ${DESTINATION_TO}    ${destination_text}
-        I should see a list of destinations matching the input
-        I select a random departure from the list
-
-    END 
+        END
+    END
 
 
 
@@ -141,12 +135,6 @@ I click on the "Add a flight" button
 
 
 *** Comments ***
-
-    ${destination_xpath}    Set Variable  xpath=(//span[contains(@class,'SbZm6')])[${i * 6 + 3}]
-        Click Element    ${DESTINATION_TO}
-        ${destination_text}    Get WebElement     ${DESTINATION_TO}
-        ${destination_code}    Evaluate    ''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ', k=2))    modules=random,string
-        Sleep    5s
 
 
 ${destination_field}    Get WebElement    xpath=(//input[contains(@placeholder, 'Destination')])[${i + 1}]
