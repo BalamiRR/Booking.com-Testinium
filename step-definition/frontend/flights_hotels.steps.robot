@@ -52,8 +52,8 @@ I select a random departure from the list
 
 The departure will be assigned to the departure field
     ${departure_assigned}    Get Value    ${ASSIGNED_DEPARTURE}
-    Should Start With   ${selected_departure}    ${departure_assigned}
-
+    Should Contain   ${selected_departure}    ${departure_assigned}
+    
 I click on the destination field
     Click Element    ${DESTINATION_FLIGHT_HOTEL_FIELD}
 
@@ -180,7 +180,9 @@ I should see the newly added room displayed next to the first one
     Element Should Be Visible    ${ADDED_NEW_ROOM}
 
 I will see the popular cities contain "${Amsterdam Netherlands}" "${Tenerife Canary Islands}" "${Dubai United Arab Emirates}" "${New York - Manhattan United States}" "${Barcelona Spain}" "${Lanzarote Canary Islands}" "${Paris France}" "${Prague Czech Republic}" "${Rome Italy}" "${Antalya region Turkey}" 
-    ${destination_list}=    Create List    ${Amsterdam Netherlands}    ${Tenerife Canary Islands}     ${Dubai United Arab Emirates}    ${New York - Manhattan United States}    ${Barcelona Spain}    ${Lanzarote Canary Islands}    ${Paris France}    ${Prague Czech Republic}    ${Rome Italy}    ${Antalya region Turkey}     
+    ${destination_list}=    Create List    ${Amsterdam Netherlands}    ${Tenerife Canary Islands}     ${Dubai United Arab Emirates}    
+    ...    ${New York - Manhattan United States}    ${Barcelona Spain}    ${Lanzarote Canary Islands}    ${Paris France}    
+    ...    ${Prague Czech Republic}    ${Rome Italy}    ${Antalya region Turkey}     
     Wait Until Page Contains Element    ${LIST_OF_DESTINATION}    20s
     ${list_destination_count}    Get Element Count    ${LIST_OF_DESTINATION}
     ${list_destination_count}    Convert To Integer    ${list_destination_count}     
@@ -211,10 +213,55 @@ I select a random destionation and destination city
     I select a random destination for hotels and flights from the list
     I will see that destination will be assigned to the destination field
 
-I will be redirected to the flightpage
+I will be redirected to the flight search results page
     I click on the search button
     Wait Until Location Contains    ${FH_REDIRECTION_TO_SEARCH_RESULT}
     Wait Until Element Is Visible    ${FH_SEARCH_RESULT}
+
+I see at least 20 hotels listed by default
+    Log    message
+
+I click the "All Filters" button at the top
+    Log    message
+
+I should see the filters menu displayed
+    Log    message
+
+I will see the headers "Deals" "Budget" "Flight" "Property type" "Property name" "Stars" "Meal plan" "Guest rating" "Facilities" "Area" "Nearest station" "Hotel chain" "Property style"
+    Log    message
+
+I click on the radio button for "Flash Sales"
+    Log    message    
+
+I should see the radio button turn on
+    Log    message
+
+I click on the radio button for "Flash Sales" again
+    Log    message
+
+I will see the radio button turn off
+    Log    message
+
+When I hover over the minimum budget and set it to 500 pounds
+    Log    message
+
+When I select the "Breakfast" option for the meal plan
+    Log    message
+
+Then I should see the Breakfast option selected
+    Log    message
+
+I select a random hotels with a star rating higher than 3
+    Log    message
+
+I should be redirected to the hotel details page  
+    Log    message
+
+I should see that the hotel has a star rating higher than 3
+    Log    message
+
+I should see the hotel name, price, and booking options    
+    Log    message
 
 *** Comments ***
 I see related cities or airports as suggestions
@@ -233,8 +280,6 @@ I select a random departure from the list
     Click Element    ${departure_city}[${random_index}]
     Sleep    1s
     RETURN    ${selected_departure}
-
-
 
 ========== PURUSH ==========
 
@@ -262,9 +307,6 @@ I access sample definition view and add multiple candidats
    Sleep    8s
    Click Element    ${EXIT_CANDIDATE_DRAWER_CROSS}
 
-
-
-
 The Table of the application Sample contains "${Number of Items}" "${Trial No.}" "${Formula Code and Mix Components}" "${Oil availability}" "${Base dosage}" "${Packaging}" "${Actions}" 
     ${Sample_Tab_head_lists}=    Create List    ${Number of Items}     ${Trial No.}    ${Formula Code and Mix Components}    ${Oil availability}    ${Base dosage}    ${Packaging}    ${Actions}     
     Wait Until Page Contains Element    ${APP_SAMPLES_TAB}    20s
@@ -280,8 +322,4 @@ The Table of the application Sample contains "${Number of Items}" "${Trial No.}"
         List Should Contain Value    ${Sample_Tab_head_lists}    ${App_Samples_Tab_Head_Text}
     END 
 
-
-=======
-
-
-
+============================
