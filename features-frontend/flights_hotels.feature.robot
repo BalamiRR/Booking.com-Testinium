@@ -57,7 +57,8 @@ Scenario: Clear button for departure and destination
     Then The destination field input is cleared
 
 Scenario: Verify Default Check-in and out Date in the Date picker
-    [Documentation]    Verify that the date picker appears when accessing the Date field, 
+    [Documentation]    
+     ...    Verify that the date picker appears when accessing the Date field, 
      ...    with the current date selected by Default
     [Tags]    Medium
     Given I click on the calender button
@@ -65,10 +66,10 @@ Scenario: Verify Default Check-in and out Date in the Date picker
 
 Scenario: Adding number of travallers and flight class
     [Documentation]    
-    ...    This scenario verifies the functionality of selecting the number of
-    ...    travellers and choosing the flight class on Booking.com. It ensures that the user
-    ...    can accurately specify the number of adults, children, and infants, as well as 
-    ...    select the desired flight class e.g., Economy, Premium Economy, Business, or First Class
+     ...    This scenario verifies the functionality of selecting the number of
+     ...    travellers and choosing the flight class on Booking.com. It ensures that the user
+     ...    can accurately specify the number of adults, children, and infants, as well as 
+     ...    select the desired flight class e.g., Economy, Premium Economy, Business, or First Class
     [Tags]    Medium
     Given I click on travallers and flights class button 
     When I will see the default number of "2" travellers, "1" room, and "Any class" class displayed
@@ -77,8 +78,8 @@ Scenario: Adding number of travallers and flight class
 
 Scenario: Adding a child and selecting a random child age
     [Documentation]    
-    ...    This scenario verifies that a child can be added successfully and a 
-    ...    random age can be selected from the available options up to 12 years.
+     ...    This scenario verifies that a child can be added successfully and a 
+     ...    random age can be selected from the available options up to 12 years.
     [Tags]    Low
     Given I click on the "Add a child" option
     Then I will see the list of ages til 12 years
@@ -87,14 +88,14 @@ Scenario: Adding a child and selecting a random child age
 
 Scenario: Adding a new room
     [Documentation]    
-    ...    This scenario verifies that a new room can be added successfully 
-    ...    and appears next to the first room.
+     ...    This scenario verifies that a new room can be added successfully 
+     ...    and appears next to the first room.
     [Tags]    Low
     Given I click on the "Add a Room" button
     Then I should see the newly added room displayed next to the first one
 
 Scenario: Verify that the popular cities are displayed correctly in the destination list
-    [Documentation]
+    [Documentation]    Verify that the popular cities are displayed correctly in the destination list
     [Tags]    High
     Given I click on the destination field
     Then I will see the popular cities contain "Amsterdam Netherlands" "Tenerife Canary Islands" "Dubai United Arab Emirates" "New York - Manhattan United States" "Barcelona Spain" "Lanzarote Canary Islands" "Paris France" "Prague Czech Republic" "Rome Italy" "Antalya region Turkey" 
@@ -109,5 +110,28 @@ Scenario: Search for available flights and hotels
     Given I click on the search button
     Then I will see mandatory fields
     When I select a random destionation and destination city
-    Then I will be redirected to the flightpage
-    
+    Then I will be redirected to the flight search results page
+
+Scenario: Search for a hotel with a star rating higher than 3
+    [Documentation]    Verify that the user can randomly select hotels with more than 3 stars and navigate to the details page.
+    [Tags]    High
+    Given I see at least 20 hotels listed by default
+    When I click the "All Filters" button at the top
+    Then I should see the filters menu displayed
+
+Scenario: Filling the needed filters
+    [Documentation]    Verify that the user can randomly select hotels with more than 3 stars and navigate to the details page.
+    [Tags]    Low
+    Given I will see the headers "Deals" "Budget" "Flight" "Property type" "Property name" "Stars" "Meal plan" "Guest rating" "Facilities" "Area" "Nearest station" "Hotel chain" "Property style"
+    When I click on the radio button for "Flash Sales"
+    Then I should see the radio button turn on
+    When I hover over the minimum budget and set it to 500 pounds
+    When I select the "Breakfast" option for the meal plan
+    Then I should see the Breakfast option selected
+
+Scenario: 
+    [Documentation]
+    [Tags]    High
+    When I select a random hotes with a star rating higher than 3
+    Then I should be redirected to the hotel details page  
+    And I should see the hotel name, price, and booking options

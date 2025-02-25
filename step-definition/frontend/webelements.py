@@ -72,6 +72,6 @@ ADDED_NEW_ROOM="//div[@class='d-7ot16r']/section[contains(@class, 'd-n0t1z7')][2
 FH_SEARCH_BTN="//div[@class='d-cfd64b']//button"
 DEPARTURE_ALERT="(//span[@class='d-itgih4'])[1]"
 DESTINATION_ALERT="(//span[@class='d-itgih4'])[2]"
-FH_SEARCH_RESULT="//div[@class='sc-2eb2e2cc-3 gwfoJr']"
+FH_SEARCH_RESULT="//div[@class='sc-3ba53d25-1 iqTYWA']"
 FH_REDIRECTION_TO_SEARCH_RESULT="https://booking-dp.lastminute.com/s/tsx?pageType=search&destination="
 ADD_FLIGHT_BUTTON="//span[contains(.,'Add a flight')]"
