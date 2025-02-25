@@ -109,8 +109,9 @@ I click on the "Add a flight" button
         Click Element    ${ADD_FLIGHT_BUTTON}
         Sleep    2s
     END
-    
+
     ${total_flights}    Evaluate    1 + ${click_count}
+    Set Global Variable    ${total_flights}
 
     FOR    ${i}    IN RANGE    1    ${total_flights}+1
         FOR    ${type}    IN    departure    destination
@@ -129,7 +130,10 @@ I click on the "Add a flight" button
         END
     END
 
-
+I should see new departure and destination search boxes
+    ${search_multi_dest}  Get WebElements  ${SEARCH_MULTI_DESTINATION_BOXES}
+    ${expected_flights}    Evaluate    ${total_flights} + 1
+    Length Should Be    ${search_multi_dest}    ${expected_flights}
 
 
 
