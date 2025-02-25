@@ -182,26 +182,14 @@ Search And Select Destination
 
 Set A Random Date
     [Arguments]    ${xpath}
-    Click Element    ${MULTI_DATE_DETAIL}
-    ${random_day}    Evaluate    random.randint(1, 28)    modules=random
-    ${random_month}    Evaluate    random.randint(1, 12)    modules=random
-    ${random_year}    Evaluate    2025
-    ${formatted_date}    Set Variable    ${random_day}/${random_month}/${random_year}
-    Input Text    ${xpath}    ${formatted_date}
-
+    ${current_date}    Get Current Date
+    ${future_date}    Add Time To Date    ${current_date}    3 days    result_format=%Y-%m-%d
+    ${DATE_ELEMENT}    Set Variable    xpath=//span[@data-date='${future_date}']
+    Wait Until Element Is Visible    ${DATE_ELEMENT}
+    Click Element    ${DATE_ELEMENT}
+    Set Global Variable    ${DATE_ELEMENT}
 
 *** Comments ***
-
-${ROUND_TRIP_SELECT_DATE}    Get Element Attribute    ${ROUND_TRIP_SELECT_DATE}    data-date 
-    ${YEAR}    Set Variable    ${ROUND_TRIP_SELECT_DATE.split("-")[0]}
-    ${MONTH}    Set Variable    ${ROUND_TRIP_SELECT_DATE.split("-")[1]}
-    ${DAY}    Set Variable    ${ROUND_TRIP_SELECT_DATE.split("-")[2]}
-    ${FORMATTED_SELECTED_DATE}    Set Variable    ${MONTH.lstrip("0")}/${DAY.lstrip("0")}/${YEAR}
-    Set Global Variable    ${FORMATTED_SELECTED_DATE}
-    Log    ${FORMATTED_SELECTED_DATE}
-
-
-
     I select a random return date
     Click Element    ${ROUND_TRIP_SELECT_DATE}
     ${ROUND_TRIP_SELECT_DATE}    Get Element Attribute    ${ROUND_TRIP_SELECT_DATE}    data-date 
@@ -212,3 +200,19 @@ ${ROUND_TRIP_SELECT_DATE}    Get Element Attribute    ${ROUND_TRIP_SELECT_DATE} 
     Set Global Variable    ${FORMATTED_SELECTED_DATE}
     Log    ${FORMATTED_SELECTED_DATE}
     
+
+
+    I search new destionations and departures with dates
+    FOR    ${i}    IN RANGE    1    ${total_flights}+1
+        FOR    ${type}    IN    departure    destination    date
+            ${index}    Run Keyword If    '${type}' == 'departure'    Evaluate    ${i} * 6 + 1
+            ...    ELSE IF   '${type}' == 'destination'    Evaluate     ${i} * 6 + 3
+            ...    ELSE    Evaluate     ${i} * 6 + 5
+
+            ${xpath}    Set Variable    xpath=(//span[contains(@class,'SbZm6')])[${index}]
+            Click Element    ${xpath}
+
+            Run Keyword If    '${type}' == 'date'    Set A Random Date    ${xpath}
+            ...    ELSE    Search And Select Destination    ${xpath}
+        END
+    END
