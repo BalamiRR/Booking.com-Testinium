@@ -119,7 +119,7 @@ Scenario: Search for a hotel with a star rating higher than 3
     When I click the "All Filters" button at the top
     Then I should see the filters menu displayed
 
-Scenario: Filling the needed filters
+Scenario: Filling the required fields in the All Filters drawer
     [Documentation]    Verify that the user can randomly select hotels with more than 3 stars and navigate to the details page.
     [Tags]    Low
     Given I will see the headers "Deals" "Budget" "Flight" "Property type" "Property name" "Stars" "Meal plan" "Guest rating" "Facilities" "Area" "Nearest station" "Hotel chain" "Property style"
