@@ -125,13 +125,19 @@ Scenario: Filling the required fields in the All Filters drawer
     Given I will see the headers "Deals" "Budget" "Flight" "Property type" "Property name" "Stars" "Meal plan" "Guest rating" "Facilities" "Area" "Nearest station" "Hotel chain" "Property style"
     When I click on the radio button for "Flash Sales"
     Then I should see the radio button turn on
+    When I click on the radio button for "Flash Sales" again
+    Then I will see the radio button turn off
     When I hover over the minimum budget and set it to 500 pounds
     When I select the "Breakfast" option for the meal plan
     Then I should see the Breakfast option selected
 
-Scenario: 
+Scenario: Selecting a hotel with a rating higher than 3 stars
     [Documentation]
+     ...    Verify that when a user selects a hotel with a rating higher than 3 stars, 
+     ...    they are redirected to the hotel's details page, where they can view the 
+     ...    hotel's name, price, and available booking options.
     [Tags]    High
-    When I select a random hotes with a star rating higher than 3
+    Given I select a random hotels with a star rating higher than 3
     Then I should be redirected to the hotel details page  
-    And I should see the hotel name, price, and booking options
+    And I should see that the hotel has a star rating higher than 3
+    And I should see the hotel name, price, and booking options    

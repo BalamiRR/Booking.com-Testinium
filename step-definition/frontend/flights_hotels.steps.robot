@@ -236,6 +236,12 @@ I click on the radio button for "Flash Sales"
 I should see the radio button turn on
     Log    message
 
+I click on the radio button for "Flash Sales" again
+    Log    message
+
+I will see the radio button turn off
+    Log    message
+
 When I hover over the minimum budget and set it to 500 pounds
     Log    message
 
@@ -243,6 +249,18 @@ When I select the "Breakfast" option for the meal plan
     Log    message
 
 Then I should see the Breakfast option selected
+    Log    message
+
+I select a random hotels with a star rating higher than 3
+    Log    message
+
+I should be redirected to the hotel details page  
+    Log    message
+
+I should see that the hotel has a star rating higher than 3
+    Log    message
+
+I should see the hotel name, price, and booking options    
     Log    message
 
 *** Comments ***
@@ -304,6 +322,4 @@ The Table of the application Sample contains "${Number of Items}" "${Trial No.}"
         List Should Contain Value    ${Sample_Tab_head_lists}    ${App_Samples_Tab_Head_Text}
     END 
 
-
 ============================
-
