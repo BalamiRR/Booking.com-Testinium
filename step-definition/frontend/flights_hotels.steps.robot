@@ -180,7 +180,9 @@ I should see the newly added room displayed next to the first one
     Element Should Be Visible    ${ADDED_NEW_ROOM}
 
 I will see the popular cities contain "${Amsterdam Netherlands}" "${Tenerife Canary Islands}" "${Dubai United Arab Emirates}" "${New York - Manhattan United States}" "${Barcelona Spain}" "${Lanzarote Canary Islands}" "${Paris France}" "${Prague Czech Republic}" "${Rome Italy}" "${Antalya region Turkey}" 
-    ${destination_list}=    Create List    ${Amsterdam Netherlands}    ${Tenerife Canary Islands}     ${Dubai United Arab Emirates}    ${New York - Manhattan United States}    ${Barcelona Spain}    ${Lanzarote Canary Islands}    ${Paris France}    ${Prague Czech Republic}    ${Rome Italy}    ${Antalya region Turkey}     
+    ${destination_list}=    Create List    ${Amsterdam Netherlands}    ${Tenerife Canary Islands}     ${Dubai United Arab Emirates}    
+    ...    ${New York - Manhattan United States}    ${Barcelona Spain}    ${Lanzarote Canary Islands}    ${Paris France}    
+    ...    ${Prague Czech Republic}    ${Rome Italy}    ${Antalya region Turkey}     
     Wait Until Page Contains Element    ${LIST_OF_DESTINATION}    20s
     ${list_destination_count}    Get Element Count    ${LIST_OF_DESTINATION}
     ${list_destination_count}    Convert To Integer    ${list_destination_count}     
