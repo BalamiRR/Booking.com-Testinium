@@ -218,20 +218,28 @@ I will be redirected to the flight search results page
     Wait Until Location Contains    ${FH_REDIRECTION_TO_SEARCH_RESULT}
     Wait Until Element Is Visible    ${FH_SEARCH_RESULT}
 
-I see at least 20 hotels listed by default
-    Log    message
+I see at least "${all_list}" hotels listed by default
+    Sleep    25s
+    ${lists_hotels}    Get Element Count    ${LIST_OF_HOTELS}
+    ${all_list}    Convert To Integer    ${all_list}
+
+    Should Be Equal    ${lists_hotels}    ${all_list}
+
+    ${get_random_hotels}    Evaluate    random.randint(1, ${lists_hotels}-1)
+    ${FORMULA_DESCRIPTION_DEL_TEMP}    Replace In String    ${RANDOM_HOTELS}    ${get_random_hotels}${EMPTY}
 
 I click the "All Filters" button at the top
-    Log    message
+    Wait Until Element Is Visible    ${ALL_FILTERS_BTN}
+    Click Button    ${ALL_FILTERS_BTN}
 
 I should see the filters menu displayed
-    Log    message
+    Element Should Be Visible    ${FILTERS_DISPLAY}
 
 I will see the headers "Deals" "Budget" "Flight" "Property type" "Property name" "Stars" "Meal plan" "Guest rating" "Facilities" "Area" "Nearest station" "Hotel chain" "Property style"
     Log    message
 
 I click on the radio button for "Flash Sales"
-    Log    message    
+    Log    message
 
 I should see the radio button turn on
     Log    message
@@ -242,25 +250,34 @@ I click on the radio button for "Flash Sales" again
 I will see the radio button turn off
     Log    message
 
-When I hover over the minimum budget and set it to 500 pounds
+I hover over the minimum budget slider and set it to 700 pounds
     Log    message
 
-When I select the "Breakfast" option for the meal plan
+I should see the minimum value set to 700
     Log    message
 
-Then I should see the Breakfast option selected
+I select the 3-star option from the Stars filter
     Log    message
 
-I select a random hotels with a star rating higher than 3
+I should see the selected checkbox
     Log    message
 
-I should be redirected to the hotel details page  
+I select the "Random only" option for the meal plan
     Log    message
 
-I should see that the hotel has a star rating higher than 3
+I should see the "Random only" option selected
     Log    message
 
-I should see the hotel name, price, and booking options    
+I click the "Apply" button
+    Log    message
+
+I will be redirected to the hotels result page
+    Log    message
+
+I select a random hotel
+    Log    message
+
+I will be redirected to the hotel details page
     Log    message
 
 *** Comments ***
