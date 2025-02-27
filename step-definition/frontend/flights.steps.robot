@@ -67,7 +67,7 @@ I type "${S}" "${A}" "${M}" in the "Where to?" destination field
     Wait Until Element Is Enabled    ${input}    timeout=10
 
 I select a random departure from the list
-    ${random_index}    Evaluate    random.randint(0, ${l}-1)
+    ${random_index}    Evaluate    random.randint(0, ${l}-1)-3
     ${destination_from_city}    Get WebElements    ${DESTINATION_LIST}
     ${selected_destination}    Get Text    ${destination_from_city}[${random_index}]
     Set Global Variable    ${selected_destination}
@@ -81,7 +81,7 @@ The departure will be assigned to the departure field
     Should Be Equal  ${destination_assigned}     ${selected_destination}
 
 I select a random destination from the list
-    ${random_index}    Evaluate    random.randint(0, ${l}-1)
+    ${random_index}    Evaluate    random.randint(0, ${l}-1)-3
     ${destination_to_city}    Get WebElements    ${DESTINATION_LIST}
     Log    ${destination_to_city}
     ${selected_destination_to}    Get Text    ${destination_to_city}[${random_index}]
@@ -188,6 +188,8 @@ Set A Random Date
     Wait Until Element Is Visible    ${DATE_ELEMENT}
     Click Element    ${DATE_ELEMENT}
     Set Global Variable    ${DATE_ELEMENT}
+
+
 
 *** Comments ***
     I select a random return date
