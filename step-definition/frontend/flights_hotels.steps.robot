@@ -263,16 +263,21 @@ I will see the headers "${Deals}" "${Destination airport}" "${Budget}" "${Flight
     RETURN    ${matched_headers}
     
 I click on the radio button for "Flash Sales"
-    Log    message
-
+    ${is_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${FLASH_SALES_BTN}
+    Run Keyword If    ${is_visible}    Click Element    ${FLASH_SALES_BTN}
+    
 I should see the radio button turn on
-    Log    message
+    ${is_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${FLASH_SALES_BTN}
+    Run Keyword If    ${is_visible}    Wait Until Element Is Enabled    ${FLASH_SALES_BTN}
+    Run Keyword If    ${is_visible}    Element Should Be Enabled    ${FLASH_SALES_BTN}
 
 I click on the radio button for "Flash Sales" again
-    Log    message
+    ${is_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${FLASH_SALES_BTN}
+    Run Keyword If    ${is_visible}    Click Button    ${FLASH_SALES_BTN}
 
 I will see the radio button turn off
-    Log    message
+    ${is_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${FLASH_SALES_BTN}
+    Run Keyword If    ${is_visible}    Element Should Be Disabled    ${FLASH_SALES_BTN}
 
 # I hover over the minimum budget slider and set it to 700 pounds
 #     Log    message
