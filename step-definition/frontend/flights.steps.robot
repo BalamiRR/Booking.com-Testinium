@@ -125,24 +125,34 @@ The calendar should be displayed
     Element Should Be Visible    ${ROUND_TRIP_CALENDER_DETAIL}
 
 I select a random departure and return date
-    ${current_date}    Get Current Date    result_format=%Y-%m-%d
-    ${DEPARTURE_DATE}    Set Variable     xpath=//span[@data-date='${current_date}'] 
-    Wait Until Element Is Visible    ${DEPARTURE_DATE}    
-    Click Element    ${DEPARTURE_DATE}  
-    Set Global Variable    ${DEPARTURE_DATE}
 
-    ${current_date}=    Get Current Date
-    ${date}=    Add Time To Date    ${current_date}    3 days    result_format=%Y-%m-%d
-    ${RETURN_DATE}    Set Variable    xpath=//span[@data-date='${date}'] 
-    Set Global Variable    ${RETURN_DATE}
-    Wait Until Element Is Visible    ${RETURN_DATE}
-    Click Element    ${RETURN_DATE}
+    Wait Until Page Contains Element    ${SELECTED_DATE_ROUND_TRIP_SELECT_DATE}    timeout=5s
+    ${selected_dates}=    Get WebElements    ${SELECTED_DATE_ROUND_TRIP_SELECT_DATE}
+    ${length}=    Get Length    ${selected_dates}
+
+    IF    ${length} >= 2
+        ${departure_date}=    Get Text    ${selected_dates[0]}
+        ${return_date}=    Get Text    ${selected_dates[-1]}
+        Log    Departure date already selected: ${departure_date}
+        Log    Return date already selected: ${return_date}
+    ELSE
+        ${current_date}    Get Current Date    result_format=%Y-%m-%d
+        ${DEPARTURE_DATE}    Set Variable    xpath=//span[contains(@data-date,"${current_date}")]  
+        Click Element    ${DEPARTURE_DATE}  
+        Set Global Variable    ${DEPARTURE_DATE}
+
+        ${current_date}=    Get Current Date
+        ${date}=    Add Time To Date    ${current_date}    3 days    result_format=%Y-%m-%d
+        ${RETURN_DATE}    Set Variable    xpath=//span[contains(@data-date,"${date}")] 
+        Set Global Variable    ${RETURN_DATE}
+        Click Element    ${RETURN_DATE}
+    END
  
 The selected dates should be visible on the screen
     Log   message
 
 I click on the "Add a flight" button
-    ${click_count}    Evaluate    random.randint(1, 3)    modules=random
+    ${click_count}    Evaluate    random.randint(1, 2)    modules=random
     Sleep   2s
     Set Global Variable  ${click_count} 
     FOR    ${i}    IN RANGE    0    ${click_count}
@@ -180,6 +190,18 @@ Search And Select Destination
     I should see a list of destinations matching the input
     I select a random departure from the list
 
+Set A Random Date 
+    [Arguments]    ${xpath}
+    ${dates}    Get WebElements    ${DATE_CALENDAR}
+    ${random_index}    Evaluate    random.randint(0, len($dates)-1)    random
+    ${random_date}    Get From List    ${dates}    ${random_index}
+
+    Click Element    ${random_date}
+    Log    Selected date: ${random_date}
+
+
+*** Comments ***
+
 Set A Random Date
     [Arguments]    ${xpath}
     ${current_date}    Get Current Date
@@ -191,7 +213,28 @@ Set A Random Date
 
 
 
-*** Comments ***
+
+Set A Random Date
+    [Arguments]    ${xpath}
+    
+    ${current_date}    Get Current Date
+    ${future_date}    Add Time To Date    ${current_date}    3 days    result_format=%Y-%m-%d
+    ${DATE_ELEMENT}    Set Variable    xpath=//span[@data-date='${future_date}']
+
+    ${is_prev_active}=    Run Keyword And Return Status    Element Should Be Visible    ${PREV_BUTTON_DATE}
+
+    WHILE    ${is_prev_active} == True
+        Click Element    ${PREV_BUTTON_DATE}
+        Sleep    1s  # Takvimin güncellenmesini bekle
+        ${is_prev_active}=    Run Keyword And Return Status    Element Should Be Visible    ${PREV_BUTTON_DATE}
+    END
+
+    Wait Until Element Is Visible    ${DATE_ELEMENT}
+    Click Element    ${DATE_ELEMENT}
+    Set Global Variable    ${DATE_ELEMENT}
+
+
+
     I select a random return date
     Click Element    ${ROUND_TRIP_SELECT_DATE}
     ${ROUND_TRIP_SELECT_DATE}    Get Element Attribute    ${ROUND_TRIP_SELECT_DATE}    data-date 
