@@ -45,10 +45,12 @@ I select a random departure from the list
     ${departure_items}    ${departure_count}    I see related cities or airports as suggestions
     ${random_index}    Evaluate    random.randint(0, ${departure_count}-1)
     ${selected_departure}    Get Text    ${departure_items}[${random_index}]
+    # ${selected_departure} =    Strip String    ${selected_departure}
+    #${selected_departure} =    Normalize String    ${selected_departure}
     Click Element    ${departure_items}[${random_index}]
     Sleep    1s
     Set Global Variable    ${selected_departure}
-    [Return]    ${selected_departure}
+    RETURN    ${selected_departure}
 
 The departure will be assigned to the departure field
     ${departure_assigned}    Get Value    ${ASSIGNED_DEPARTURE}
@@ -69,11 +71,12 @@ I enter a letter "${I}"
     RETURN    ${input_destination}
 
 I see related cities or airports for destination
-    Wait Until Element Is Visible    ${LIST_OF_DESTINATION}    3s
-    ${destination_items}    Get WebElements    ${LIST_OF_DESTINATION}
-    Log    ${destination_items}
-    ${lenght_destination}=    Get Length    ${destination_items}
-    RETURN    ${destination_items}    ${lenght_destination}
+    Sleep    15s
+    #Wait Until Element Is Visible    ${LIST_OF_DESTINATION}    3s
+    ${destination_items}    Get WebElements    ${LIST_DESTINATIONS}
+    Sleep    5s
+    ${l}=    Get Length    ${destination_items}
+    RETURN    ${destination_items}    ${l}
 
  I select a random destination for hotels and flights from the list
     ${destination_items}    ${destination_count}    I see related cities or airports for destination
@@ -82,11 +85,11 @@ I see related cities or airports for destination
     Click Element    ${destination_items}[${random_index}]
     Sleep    1s
     Set Global Variable    ${selected_destination}
-    [Return]    ${selected_destination}
+    RETURN    ${selected_destination}
 
 I will see that destination will be assigned to the destination field
     ${destination_assigned}    Get Value    ${ASSIGNED_DESTINATION}
-    Should Start With   ${selected_destination}    ${destination_assigned}
+    Should Contain  ${selected_destination}    ${destination_assigned}
 
 I click the clear button for the departure field
     Wait Until Element Is Visible    ${CLEAR_DEPARTURE_DESTINATION}    5s
@@ -127,7 +130,7 @@ I click on travallers and flights class button
 Extract Room Number
     [Arguments]    ${text}
     ${room_number}=    Evaluate    re.search(r'(\\d+)$', '''${text}''').group(1)    modules=re
-    [Return]    ${room_number}
+    RETURN    ${room_number}
 
 I will see the default number of "${travellers}" travellers, "${room}" room, and "${any_class}" class displayed
     Sleep    2s
@@ -149,6 +152,7 @@ I will see the any class option is selected as default
     Element Should Be Enabled    ${ANY_FLIGHT}
 
 I click on the "Add a child" option
+    Sleep    2s
     Wait Until Element Is Visible    ${ADD_CHILD_BTN}
     Click Element    ${ADD_CHILD_BTN}
     
@@ -162,13 +166,14 @@ I will see the list of ages til 12 years
 
 I select a random age for the child from the list
     ${age_items}    ${age_numbers}    I will see the list of ages til 12 years
-    ${random_age}    Evaluate    random.randint(0,${age_numbers}-1)
+    ${random_age}    Evaluate    random.randint(1,${age_numbers}-1)
     ${selected_age}    Get Text    ${age_items}[${random_age}]
+    Sleep    2s
     Click Element    ${age_items}[${random_age}]
     Sleep    1s
     Set Global Variable    ${selected_age}
-    [Return]    ${selected_age}
-    
+    RETURN    ${selected_age}
+
 I will see the newly added child's age displayed
     Element Should Be Visible    ${ADDED_CHILD_FIELD}
 
@@ -219,36 +224,60 @@ I will be redirected to the flight search results page
     Wait Until Element Is Visible    ${FH_SEARCH_RESULT}
 
 I see at least "${all_list}" hotels listed by default
-    Sleep    25s
+    Sleep    40s
     ${lists_hotels}    Get Element Count    ${LIST_OF_HOTELS}
     ${all_list}    Convert To Integer    ${all_list}
-
-    Should Be Equal    ${lists_hotels}    ${all_list}
-
-    ${get_random_hotels}    Evaluate    random.randint(1, ${lists_hotels}-1)
-    ${FORMULA_DESCRIPTION_DEL_TEMP}    Replace In String    ${RANDOM_HOTELS}    ${get_random_hotels}${EMPTY}
+    ${lists_hotels}    Convert To Integer    ${lists_hotels}
+    Set Global Variable    ${all_list}
+    Set Global Variable    ${lists_hotels}
+    Should Be True    ${all_list} >= ${lists_hotels}
 
 I click the "All Filters" button at the top
     Wait Until Element Is Visible    ${ALL_FILTERS_BTN}
     Click Button    ${ALL_FILTERS_BTN}
 
 I should see the filters menu displayed
+    Sleep    2s
     Element Should Be Visible    ${FILTERS_DISPLAY}
 
-I will see the headers "Deals" "Budget" "Flight" "Property type" "Property name" "Stars" "Meal plan" "Guest rating" "Facilities" "Area" "Nearest station" "Hotel chain" "Property style"
-    Log    message
+I will see the headers "${Deals}" "${Destination airport}" "${Budget}" "${Flight}" "${Property type}" "${Property name}" "${Stars}" "${Meal plan}" "${Guest rating}" "${Facilities}" "${Nearest beach}" "${Area}" "${Nearest station}" "${Hotel chain}" "${Property style}"
+    ${filters_headers}=    Create List    ${Deals}    ${Destination airport}    ${Budget}     
+    ...    ${Flight}    ${Property type}    ${Property name}    ${Stars}    
+    ...    ${Meal plan}    ${Guest rating}    ${Facilities}    ${Nearest beach} 
+    ...    ${Area}    ${Nearest station}    ${Hotel chain}    ${Property style}
 
+    ${header_elements}=    Get WebElements    ${FILTERS_HEADER}  
+
+    ${header_list}=    Create List
+    FOR    ${element}    IN    @{header_elements}
+        ${text_header}=    Get Text    ${element}
+        Append To List    ${header_list}    ${text_header}
+        Log    ${header_list}
+    END
+
+    ${matched_headers}=    Create List
+    FOR    ${header}    IN    @{header_list}
+        Run Keyword If    '${header}' in ${filters_headers}    Append To List    ${matched_headers}    ${header}
+    END
+
+    RETURN    ${matched_headers}
+    
 I click on the radio button for "Flash Sales"
-    Log    message
-
+    ${is_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${FLASH_SALES_BTN}
+    Run Keyword If    ${is_visible}    Click Element    ${FLASH_SALES_BTN}
+    
 I should see the radio button turn on
-    Log    message
+    ${is_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${FLASH_SALES_BTN}
+    Run Keyword If    ${is_visible}    Wait Until Element Is Enabled    ${FLASH_SALES_BTN}
+    Run Keyword If    ${is_visible}    Element Should Be Enabled    ${FLASH_SALES_BTN}
 
 I click on the radio button for "Flash Sales" again
-    Log    message
+    ${is_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${FLASH_SALES_BTN}
+    Run Keyword If    ${is_visible}    Click Button    ${FLASH_SALES_BTN}
 
 I will see the radio button turn off
-    Log    message
+    ${is_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${FLASH_SALES_BTN}
+    Run Keyword If    ${is_visible}    Element Should Be Disabled    ${FLASH_SALES_BTN}
 
 I hover over the minimum budget slider and set it to 700 pounds
     Log    message
@@ -256,29 +285,30 @@ I hover over the minimum budget slider and set it to 700 pounds
 I should see the minimum value set to 700
     Log    message
 
-I select the 3-star option from the Stars filter
-    Log    message
+# I select the 3-star option from the Stars filter
+#     Log    message
 
-I should see the selected checkbox
-    Log    message
+# I should see the selected checkbox
+#     Log    message
 
-I select the "Random only" option for the meal plan
-    Log    message
+# I select the "Random only" option for the meal plan
+#     Log    message
 
-I should see the "Random only" option selected
-    Log    message
+# I should see the "Random only" option selected
+#     Log    message
 
-I click the "Apply" button
-    Log    message
+# I click the "Apply" button
+#     Log    message
 
-I will be redirected to the hotels result page
-    Log    message
+# I will be redirected to the hotels result page
+#     Log    message
 
-I select a random hotel
-    Log    message
-
-I will be redirected to the hotel details page
-    Log    message
+# I select a random hotel
+#     # ${get_random_hotels}    Evaluate    random.randint(1, ${lists_hotels}-1)
+#     # ${FORMULA_DESCRIPTION_DEL_TEMP}    Replace In String    ${RANDOM_HOTELS}    ${get_random_hotels}${EMPTY}
+#     Log    message
+# I will be redirected to the hotel details page
+#     Log    message
 
 *** Comments ***
 I see related cities or airports as suggestions

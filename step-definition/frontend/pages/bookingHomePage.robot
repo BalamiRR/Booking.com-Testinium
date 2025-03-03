@@ -16,3 +16,11 @@ Verify element text
 Successfull redirection to the flight and hotel page
     [Arguments]    ${url_flight_hotel}
     Location Should Contain    ${url_flight_hotel}    timeout=15
+
+Get Matching Items
+    [Arguments]    ${list1}    ${list2}
+    ${matching_items}=    Create List
+    FOR    ${item}    IN    ${list1}
+        Run Keyword If    ${item} in ${list2}    Append To List    ${matching_items}    ${item}
+    END
+    [Return]    ${matching_items}
