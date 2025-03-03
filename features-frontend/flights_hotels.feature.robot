@@ -128,14 +128,14 @@ Scenario: Filling the required fields in the All Filters drawer
     When I click on the radio button for "Flash Sales" again
     Then I will see the radio button turn off
 
-# Scenario: Hovering over the minimum budget 
-#     [Documentation]    
-#      ...    Verify that when a user hovers over the minimum budget slider 
-#      ...    and sets it to a specific amount (e.g., 700 pounds), 
-#      ...    the displayed minimum value updates accordingly
-#     [Tags]    Low
-#     When I hover over the minimum budget slider and set it to 700 pounds
-#     Then I should see the minimum value set to 700
+Scenario: Hovering over the minimum budget 
+    [Documentation]    
+     ...    Verify that when a user hovers over the minimum budget slider 
+     ...    and sets it to a specific amount (e.g., 700 pounds), 
+     ...    the displayed minimum value updates accordingly
+    [Tags]    Low
+    When I hover over the minimum budget slider and set it to 700 pounds
+    Then I should see the minimum value set to 700
 
 # Scenario: Selecting a hotel with a rating higher than 3 stars
 #     [Documentation]       

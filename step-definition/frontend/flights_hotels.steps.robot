@@ -279,11 +279,11 @@ I will see the radio button turn off
     ${is_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${FLASH_SALES_BTN}
     Run Keyword If    ${is_visible}    Element Should Be Disabled    ${FLASH_SALES_BTN}
 
-# I hover over the minimum budget slider and set it to 700 pounds
-#     Log    message
+I hover over the minimum budget slider and set it to 700 pounds
+    Log    message
 
-# I should see the minimum value set to 700
-#     Log    message
+I should see the minimum value set to 700
+    Log    message
 
 # I select the 3-star option from the Stars filter
 #     Log    message
