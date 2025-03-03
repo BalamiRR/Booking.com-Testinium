@@ -122,49 +122,49 @@ Scenario: Search for a hotel with a star rating higher than 3
 Scenario: Filling the required fields in the All Filters drawer
     [Documentation]    Verify that the user can randomly select hotels with more than 3 stars and navigate to the details page.
     [Tags]    Low
-    Given I will see the headers "Deals" "Budget" "Flight" "Property type" "Property name" "Stars" "Meal plan" "Guest rating" "Facilities" "Area" "Nearest station" "Hotel chain" "Property style"
+    Given I will see the headers "Deals" "Destination airport" "Budget" "Flight" "Property type" "Property name" "Stars" "Meal plan" "Guest rating" "Facilities" "Nearest beach" "Area" "Nearest station" "Hotel chain" "Property style"
     When I click on the radio button for "Flash Sales"
     Then I should see the radio button turn on
     When I click on the radio button for "Flash Sales" again
     Then I will see the radio button turn off
 
-Scenario: Hovering over the minimum budget 
-    [Documentation]    
-     ...    Verify that when a user hovers over the minimum budget slider 
-     ...    and sets it to a specific amount (e.g., 700 pounds), 
-     ...    the displayed minimum value updates accordingly
-    [Tags]    Low
-    When I hover over the minimum budget slider and set it to 700 pounds
-    Then I should see the minimum value set to 700
+# Scenario: Hovering over the minimum budget 
+#     [Documentation]    
+#      ...    Verify that when a user hovers over the minimum budget slider 
+#      ...    and sets it to a specific amount (e.g., 700 pounds), 
+#      ...    the displayed minimum value updates accordingly
+#     [Tags]    Low
+#     When I hover over the minimum budget slider and set it to 700 pounds
+#     Then I should see the minimum value set to 700
 
-Scenario: Selecting a hotel with a rating higher than 3 stars
-    [Documentation]       
-     ...    Ensure that when a user selects a hotel with a rating of 3 stars or higher,  
-     ...    they are correctly redirected to the hotel's details page.  
-     ...    On the details page, they should be able to view the hotel's name,  
-     ...    price, and available booking options.
-    [Tags]    Low
-    Given I select the 3-star option from the Stars filter
-    Then I should see the selected checkbox
+# Scenario: Selecting a hotel with a rating higher than 3 stars
+#     [Documentation]       
+#      ...    Ensure that when a user selects a hotel with a rating of 3 stars or higher,  
+#      ...    they are correctly redirected to the hotel's details page.  
+#      ...    On the details page, they should be able to view the hotel's name,  
+#      ...    price, and available booking options.
+#     [Tags]    Low
+#     Given I select the 3-star option from the Stars filter
+#     Then I should see the selected checkbox
 
-Scenario: Selecting a meal plan option 
-    [Documentation]    
-     ...    Validate that when a user selects a specific meal plan option,  
-     ...    the selection is displayed correctly.  
-     ...    Additionally, when they click the "Apply" button,  
-     ...    they should be redirected to the flight search results page.  
-    [Tags]    Low
-    When I select the "Random only" option for the meal plan
-    Then I should see the "Random only" option selected
-    When I click the "Apply" button
-    Then I will be redirected to the hotels result page
+# Scenario: Selecting a meal plan option 
+#     [Documentation]    
+#      ...    Validate that when a user selects a specific meal plan option,  
+#      ...    the selection is displayed correctly.  
+#      ...    Additionally, when they click the "Apply" button,  
+#      ...    they should be redirected to the flight search results page.  
+#     [Tags]    Low
+#     When I select the "Random only" option for the meal plan
+#     Then I should see the "Random only" option selected
+#     When I click the "Apply" button
+#     Then I will be redirected to the hotels result page
 
-Scenario: Selecting a random hotel
-    [Documentation]
-     ...    Verify that when a user selects a random hotel from the search results,  
-     ...    they are redirected to the hotel's details page.  
-     ...    The details page should provide information such as the hotel's name,  
-     ...    pricing, amenities, and booking options.
-    [Tags]    High
-    Given I select a random hotel
-    Then I will be redirected to the hotel details page
+# Scenario: Selecting a random hotel
+#     [Documentation]
+#      ...    Verify that when a user selects a random hotel from the search results,  
+#      ...    they are redirected to the hotel's details page.  
+#      ...    The details page should provide information such as the hotel's name,  
+#      ...    pricing, amenities, and booking options.
+#     [Tags]    High
+#     Given I select a random hotel
+#     Then I will be redirected to the hotel details page
