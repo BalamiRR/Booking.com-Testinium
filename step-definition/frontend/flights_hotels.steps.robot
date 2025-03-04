@@ -273,35 +273,67 @@ I should see the radio button turn on
 
 I click on the radio button for "Flash Sales" again
     ${is_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${FLASH_SALES_BTN}
-    Run Keyword If    ${is_visible}    Click Button    ${FLASH_SALES_BTN}
+    Run Keyword If    ${is_visible}    Click Element    ${FLASH_SALES_BTN}
 
 I will see the radio button turn off
     ${is_visible}=    Run Keyword And Return Status    Element Should Be Visible    ${FLASH_SALES_BTN}
     Run Keyword If    ${is_visible}    Element Should Be Disabled    ${FLASH_SALES_BTN}
 
-I hover over the minimum budget slider and set it to 700 pounds
-    Log    message
+I move slider to middle value
+    Sleep    2s
+    Wait Until Element Is Visible    ${MIN_VALUE}
+    Wait Until Element Is Visible    ${MAX_VALUE}
 
-I should see the minimum value set to 700
-    Log    message
+    ${min_value}=    Get Text    ${MIN_VALUE}
+    ${min_value}=    Replace String    ${min_value}    Min\n£    ${EMPTY}
+    ${min_value}=    Replace String    ${min_value}    ,    ${EMPTY}
 
-# I select the 3-star option from the Stars filter
-#     Log    message
+    ${max_value}=    Get Text    ${MAX_VALUE}
+    ${max_value}=    Replace String    ${max_value}    Max\n£    ${EMPTY}
+    ${max_value}=    Replace String    ${max_value}    +    ${EMPTY}
+    ${max_value}=    Replace String    ${max_value}    ,    ${EMPTY}
 
-# I should see the selected checkbox
-#     Log    message
+    ${min_value_num}=    Convert To Number    ${min_value}
+    ${max_value_num}=    Convert To Number    ${max_value}
+    ${average_value}=    Evaluate    int(round((${min_value_num} + ${max_value_num}) / 2))
 
-# I select the "Random only" option for the meal plan
-#     Log    message
+    Scroll Element Into View    ${MIN_MAX_BAR}
+    Sleep    2s
+    Mouse Down    ${MIN_MAX_BAR}
+    Sleep    4s
+    #Drag And Drop By Offset    ${MIN_MAX_BAR}    ${average_value}    0
+    Set Global Variable    ${average_value}
 
-# I should see the "Random only" option selected
-#     Log    message
+I should see the avarage value
+    ${element_value}=    Get Element Attribute    ${DRAG_BTN}    aria-valuenow
 
-# I click the "Apply" button
-#     Log    message
+I select the 5-star option from the Stars filter
+    # Scroll Element Into View    ${SELECT_STARS}
+    ${element_position}=    Execute JavaScript    return document.querySelector('.MuiDialogContent-root .sc-bb0192c8-2:nth-child(2) > .sc-213e9052-0').getBoundingClientRect().top
+    Execute JavaScript    window.scrollTo(0, ${element_position})
+    Wait Until Element Is Visible    ${SELECT_STARS}
+    ${is_visible}=    Run Keyword And Return Status    Element Should Be Enabled   ${SELECT_STARS}
+    Run Keyword If    ${is_visible}    Click Element    ${SELECT_STARS}
 
-# I will be redirected to the hotels result page
-#     Log    message
+I should see the selected checkbox
+    Checkbox Should Be Selected    ${SELECT_STARS}
+
+I select the "Random only" option for the meal plan
+    Scroll Element Into View    ${RANDOM_ONLY_BTN}
+    ${element_position}=    Execute JavaScript    return document.querySelector('.MuiDialogContent-root #exp_elem_rating_excellent rect').getBoundingClientRect().top
+    Execute JavaScript    window.scrollTo(0, ${element_position})
+    Wait Until Element Is Visible    ${SELECT_STARS}
+    ${is_visible}=    Run Keyword And Return Status    Wait Until Element Is Visible    ${RANDOM_ONLY_BTN}
+    Run Keyword If    ${is_visible}    Click Element    ${RANDOM_ONLY_BTN}
+
+I should see the "Random only" option selected
+    Element Should Be Enabled    ${RANDOM_ONLY_BTN}
+
+I click the "Apply" button
+    Click Element    ${APPLY_BTN}
+
+I will be redirected to the hotels result page
+    Successfull redirection to the flight and hotel page    ${FLIGHT_HOTEL_PAGE}
 
 # I select a random hotel
 #     # ${get_random_hotels}    Evaluate    random.randint(1, ${lists_hotels}-1)

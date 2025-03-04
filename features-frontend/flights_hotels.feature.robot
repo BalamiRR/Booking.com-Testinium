@@ -134,30 +134,30 @@ Scenario: Hovering over the minimum budget
      ...    and sets it to a specific amount (e.g., 700 pounds), 
      ...    the displayed minimum value updates accordingly
     [Tags]    Low
-    When I hover over the minimum budget slider and set it to 700 pounds
-    Then I should see the minimum value set to 700
+    When I move slider to middle value
+    Then I should see the avarage value
 
-# Scenario: Selecting a hotel with a rating higher than 3 stars
-#     [Documentation]       
-#      ...    Ensure that when a user selects a hotel with a rating of 3 stars or higher,  
-#      ...    they are correctly redirected to the hotel's details page.  
-#      ...    On the details page, they should be able to view the hotel's name,  
-#      ...    price, and available booking options.
-#     [Tags]    Low
-#     Given I select the 3-star option from the Stars filter
-#     Then I should see the selected checkbox
+Scenario: Selecting a hotel with a rating higher than 3 stars
+    [Documentation]       
+     ...    Ensure that when a user selects a hotel with a rating of 3 stars or higher,  
+     ...    they are correctly redirected to the hotel's details page.  
+     ...    On the details page, they should be able to view the hotel's name,  
+     ...    price, and available booking options.
+    [Tags]    Low
+    Given I select the 5-star option from the Stars filter
+    Then I should see the selected checkbox
 
-# Scenario: Selecting a meal plan option 
-#     [Documentation]    
-#      ...    Validate that when a user selects a specific meal plan option,  
-#      ...    the selection is displayed correctly.  
-#      ...    Additionally, when they click the "Apply" button,  
-#      ...    they should be redirected to the flight search results page.  
-#     [Tags]    Low
-#     When I select the "Random only" option for the meal plan
-#     Then I should see the "Random only" option selected
-#     When I click the "Apply" button
-#     Then I will be redirected to the hotels result page
+Scenario: Selecting a meal plan option 
+    [Documentation]    
+     ...    Validate that when a user selects a specific meal plan option,  
+     ...    the selection is displayed correctly.  
+     ...    Additionally, when they click the "Apply" button,  
+     ...    they should be redirected to the flight search results page.  
+    [Tags]    Low
+    When I select the "Random only" option for the meal plan
+    Then I should see the "Random only" option selected
+    When I click the "Apply" button
+    Then I will be redirected to the hotels result page
 
 # Scenario: Selecting a random hotel
 #     [Documentation]
