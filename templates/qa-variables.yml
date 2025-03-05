@@ -5,10 +5,6 @@ variables:
     options:
       - "DEV"
 
-  PARALLELISM:
-    description: "Select the Nb of parallel tests"
-    value: "2"  
-
   FEATURE:
     description: "Select the Feature that you want to execute"
     value: "All" 
@@ -19,7 +15,7 @@ variables:
       - "UC-STAYS"
 
   BROWSER:
-    description: "Select the browser. Valid options are: 'chrome', 'edge', 'firefox'"
+    description: "Select the browser. Valid options are: 'chrome', 'edge'"
     value: "chrome" 
     options:
       - "chrome"
