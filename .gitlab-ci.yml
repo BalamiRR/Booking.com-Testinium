@@ -10,6 +10,7 @@ run-sanity-checks-fe:
   extends: .sanity-fe-template
   tags: [ build ]
   script:
+    - $env:PATH = "C:\Users\furka\AppData\Local\Programs\Python\Python313\Scripts\;" + $env:PATH
     - pip install pytest
     - pip install pytest-html
     - pip install selenium
