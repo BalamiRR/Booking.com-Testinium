@@ -14,7 +14,7 @@ run-sanity-checks-fe:
     - pip install pytest
     - pip install pytest-html
     - pip install selenium
-    - pytest --html=reports/report.html test_login.py
+    - pytest --html=reports/report.html
   artifacts:
     when: always
     expire_in: 7 days
