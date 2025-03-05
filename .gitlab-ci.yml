@@ -9,7 +9,13 @@ run-sanity-checks-fe:
   stage: sanity-frontend
   extends: .sanity-fe-template
   tags: [ build ]
-  rules:
-    - if: '$TRIGGER_SANITY_FE == "true" || $CI_PIPELINE_SOURCE == "push" || $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "web"'
   script:
-    - echo "Running sanity checks for frontend"
+    - pip install pytest
+    - pip install pytest-html
+    - pip install selenium
+    - pytest --html=reports/report.html test_login.py
+  artifacts:
+    when: always
+    expire_in: 7 days
+    paths:
+      - reports/**
