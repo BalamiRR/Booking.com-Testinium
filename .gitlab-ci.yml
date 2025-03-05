@@ -1,5 +1,6 @@
 stages:
   - sanity-frontend
+  - test  # Yeni bir test aşaması ekliyorum
 
 include:
   - local: 'templates/qa-variables.yml'
@@ -7,9 +8,22 @@ include:
 
 run-sanity-checks-fe:
   stage: sanity-frontend
-  extends: .sanity-fe-template   
+  extends: .sanity-fe-template
   tags: [ build ]
   rules:
     - when: always
   script:
-      - echo "Running sanity checks for frontend"
+    - echo "Running sanity checks for frontend"
+
+test:
+  stage: test
+  script:
+    - pip install robotframework  
+    - robot --output results.xml --report report.html --log log.html tests/  
+  artifacts:
+    paths:
+      - results.xml  
+      - report.html  
+      - log.html     
+  only:
+    - main
