@@ -12,5 +12,5 @@ run-sanity-checks-fe:
   rules:
     - when: always
   script:
-    - powershell -Command "if ($ENVIRONMENT -eq 'DEV') { Write-Host 'Running in DEV environment' }"
-    - powershell -Command "if ($FEATURE -eq 'All') { Write-Host 'Running all features' }"
+    - powershell -Command "if (\$ENVIRONMENT -eq 'DEV') { Write-Host 'Running in DEV environment' }"
+    - powershell -Command "if (\$FEATURE -eq 'All') { Write-Host 'Running all features' }"
