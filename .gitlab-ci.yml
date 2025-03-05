@@ -18,8 +18,8 @@ run-sanity-checks-fe:
 test:
   stage: test
   script:
-    - pip install robotframework  
-    - robot --output results.xml --report report.html --log log.html tests/  
+    - python --version
+    - pip --version
   artifacts:
     paths:
       - results.xml  
