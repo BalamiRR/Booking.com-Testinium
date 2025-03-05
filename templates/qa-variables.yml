@@ -1,0 +1,42 @@
+variables:
+  ENVIRONMENT:
+    description: "Select the environment. Valid options are: 'DEV'"
+    value: "DEV"
+    options:
+      - "DEV"
+
+  PARALLELISM:
+    description: "Select the Nb of parallel tests"
+    value: "2"  
+
+  FEATURE:
+    description: "Select the Feature that you want to execute"
+    value: "All" 
+    options:
+      - "All"
+      - "UC-FLIGHTS-HOTELS"
+      - "UC-FLIGHTS"
+      - "UC-STAYS"
+
+  BROWSER:
+    description: "Select the browser. Valid options are: 'chrome', 'edge', 'firefox'"
+    value: "chrome" 
+    options:
+      - "chrome"
+      - "edge"
+ 
+  {% comment %} RESOLUTION:
+    description: "Select the resolution of laptop or desktop"
+    value: "1920x1080" 
+    options:
+      - "1920x1080"
+      - "1920x1200"
+      - "1920x1440"
+      - "1920x1600" {% endcomment %}
+{% comment %} 
+  INJECT_DATA:
+    description: "Choose to inject data or not"
+    value: "No" 
+    options:
+      - "Yes"
+      - "No" {% endcomment %}

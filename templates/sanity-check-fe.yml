@@ -1,0 +1,25 @@
+.sanity-fe-template:
+  script:
+    - echo "Running sanity frontend for the ${ENVIRONMENT} environment..."
+    - echo "Browser- $BROWSER"
+    - pip install --no-cache-dir -r requirements.txt
+    - |
+      if [ "$ENVIRONMENT" = "DEV" ]; then
+        if [ "$FEATURE" = "All" ]; then
+          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable ENVIRONMENT:${ENVIRONMENT} --include ${ENVIRONMENT} features-frontend
+        else
+          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable ENVIRONMENT:${ENVIRONMENT} --include ${ENVIRONMENT}AND${FEATURE} features-frontend
+        fi
+      else
+        if [ "$FEATURE" = "All" ]; then
+          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable ENVIRONMENT:${ENVIRONMENT} features-frontend
+        else
+          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable ENVIRONMENT:${ENVIRONMENT} --include ${FEATURE} features-frontend
+        fi
+      fi
+  artifacts:
+    when: always
+    paths:
+      - results
+    expire_in: 1 week
+  allow_failure: true
