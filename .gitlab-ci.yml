@@ -2,7 +2,7 @@ stages:
   - sanity-frontend
 
 include:
-  - local: 'templates/qa-variables.yml' 
+  - local: 'templates/qa-variables.yml'
   - local: 'templates/sanity-checks-fe.yml'
 
 run-sanity-checks-fe:
@@ -11,3 +11,10 @@ run-sanity-checks-fe:
   tags: [ build ]
   rules:
     - when: always
+  script:
+    - if ($ENVIRONMENT -eq "DEV") {
+        Write-Host "Running in DEV environment"
+         }
+    - if ($FEATURE -eq "All") {
+        Write-Host "Running all features"
+      }
