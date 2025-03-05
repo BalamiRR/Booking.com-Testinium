@@ -24,19 +24,3 @@ variables:
     options:
       - "chrome"
       - "edge"
- 
-  {% comment %} RESOLUTION:
-    description: "Select the resolution of laptop or desktop"
-    value: "1920x1080" 
-    options:
-      - "1920x1080"
-      - "1920x1200"
-      - "1920x1440"
-      - "1920x1600" {% endcomment %}
-{% comment %} 
-  INJECT_DATA:
-    description: "Choose to inject data or not"
-    value: "No" 
-    options:
-      - "Yes"
-      - "No" {% endcomment %}
