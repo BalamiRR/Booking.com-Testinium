@@ -1,6 +1,5 @@
 stages:
   - sanity-frontend
-  - test  # Yeni bir test aşaması ekliyorum
 
 include:
   - local: 'templates/qa-variables.yml'
@@ -11,19 +10,6 @@ run-sanity-checks-fe:
   extends: .sanity-fe-template
   tags: [ build ]
   rules:
-    - when: always
+    - if: '$TRIGGER_SANITY_FE == "true" || $CI_PIPELINE_SOURCE == "push" || $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "web"'
   script:
     - echo "Running sanity checks for frontend"
-
-test:
-  stage: test
-  script:
-    - python --version
-    - pip --version
-  artifacts:
-    paths:
-      - results.xml  
-      - report.html  
-      - log.html     
-  only:
-    - main

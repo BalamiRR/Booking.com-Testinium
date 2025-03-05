@@ -10,13 +10,7 @@
         else
           pabot --verbose -d results --variable BROWSER:${BROWSER} --variable ENVIRONMENT:${ENVIRONMENT} --include ${ENVIRONMENT}AND${FEATURE} features-frontend
         fi
-      else
-        if [ "$FEATURE" = "All" ]; then
-          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable ENVIRONMENT:${ENVIRONMENT} features-frontend
-        else
-          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable ENVIRONMENT:${ENVIRONMENT} --include ${FEATURE} features-frontend
-        fi
-      fi
+        
   artifacts:
     when: always
     paths:
