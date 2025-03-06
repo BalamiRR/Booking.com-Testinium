@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.13.1 on win32)" generated="2025-03-05T16:34:03.493254" rpa="false" schemaversion="5">
+<suite id="s1" name="Stays.Feature" source="C:\Testinium-Booking-Gitlab\Testinium-Booking\features-frontend\stays.feature.robot">
+<test id="s1-t1" name="Scenario: Searching for the destinations field" line="6">
+<kw name="Given I click on destination field" owner="stays.steps">
+<kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
+<msg time="2025-03-05T16:34:04.026658" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2025-03-05T16:34:04.026753" level="FAIL">No browser is open.</msg>
+<arg>${DESTINATION_FIELD}</arg>
+<arg>timeout=10</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="FAIL" start="2025-03-05T16:34:04.026224" elapsed="0.139591">No browser is open.</status>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<var>${dest_placeholder_text}</var>
+<arg>${DESTINATION_FIELD}</arg>
+<arg>placeholder</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.166237" elapsed="0.000060"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${DESTINATION_PLACEHOLDER_TEXT}</arg>
+<arg>${dest_placeholder_text}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.166534" elapsed="0.000045"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${DESTINATION_FIELD}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.166765" elapsed="0.000035"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.166941" elapsed="0.000034"/>
+</kw>
+<status status="FAIL" start="2025-03-05T16:34:04.025942" elapsed="0.141234">No browser is open.</status>
+</kw>
+<kw name="Then The list of destinations is displayed" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:04.169278" elapsed="0.000070"/>
+</kw>
+<doc>Verify the functionality of the destination input field
+Ensure users can view suggestions for popular nearby destinations</doc>
+<tag>High</tag>
+<tag>UC-STAYS</tag>
+<status status="FAIL" start="2025-03-05T16:34:04.024717" elapsed="0.145600">No browser is open.</status>
+</test>
+<test id="s1-t2" name="Scenario: Verify the list of destination field after entering input" line="14">
+<kw name="Given I click on destination field" owner="stays.steps">
+<kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
+<msg time="2025-03-05T16:34:04.174815" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2025-03-05T16:34:04.174943" level="FAIL">No browser is open.</msg>
+<arg>${DESTINATION_FIELD}</arg>
+<arg>timeout=10</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="FAIL" start="2025-03-05T16:34:04.174359" elapsed="0.003214">No browser is open.</status>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<var>${dest_placeholder_text}</var>
+<arg>${DESTINATION_FIELD}</arg>
+<arg>placeholder</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.177899" elapsed="0.000073"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${DESTINATION_PLACEHOLDER_TEXT}</arg>
+<arg>${dest_placeholder_text}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.178249" elapsed="0.000065"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${DESTINATION_FIELD}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.178512" elapsed="0.000033"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.178680" elapsed="0.000031"/>
+</kw>
+<status status="FAIL" start="2025-03-05T16:34:04.173934" elapsed="0.004927">No browser is open.</status>
+</kw>
+<kw name="When I enter &quot;P&quot; &quot;A&quot; in the input field" owner="stays.steps" source_name="I enter &quot;${P}&quot; &quot;${A}&quot; in the input field">
+<status status="NOT RUN" start="2025-03-05T16:34:04.179665" elapsed="0.000063"/>
+</kw>
+<kw name="And The list of destinations matching the input" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:04.180806" elapsed="0.000056"/>
+</kw>
+<doc>Verify that the list of destinations on the stays page is displayed
+after inputing a value on the "Destiona" field</doc>
+<tag>High</tag>
+<tag>UC-STAYS</tag>
+<status status="FAIL" start="2025-03-05T16:34:04.172821" elapsed="0.009605">No browser is open.</status>
+</test>
+<test id="s1-t3" name="Scenario: Assign a new destination to a destination field" line="23">
+<kw name="Given I click on destination field" owner="stays.steps">
+<kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
+<msg time="2025-03-05T16:34:04.187110" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2025-03-05T16:34:04.187222" level="FAIL">No browser is open.</msg>
+<arg>${DESTINATION_FIELD}</arg>
+<arg>timeout=10</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="FAIL" start="2025-03-05T16:34:04.186824" elapsed="0.001670">No browser is open.</status>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<var>${dest_placeholder_text}</var>
+<arg>${DESTINATION_FIELD}</arg>
+<arg>placeholder</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.188644" elapsed="0.000024"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${DESTINATION_PLACEHOLDER_TEXT}</arg>
+<arg>${dest_placeholder_text}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.188759" elapsed="0.000016"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${DESTINATION_FIELD}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.188840" elapsed="0.000013"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.188909" elapsed="0.000013"/>
+</kw>
+<status status="FAIL" start="2025-03-05T16:34:04.186500" elapsed="0.002493">No browser is open.</status>
+</kw>
+<kw name="When I select a random destination from the list" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:04.189648" elapsed="0.000024"/>
+</kw>
+<kw name="Then The destination will be assigned to the destination field" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:04.190286" elapsed="0.000024"/>
+</kw>
+<doc>Select a destination randomly from the item proposed in the list
+Ensure that the new destination is assigned to the destination field</doc>
+<tag>Medium</tag>
+<tag>UC-STAYS</tag>
+<status status="FAIL" start="2025-03-05T16:34:04.185618" elapsed="0.005199">No browser is open.</status>
+</test>
+<test id="s1-t4" name="Scenario: Clear the destination input field" line="32">
+<kw name="When I click on clear destination button" owner="stays.steps">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<msg time="2025-03-05T16:34:04.192260" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2025-03-05T16:34:04.192316" level="FAIL">No browser is open.</msg>
+<arg>${CLEAR_BTN}</arg>
+<arg>5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="FAIL" start="2025-03-05T16:34:04.192045" elapsed="0.001736">No browser is open.</status>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${CLEAR_BTN}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.194011" elapsed="0.000252"/>
+</kw>
+<status status="FAIL" start="2025-03-05T16:34:04.191893" elapsed="0.002509">No browser is open.</status>
+</kw>
+<kw name="Then The destination input is cleared" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:04.194748" elapsed="0.000026"/>
+</kw>
+<doc>Clear the input via Cross button</doc>
+<tag>Medium</tag>
+<tag>UC-STAYS</tag>
+<status status="FAIL" start="2025-03-05T16:34:04.191614" elapsed="0.003326">No browser is open.</status>
+</test>
+<test id="s1-t5" name="Scenario: Verify Default Check-in and out Date in the Date picker" line="39">
+<kw name="Given I access to the check-in and check-out dates" owner="stays.steps">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<msg time="2025-03-05T16:34:04.195855" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2025-03-05T16:34:04.195905" level="FAIL">No browser is open.</msg>
+<arg>${DATE_PICKER}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="FAIL" start="2025-03-05T16:34:04.195698" elapsed="0.001061">No browser is open.</status>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${DATE_PICKER}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.196860" elapsed="0.000017"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<var>${SELECTED_DATE}</var>
+<arg>${SELECTED_DATE}</arg>
+<arg>data-date</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.196943" elapsed="0.000014"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${YEAR}</var>
+<arg>${SELECTED_DATE.split("-")[0]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.197020" elapsed="0.000014"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${MONTH}</var>
+<arg>${SELECTED_DATE.split("-")[1]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.197086" elapsed="0.000010"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DAY}</var>
+<arg>${SELECTED_DATE.split("-")[2]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.197145" elapsed="0.000021"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${FORMATTED_SELECTED_DATE}</var>
+<arg>${MONTH.lstrip("0")}/${DAY.lstrip("0")}/${YEAR}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.197233" elapsed="0.000011"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<arg>${FORMATTED_SELECTED_DATE}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.197305" elapsed="0.000012"/>
+</kw>
+<status status="FAIL" start="2025-03-05T16:34:04.195552" elapsed="0.001817">No browser is open.</status>
+</kw>
+<kw name="Then The date is displayed with current date" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:04.197610" elapsed="0.000023"/>
+</kw>
+<doc>Verify that the date picker appears when accessing the Date field,
+with the current date selected by Default</doc>
+<tag>Medium</tag>
+<tag>UC-STAYS</tag>
+<status status="FAIL" start="2025-03-05T16:34:04.195222" elapsed="0.002555">No browser is open.</status>
+</test>
+<test id="s1-t6" name="Scenario: Check-in and Check-out Dates" line="46">
+<kw name="Given I select a departure and a return date for my trip" owner="stays.steps">
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2025-03-05T16:34:04.199299" level="INFO">${current_date} = 5</msg>
+<var>${current_date}</var>
+<arg>result_format=%#d</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2025-03-05T16:34:04.199123" elapsed="0.000198"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-03-05T16:34:04.199535" level="INFO">${DEPARTURE_DATE} = xpath=//span[text()='5']</msg>
+<var>${DEPARTURE_DATE}</var>
+<arg>xpath=//span[text()='${current_date}']</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-03-05T16:34:04.199408" elapsed="0.000145"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<msg time="2025-03-05T16:34:04.199789" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2025-03-05T16:34:04.199844" level="FAIL">No browser is open.</msg>
+<arg>${DEPARTURE_DATE}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="FAIL" start="2025-03-05T16:34:04.199634" elapsed="0.001255">No browser is open.</status>
+</kw>
+<kw name="Double Click Element" owner="SeleniumLibrary">
+<arg>${DEPARTURE_DATE}</arg>
+<doc>Double clicks the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.201004" elapsed="0.000020"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<arg>${DEPARTURE_DATE}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.201105" elapsed="0.000016"/>
+</kw>
+<kw name="Get Current Date" owner="DateTime">
+<var>${current_date}</var>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.201187" elapsed="0.000013"/>
+</kw>
+<kw name="Add Time To Date" owner="DateTime">
+<var>${date}</var>
+<arg>${current_date}</arg>
+<arg>1 days</arg>
+<arg>result_format=%#d</arg>
+<doc>Adds time to date and returns the resulting date.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.201261" elapsed="0.000013"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${RETURN_DATE}</var>
+<arg>xpath=//span[text()='${date}']</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.201338" elapsed="0.000016"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<arg>${RETURN_DATE}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.201415" elapsed="0.000013"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${RETURN_DATE}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.201489" elapsed="0.000013"/>
+</kw>
+<kw name="Double Click Element" owner="SeleniumLibrary">
+<arg>${RETURN_DATE}</arg>
+<doc>Double clicks the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.201559" elapsed="0.000012"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${RETURN_DATE}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:04.201631" elapsed="0.000012"/>
+</kw>
+<status status="FAIL" start="2025-03-05T16:34:04.198943" elapsed="0.002762">No browser is open.</status>
+</kw>
+<kw name="Then The selected date is displayed in the date field" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:04.202059" elapsed="0.000024"/>
+</kw>
+<doc>Verify that when a vaid date is selected, the date appears in the field</doc>
+<tag>High</tag>
+<tag>UC-STAYS</tag>
+<status status="FAIL" start="2025-03-05T16:34:04.198493" elapsed="0.003744">No browser is open.</status>
+</test>
+<test id="s1-t7" name="Scenario: Verify default values for adults, children, and rooms" line="52">
+<kw name="Given I click on the guest selection field" owner="stays.steps">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-05T16:34:04.203741" level="INFO">Clicking element '(//div[@class='e22b782521'])[3]'.</msg>
+<msg time="2025-03-05T16:34:04.203862" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2025-03-05T16:34:04.203924" level="FAIL">No browser is open.</msg>
+<arg>${GUEST_OPTION_BTN}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="FAIL" start="2025-03-05T16:34:04.203602" elapsed="0.027056">No browser is open.</status>
+</kw>
+<status status="FAIL" start="2025-03-05T16:34:04.203408" elapsed="0.027379">No browser is open.</status>
+</kw>
+<kw name="Then I will see the displayed default value as &quot;2&quot; adults · &quot;0&quot; children · &quot;1&quot; room" owner="stays.steps" source_name="I will see the displayed default value as &quot;${adults}&quot; adults · &quot;${children}&quot; children · &quot;${room}&quot; room">
+<status status="NOT RUN" start="2025-03-05T16:34:04.232679" elapsed="0.000044"/>
+</kw>
+<doc>Ensure the default summary is displayed correctly when no changes are made.</doc>
+<tag>Medium</tag>
+<tag>UC-STAYS</tag>
+<status status="FAIL" start="2025-03-05T16:34:04.202997" elapsed="0.029974">No browser is open.</status>
+</test>
+<test id="s1-t8" name="Scenario: Attempt to enter less than 1 adult" line="59">
+<kw name="And I see that the '-' button is enabled" owner="stays.steps">
+<kw name="Element Should Be Enabled" owner="SeleniumLibrary">
+<msg time="2025-03-05T16:34:04.234368" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2025-03-05T16:34:04.234427" level="FAIL">No browser is open.</msg>
+<arg>${ADULT_MINUS_BTN}</arg>
+<doc>Verifies that element identified by ``locator`` is enabled.</doc>
+<status status="FAIL" start="2025-03-05T16:34:04.234188" elapsed="0.001746">No browser is open.</status>
+</kw>
+<status status="FAIL" start="2025-03-05T16:34:04.233996" elapsed="0.002044">No browser is open.</status>
+</kw>
+<kw name="And I see the displayed default value as &quot;2&quot;" owner="stays.steps" source_name="I see the displayed default value as &quot;${adults}&quot;">
+<status status="NOT RUN" start="2025-03-05T16:34:04.236336" elapsed="0.000029"/>
+</kw>
+<kw name="When I click the '-' button for adults" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:04.236527" elapsed="0.000020"/>
+</kw>
+<kw name="Then I see the number of adults decrease by 1" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:04.236737" elapsed="0.000019"/>
+</kw>
+<kw name="And I see that the '-' button is disabled" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:04.236921" elapsed="0.000017"/>
+</kw>
+<doc>Verify that the system does not allow the number of adults to
+drop below 1, and the '-' button is appropriately disabled</doc>
+<tag>High</tag>
+<tag>UC-STAYS</tag>
+<status status="FAIL" start="2025-03-05T16:34:04.233545" elapsed="0.003548">No browser is open.</status>
+</test>
+<test id="s1-t9" name="Scenario: Attempt to enter more than 1 adult" line="69">
+<kw name="Given I click the '+' button for adults" owner="stays.steps">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-05T16:34:04.238453" level="INFO">Clicking element '(//div[@class='bfb38641b0'])[1]//button[contains(@class, 'f4d78af12a')]'.</msg>
+<msg time="2025-03-05T16:34:04.238497" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2025-03-05T16:34:04.238553" level="FAIL">No browser is open.</msg>
+<arg>${ADULT_PLUS_BTN}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="FAIL" start="2025-03-05T16:34:04.238295" elapsed="0.001141">No browser is open.</status>
+</kw>
+<status status="FAIL" start="2025-03-05T16:34:04.238098" elapsed="0.001452">No browser is open.</status>
+</kw>
+<kw name="Then I see the number of adults increase by 1" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:04.239867" elapsed="0.000024"/>
+</kw>
+<kw name="And I see that the '-' button is enabled" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:04.240087" elapsed="0.000027"/>
+</kw>
+<doc>Verify that the system allows increasing the number of adults and ensures the
+'-' button is enabled when the value is greater than 1.</doc>
+<tag>High</tag>
+<tag>UC-STAYS</tag>
+<status status="FAIL" start="2025-03-05T16:34:04.237595" elapsed="0.002681">No browser is open.</status>
+</test>
+<test id="s1-t10" name="Scenario: Select minimum number of guests without rooms" line="78">
+<kw name="Given I see that the '-' button for rooms is disabled by default" owner="stays.steps">
+<kw name="Element Should Be Disabled" owner="SeleniumLibrary">
+<msg time="2025-03-05T16:34:04.241800" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2025-03-05T16:34:04.241862" level="FAIL">No browser is open.</msg>
+<arg>${ROOMS_MINUS_BTN}</arg>
+<doc>Verifies that element identified by ``locator`` is disabled.</doc>
+<status status="FAIL" start="2025-03-05T16:34:04.241641" elapsed="0.004639">No browser is open.</status>
+</kw>
+<status status="FAIL" start="2025-03-05T16:34:04.241444" elapsed="0.005014">No browser is open.</status>
+</kw>
+<kw name="When I click the '+' button for rooms" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:04.246967" elapsed="0.000154"/>
+</kw>
+<kw name="Then I see the number of rooms increase by 1" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:04.248157" elapsed="0.000051"/>
+</kw>
+<kw name="And I see the '-' button for rooms is enabled" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:04.248600" elapsed="0.000034"/>
+</kw>
+<doc>Verify the system handles the case where guests are selected without increasing
+the number of rooms and ensures the default room value is maintained.</doc>
+<tag>Medium</tag>
+<tag>UC-STAYS</tag>
+<status status="FAIL" start="2025-03-05T16:34:04.240947" elapsed="0.008264">No browser is open.</status>
+</test>
+<test id="s1-t11" name="Scenario: Select minimum number of children" line="88">
+<kw name="Given I see &quot;0&quot; displayed default for children" owner="stays.steps" source_name="I see &quot;${children}&quot; displayed default for children">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-03-05T16:34:06.251237" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-03-05T16:34:04.250812" elapsed="2.000634"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2025-03-05T16:34:06.252440" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2025-03-05T16:34:06.252622" level="FAIL">No browser is open.</msg>
+<var>${children_value}</var>
+<arg>${CHILDREN_NUMBER}</arg>
+<arg>value</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="FAIL" start="2025-03-05T16:34:06.251823" elapsed="0.003043">No browser is open.</status>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<arg>${children_value}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:06.255193" elapsed="0.000054"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${children_value}</arg>
+<arg>${children}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2025-03-05T16:34:06.255430" elapsed="0.000040"/>
+</kw>
+<status status="FAIL" start="2025-03-05T16:34:04.250605" elapsed="2.005068">No browser is open.</status>
+</kw>
+<kw name="When I click the '+' button for children" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:06.257117" elapsed="0.000069"/>
+</kw>
+<kw name="Then I see the number of children increase by 1" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:06.258313" elapsed="0.000059"/>
+</kw>
+<kw name="And I see the &quot;Age needed&quot; field is displayed for the added child" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:06.259837" elapsed="0.000063"/>
+</kw>
+<doc>This scenario verifies that when the "+" button for children is clicked, the
+number of children increases by 1 and the "Age needed" field appears.</doc>
+<tag>Medium</tag>
+<tag>UC-STAYS</tag>
+<status status="FAIL" start="2025-03-05T16:34:04.250038" elapsed="2.010553">No browser is open.</status>
+</test>
+<test id="s1-t12" name="Scenario: Select a random age needed for children" line="98">
+<kw name="Given I click the &quot;Age needed&quot; field" owner="stays.steps">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-05T16:34:06.264112" level="INFO">Clicking element '//select[@class='ebf4591c8e']'.</msg>
+<msg time="2025-03-05T16:34:06.264176" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2025-03-05T16:34:06.264272" level="FAIL">No browser is open.</msg>
+<arg>${AGE_NEEDED_FIELD}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="FAIL" start="2025-03-05T16:34:06.263933" elapsed="0.001876">No browser is open.</status>
+</kw>
+<status status="FAIL" start="2025-03-05T16:34:06.263691" elapsed="0.002266">No browser is open.</status>
+</kw>
+<kw name="Then I will see the list of ages" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:06.266333" elapsed="0.000032"/>
+</kw>
+<kw name="When I select a random age from the list" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:06.267035" elapsed="0.000034"/>
+</kw>
+<kw name="Then The age will be assigned to the field" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:06.267860" elapsed="0.000024"/>
+</kw>
+<kw name="When I click the Done button" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:06.268424" elapsed="0.000024"/>
+</kw>
+<kw name="Then I see the selected number of &quot;1&quot; is displayed in the field" owner="stays.steps" source_name="I see the selected number of &quot;${children}&quot; is displayed in the field">
+<status status="NOT RUN" start="2025-03-05T16:34:06.268812" elapsed="0.000028"/>
+</kw>
+<doc>This scenario verifies that when the "+" button for children is clicked, the number
+of children increases by 1 and the "Age needed" field appears.</doc>
+<tag>Medium</tag>
+<tag>UC-STAYS</tag>
+<status status="FAIL" start="2025-03-05T16:34:06.262927" elapsed="0.006122">No browser is open.</status>
+</test>
+<test id="s1-t13" name="Scenario: Search for available accommodation" line="110">
+<kw name="Given I click on search button" owner="stays.steps">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-03-05T16:34:08.271087" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-03-05T16:34:06.270713" elapsed="2.000557"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-05T16:34:08.271973" level="INFO">Clicking element '//span[@class='e4adce92df'][contains(.,'Search')]'.</msg>
+<msg time="2025-03-05T16:34:08.272062" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg time="2025-03-05T16:34:08.272191" level="FAIL">No browser is open.</msg>
+<arg>${SEARCH_BTN}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="FAIL" start="2025-03-05T16:34:08.271599" elapsed="0.002629">No browser is open.</status>
+</kw>
+<status status="FAIL" start="2025-03-05T16:34:06.270546" elapsed="2.003923">No browser is open.</status>
+</kw>
+<kw name="Then I will see mandatory field warning for destination city" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:08.275578" elapsed="0.000065"/>
+</kw>
+<kw name="When I select a random destionation city" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:08.276519" elapsed="0.000057"/>
+</kw>
+<kw name="Then I will be redirected to the stay page" owner="stays.steps">
+<status status="NOT RUN" start="2025-03-05T16:34:08.277538" elapsed="0.000052"/>
+</kw>
+<doc>This scenario verifies the search functionality for accommodations. It ensures
+that users receive a mandatory field warning when no destination city is selected
+and that they are successfully redirected to the results page upon selecting a destination.</doc>
+<tag>Medium</tag>
+<tag>UC-STAYS</tag>
+<status status="FAIL" start="2025-03-05T16:34:06.269946" elapsed="2.008348">No browser is open.</status>
+</test>
+<status status="FAIL" start="2025-03-05T16:34:03.494318" elapsed="4.785735"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="13" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="5" skip="0">High</stat>
+<stat pass="0" fail="8" skip="0">Medium</stat>
+<stat pass="0" fail="13" skip="0">UC-STAYS</stat>
+</tag>
+<suite>
+<stat pass="0" fail="13" skip="0" id="s1" name="Stays.Feature">Stays.Feature</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-03-05T16:34:04.022288" level="WARN">Error in file 'C:\Testinium-Booking-Gitlab\Testinium-Booking\step-definition\frontend\pages\bookingHomePage.robot' on line 26: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+</errors>
+</robot>
