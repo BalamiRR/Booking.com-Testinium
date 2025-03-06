@@ -4,6 +4,10 @@ variables:
     value: "DEV"
     options:
       - "DEV"
+  
+  PARALLELISM:
+    description: "Select the Nb of parallel tests"
+    value: "2"  
 
   FEATURE:
     description: "Select the Feature that you want to execute"
