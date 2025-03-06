@@ -5,15 +5,17 @@ include:
   - local: 'templates/qa-variables.yml'
   - local: 'templates/sanity-checks-fe.yml'
 
+image: apps.booking.com
+
 run-sanity-checks-fe:
   stage: sanity-frontend
   extends: .sanity-fe-template
   tags: [ build ]
   script:
-    - pip install -r requirements.txt
+    - echo "Building Booking ..."
     - robot features-frontend/__init__.robot --outputdir reports --report reports/report.html --log reports/log.html
   artifacts:
     when: always
     expire_in: 7 days
     paths:
-      - reports/**
+      - reports/
