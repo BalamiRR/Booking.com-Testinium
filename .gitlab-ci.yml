@@ -10,10 +10,7 @@ run-sanity-checks-fe:
   extends: .sanity-fe-template
   tags: [ build ]
   script:
-    - $env:PATH = "C:\Users\furka\AppData\Local\Programs\Python\Python313\Scripts\;" + $env:PATH
-    - pip install robotframework
-    - pip install robotframework-seleniumlibrary
-    - pip install selenium
+    - pip install -r requirements.txt
     - robot features-frontend/__init__.robot --outputdir reports --report reports/report.html --log reports/log.html
   artifacts:
     when: always
