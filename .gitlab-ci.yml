@@ -3,7 +3,7 @@ include:
   - local: 'templates/sanity-checks-fe.yml'
 
 run-sanity-checks-fe:
-  stage: sanity-frontend
+  stage: build
   image: python:3.10
   tags: [ build ]  
   script:
