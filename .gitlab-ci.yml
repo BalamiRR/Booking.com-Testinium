@@ -12,7 +12,6 @@ run-sanity-checks-fe:
   extends: .sanity-fe-template
   tags: [build]
   rules:
-    - if: '$TRIGGER_SANITY_FE == "true"'
     - if: '$CI_PIPELINE_SOURCE == "push"'
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: '$CI_PIPELINE_SOURCE == "web"'
