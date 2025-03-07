@@ -5,7 +5,7 @@ include:
   - local: 'templates/qa-variables.yml' 
   - local: 'templates/sanity-checks-fe.yml'
 
-image: registry.gitlab.com/balamirr/testinium-booking
+image: registry.gitlab.com/balamirr/testinium-booking:latest
 
 run-sanity-checks-fe:
   stage: sanity-frontend
