@@ -1,20 +1,22 @@
 stages:
   - sanity-frontend
 
+image: ppodgorsek/robot-framework:latest
+
+variables:
+  ROBOT_TESTS_DIR: "/results"
+
 include:
   - local: 'templates/qa-variables.yml'
   - local: 'templates/sanity-checks-fe.yml'
 
 run-sanity-checks-fe:
   stage: sanity-frontend
-  extends: .sanity-fe-template
-  tags: [ build ]   
   script:
     - echo "Building Booking ..."
-  artifacts:
-    when: always
-    expire_in: 7 days
-    paths:
-      - results/output.xml
-      - results/log.html
-      - results/report.html
+    - robot -d results /opt/robotframework/tests 
+  extends: .sanity-fe-template
+  tags: [ build ]  
+  
+
+
