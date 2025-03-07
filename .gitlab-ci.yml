@@ -18,7 +18,7 @@ run-sanity-checks-fe:
   script:
     - echo "Creating results directory if not exists"
     - mkdir -p results
-    - pabot --verbose -d results --variable BROWSER:${BROWSER} --variable RESOLUTION:${RESOLUTION} --variable ENVIRONMENT:${ENVIRONMENT} --include ${FEATURE} features-frontend
+    - bash -c 'if [ "$ENVIRONMENT" = "DEV" ]; then if [ "$FEATURE" = "All" ]; then pabot --verbose -d results --variable BROWSER:$BROWSER --variable RESOLUTION:$RESOLUTION --variable ENVIRONMENT:$ENVIRONMENT --include $ENVIRONMENT features-frontend; else pabot --verbose -d results --variable BROWSER:$BROWSER --variable RESOLUTION:$RESOLUTION --variable ENVIRONMENT:$ENVIRONMENT --include "${ENVIRONMENT}AND${FEATURE}" features-frontend; fi; fi'
     - echo "Results directory contents:"
     - ls -al results
   artifacts:
