@@ -17,6 +17,7 @@ run-sanity-checks-fe:
   artifacts:
     when: always
     paths:
-      - $CI_PROJECT_DIR
+      - results/report.html
+      - results/log.html
     expire_in: 1 week
   allow_failure: true
