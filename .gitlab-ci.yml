@@ -21,16 +21,9 @@ run-sanity-checks-fe:
     - echo "Browser- $BROWSER"
     - pip install --no-cache-dir -r requirements.txt
     - |
-      if [ "$ENVIRONMENT" = "PROD" ]; then
+      if [ "$ENVIRONMENT" = "DEV" ]; then
         if [ "$FEATURE" = "All" ]; then
           pabot --verbose -d results --variable BROWSER:${BROWSER} --variable RESOLUTION:${RESOLUTION} --variable ENVIRONMENT:${ENVIRONMENT} --include ${ENVIRONMENT} features-frontend
         else
           pabot --verbose -d results --variable BROWSER:${BROWSER} --variable RESOLUTION:${RESOLUTION} --variable ENVIRONMENT:${ENVIRONMENT} --include ${ENVIRONMENT}AND${FEATURE} features-frontend
         fi
-      else
-        if [ "$FEATURE" = "All" ]; then
-          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable RESOLUTION:${RESOLUTION} --variable ENVIRONMENT:${ENVIRONMENT} features-frontend
-        else
-          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable RESOLUTION:${RESOLUTION} --variable ENVIRONMENT:${ENVIRONMENT} --include ${FEATURE} features-frontend
-        fi
-      fi
