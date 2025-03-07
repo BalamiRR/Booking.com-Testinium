@@ -1,4 +1,5 @@
-FROM python:3
+FROM python:3.10
+RUN pip install pytest
 COPY . /app
 RUN pip3 install --upgrade pip
 RUN pip install --no-cache-dir -r /app/requirements.txt
