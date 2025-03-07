@@ -16,17 +16,7 @@ run-sanity-checks-fe:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: '$CI_PIPELINE_SOURCE == "web"'
   script:
-    - echo "Running sanity frontend for the ${ENVIRONMENT} environment..."
-    - echo "Browser- $BROWSER"
-    - pip install --no-cache-dir -r requirements.txt
-    - |
-      if [ "$ENVIRONMENT" = "DEV" ]; then
-        if [ "$FEATURE" = "All" ]; then
-          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable RESOLUTION:${RESOLUTION} --variable ENVIRONMENT:${ENVIRONMENT} --include ${ENVIRONMENT} features-frontend
-        else
-          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable RESOLUTION:${RESOLUTION} --variable ENVIRONMENT:${ENVIRONMENT} --include ${ENVIRONMENT}AND${FEATURE} features-frontend
-        fi
-      fi
+  - bash -c 'if [ "$ENVIRONMENT" = "DEV" ]; then if [ "$FEATURE" = "All" ]; then pabot --verbose -d results --variable BROWSER:$BROWSER --variable RESOLUTION:$RESOLUTION --variable ENVIRONMENT:$ENVIRONMENT --include $ENVIRONMENT features-frontend; else pabot --verbose -d results --variable BROWSER:$BROWSER --variable RESOLUTION:$RESOLUTION --variable ENVIRONMENT:$ENVIRONMENT --include "${ENVIRONMENT}AND${FEATURE}" features-frontend; fi; fi'
   artifacts:
     when: always
     paths:
