@@ -8,7 +8,6 @@ pip==24.3.1
 pycparser==2.22
 PySocks==1.7.1
 robotframework==7.0
-robotframework-confluentkafkalibrary==2.3.0.post1
 robotframework-csvlibrary==0.0.5
 robotframework-databaselibrary==1.4.4
 robotframework-datadriver==1.11.2
