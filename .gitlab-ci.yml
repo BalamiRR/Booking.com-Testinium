@@ -14,7 +14,7 @@ run-sanity-checks-fe:
   stage: sanity-frontend
   script:
     - echo "Building Booking ..."
-    - robot -d results /opt/robotframework/tests 
+    - robot -d results /results
   extends: .sanity-fe-template
   tags: [ build ]  
   
