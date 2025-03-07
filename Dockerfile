@@ -21,7 +21,7 @@ RUN apt-get update && \
 
 RUN wget -O /tmp/chromedriver.zip https://storage.googleapis.com/chrome-for-testing-public/124.0.6367.60/linux64/chromedriver-linux64.zip && \
     unzip /tmp/chromedriver.zip -d /usr/local/bin/ && \
-    rm /tmp/chromedriver.zip
+    rm /tmp/chromedriver.zipgit
 
 RUN apt-get update && \
     apt-get install -y wget apt-transport-https && \
@@ -37,11 +37,8 @@ RUN wget -O /tmp/msedgedriver.zip "https://msedgedriver.azureedge.net/124.0.2478
     rm /tmp/msedgedriver.zip  && \
     ls /usr/local/bin/msedgedriver
 
-ENV ROBOT_WORK_DIR /app
-ENV ROBOT_REPORTS_DIR /app/results
-RUN mkdir -p ${ROBOT_REPORTS_DIR}
-VOLUME ${ROBOT_REPORTS_DIR}
-WORKDIR ${ROBOT_WORK_DIR}
+
+RUN pip install rpaframework
 
 RUN rm -rf /root/.cache/selenium
 ENTRYPOINT ["tail", "-f", "/dev/null"]
