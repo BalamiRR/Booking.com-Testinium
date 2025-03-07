@@ -27,3 +27,10 @@ run-sanity-checks-fe:
         else
           pabot --verbose -d results --variable BROWSER:${BROWSER} --variable RESOLUTION:${RESOLUTION} --variable ENVIRONMENT:${ENVIRONMENT} --include ${ENVIRONMENT}AND${FEATURE} features-frontend
         fi
+      fi
+  artifacts:
+    when: always
+    paths:
+      - results
+    expire_in: 1 week
+  allow_failure: true
