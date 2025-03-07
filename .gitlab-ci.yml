@@ -13,6 +13,8 @@ image: registry.gitlab.com/balamirr/testinium-booking:latest
 run-sanity-checks-fe:
   stage: sanity-frontend
   script:
+    - python -m robot --version
+    - robot --version
     - echo "Giriş yapıldı, ortam hazırlanıyor"
     - pip install -r requirements.txt
     - pabot --verbose -d results --variable BROWSER=$BROWSER --variable RESOLUTION=$RESOLUTION --variable ENVIRONMENT=$ENVIRONMENT --include $ENVIRONMENT features-frontend || echo "Testler çalıştırılamadı!"
