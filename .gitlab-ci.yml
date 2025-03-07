@@ -24,6 +24,6 @@ run-sanity-checks-fe:
   artifacts:
     when: always
     paths:
-      - results/report.html
+      - results/
     expire_in: 1 week
   allow_failure: true
