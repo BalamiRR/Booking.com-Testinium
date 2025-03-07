@@ -1,16 +1,15 @@
 stages:
   - sanity-frontend
-
-image: ppodgorsek/robot-framework:latest
-
-
+  
 include:
   - local: 'templates/qa-variables.yml'
   - local: 'templates/sanity-checks-fe.yml'
 
 run-sanity-checks-fe:
   stage: sanity-frontend
-  image: python:3
+  image: python:3.10
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
   script:
   - python --version
   - pip --version
@@ -19,11 +18,23 @@ run-sanity-checks-fe:
   - echo "Doing complex stuff"
   extends: .sanity-fe-template
   tags: [ build ]  
-  
+
+run tests:
+  image: registry.gitlab.com/balamirr/testinium-booking
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+  script:
+    - python --version
+    - pip --version
+    - pytest --version
+    - echo "Doing complex stuff"
+
 build image:
   image: docker
   services:
     - docker:dind
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
   script:
     - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
     - docker build -t docker build -t registry.gitlab.com/balamirr/testinium-booking .
