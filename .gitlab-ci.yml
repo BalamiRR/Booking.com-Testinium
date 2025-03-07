@@ -1,6 +1,6 @@
 stages:
   - sanity-frontend
-  
+
 include:
   - local: 'templates/qa-variables.yml'
   - local: 'templates/sanity-checks-fe.yml'
@@ -20,6 +20,7 @@ run-sanity-checks-fe:
   tags: [ build ]  
 
 run tests:
+  stage: sanity-frontend
   image: registry.gitlab.com/balamirr/testinium-booking
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule"
@@ -30,6 +31,7 @@ run tests:
     - echo "Doing complex stuff"
 
 build image:
+  stage: build
   image: docker
   services:
     - docker:dind
