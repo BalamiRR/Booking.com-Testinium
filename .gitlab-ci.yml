@@ -9,15 +9,28 @@ image: registry.gitlab.com/balamirr/testinium-booking:latest
 
 run-sanity-checks-fe:
   stage: sanity-frontend
-  extends: .sanity-fe-template   
-  tags: [ build ]
+  extends: .sanity-fe-template
+  tags: [build]
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "push"'         
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"' 
+    - if: '$TRIGGER_SANITY_FE == "true"'
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: '$CI_PIPELINE_SOURCE == "web"'
   script:
-      - echo "Running sanity checks"
-      - python3 --version
-      - pip install pytest
-      - pytest --version
-      - echo "Doing complex stuff"
+    - echo "Running sanity frontend for the ${ENVIRONMENT} environment..."
+    - echo "Browser- $BROWSER"
+    - pip install --no-cache-dir -r requirements.txt
+    - |
+      if [ "$ENVIRONMENT" = "PROD" ]; then
+        if [ "$FEATURE" = "All" ]; then
+          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable RESOLUTION:${RESOLUTION} --variable ENVIRONMENT:${ENVIRONMENT} --include ${ENVIRONMENT} features-frontend
+        else
+          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable RESOLUTION:${RESOLUTION} --variable ENVIRONMENT:${ENVIRONMENT} --include ${ENVIRONMENT}AND${FEATURE} features-frontend
+        fi
+      else
+        if [ "$FEATURE" = "All" ]; then
+          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable RESOLUTION:${RESOLUTION} --variable ENVIRONMENT:${ENVIRONMENT} features-frontend
+        else
+          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable RESOLUTION:${RESOLUTION} --variable ENVIRONMENT:${ENVIRONMENT} --include ${FEATURE} features-frontend
+        fi
+      fi
