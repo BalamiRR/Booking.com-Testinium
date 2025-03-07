@@ -10,13 +10,6 @@ include:
 
 run-sanity-checks-fe:
   stage: sanity-frontend
-  script:
-    - echo "Building Booking ..."
-    - robot -d results /results
-  extends: .sanity-fe-template
-  tags: [ build ]  
-  
-some test job:
   image: python:3
   script:
   - python --version
@@ -24,7 +17,9 @@ some test job:
   - pip install pytest
   - pytest --version
   - echo "Doing complex stuff"
-
+  extends: .sanity-fe-template
+  tags: [ build ]  
+  
 build image: 
   image: docker
   services:
@@ -33,3 +28,4 @@ build image:
     - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTY_USER $CI_REGISTRY --password-stdin
     - docker build -t $CI_REGISTRY_IMAGE
     - docker push $CI_REGISTRY_IMAGE
+
