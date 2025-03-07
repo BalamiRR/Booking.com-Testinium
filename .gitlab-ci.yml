@@ -16,7 +16,11 @@ run-sanity-checks-fe:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: '$CI_PIPELINE_SOURCE == "web"'
   script:
-  - bash -c 'if [ "$ENVIRONMENT" = "DEV" ]; then if [ "$FEATURE" = "All" ]; then pabot --verbose -d results --variable BROWSER:$BROWSER --variable RESOLUTION:$RESOLUTION --variable ENVIRONMENT:$ENVIRONMENT --include $ENVIRONMENT features-frontend; else pabot --verbose -d results --variable BROWSER:$BROWSER --variable RESOLUTION:$RESOLUTION --variable ENVIRONMENT:$ENVIRONMENT --include "${ENVIRONMENT}AND${FEATURE}" features-frontend; fi; fi'
+    - echo "Creating results directory if not exists"
+    - mkdir -p results
+    - bash -c 'if [ "$ENVIRONMENT" = "DEV" ]; then if [ "$FEATURE" = "All" ]; then pabot --verbose -d results --variable BROWSER:$BROWSER --variable RESOLUTION:$RESOLUTION --variable ENVIRONMENT:$ENVIRONMENT --include $ENVIRONMENT features-frontend; else pabot --verbose -d results --variable BROWSER:$BROWSER --variable RESOLUTION:$RESOLUTION --variable ENVIRONMENT:$ENVIRONMENT --include "${ENVIRONMENT}AND${FEATURE}" features-frontend; fi; fi'
+    - echo "Results directory contents:"
+    - ls -al results
   artifacts:
     when: always
     paths:
