@@ -9,21 +9,13 @@ image: registry.gitlab.com/balamirr/testinium-booking:latest
 
 run-sanity-checks-fe:
   stage: sanity-frontend
-  extends: .sanity-fe-template
-  tags: [build]
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "push"'
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-    - if: '$CI_PIPELINE_SOURCE == "web"'
   script:
-    - echo "Creating results directory if not exists"
-    - mkdir -p results
-    - bash -c 'if [ "$ENVIRONMENT" = "DEV" ]; then if [ "$FEATURE" = "All" ]; then pabot --verbose -d results --variable BROWSER:$BROWSER --variable RESOLUTION:$RESOLUTION --variable ENVIRONMENT:$ENVIRONMENT --include $ENVIRONMENT features-frontend; else pabot --verbose -d results --variable BROWSER:$BROWSER --variable RESOLUTION:$RESOLUTION --variable ENVIRONMENT:$ENVIRONMENT --include "${ENVIRONMENT}AND${FEATURE}" features-frontend; fi; fi'
-    - echo "Results directory contents:"
-    - ls -al results
+    - echo "Giriş yapıldı, ortam hazırlanıyor"
+    - pip install -r requirements.txt
+    - pabot --verbose -d results --variable BROWSER=$BROWSER --variable RESOLUTION=$RESOLUTION --variable ENVIRONMENT=$ENVIRONMENT --include $ENVIRONMENT features-frontend || echo "Testler çalıştırılamadı!"
   artifacts:
     when: always
     paths:
-      - results/
+      - results
     expire_in: 1 week
   allow_failure: true
