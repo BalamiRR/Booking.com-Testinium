@@ -1,6 +1,3 @@
-default:
-  before_script:
-    - cd /C:/Testinium-Booking-Gitlab/Testinium-Booking
 stages:
   - sanity-frontend
 
@@ -15,12 +12,11 @@ run-sanity-checks-fe:
   script:
     - python -m robot --version
     - robot --version
-    - echo "Giriş yapıldı, ortam hazırlanıyor"
     - pip install -r requirements.txt
-    - pabot --verbose -d results --variable BROWSER=$BROWSER --variable RESOLUTION=$RESOLUTION --variable ENVIRONMENT=$ENVIRONMENT --include $ENVIRONMENT features-frontend || echo "Testler çalıştırılamadı!"
+    - pabot --verbose -d results --variable BROWSER=$BROWSER --variable RESOLUTION=$RESOLUTION --variable ENVIRONMENT=$ENVIRONMENT --include $ENVIRONMENT features-frontend"
   artifacts:
     when: always
     paths:
-      - results
+      - $CI_PROJECT_DIR
     expire_in: 1 week
   allow_failure: true
