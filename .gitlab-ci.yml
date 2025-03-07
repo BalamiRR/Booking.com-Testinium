@@ -31,7 +31,6 @@ run tests:
     - echo "Doing complex stuff"
 
 build image:
-  stage: build
   image: docker
   services:
     - docker:dind
