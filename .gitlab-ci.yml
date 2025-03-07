@@ -1,25 +1,17 @@
+stages:
+  - sanity-frontend
+
 include:
-  - local: 'templates/qa-variables.yml'
+  - local: 'templates/qa-variables.yml' 
   - local: 'templates/sanity-checks-fe.yml'
 
+image: registry.gitlab.com/balamirr/testinium-booking
+
 run-sanity-checks-fe:
-  stage: build
-  image: python:3.10
-  tags: [ build ]  
-  script:
-  - python --version
-  - pip --version
-  - pip install pytest
-  - pytest --version
-  - echo "Doing complex stuff"
-  extends: .sanity-fe-template
-
-build image:
-  image: docker
-  services:
-    - docker:dind
-  script:
-    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
-    - docker build -t $CI_REGISTRY_IMAGE .
-    - docker push $CI_REGISTRY_IMAGE
-
+  stage: sanity-frontend
+  extends: .sanity-fe-template   
+  tags: [ build ]
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"'         
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"' 
+    - if: '$CI_PIPELINE_SOURCE == "web"'
