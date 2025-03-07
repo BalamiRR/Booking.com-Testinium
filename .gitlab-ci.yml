@@ -1,29 +1,28 @@
 stages:
-  - sanity-frontend
+  - build
+  - run
 
-include:
-  - local: 'templates/qa-variables.yml' 
-  - local: 'templates/sanity-checks-fe.yml'
+variables:
+  ARTIFACT_REPORT_PATH: "${CI_PROJECT_DIR}/reports"
 
-image: registry.gitlab.com/balamirr/testinium-booking:latest
-
-run-sanity-checks-fe:
-  stage: sanity-frontend
-  extends: .sanity-fe-template
-  tags: [build]
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "push"'
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-    - if: '$CI_PIPELINE_SOURCE == "web"'
+build_image:
+  stage: build
+  variables:
+    DOCKER_IMAGE_TAG: ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}
   script:
-    - echo "Creating results directory if not exists"
-    - mkdir -p results
-    - bash -c 'if [ "$ENVIRONMENT" = "DEV" ]; then if [ "$FEATURE" = "All" ]; then pabot --verbose -d results --variable BROWSER:$BROWSER --variable RESOLUTION:$RESOLUTION --variable ENVIRONMENT:$ENVIRONMENT --include $ENVIRONMENT features-frontend; else pabot --verbose -d results --variable BROWSER:$BROWSER --variable RESOLUTION:$RESOLUTION --variable ENVIRONMENT:$ENVIRONMENT --include "${ENVIRONMENT}AND${FEATURE}" features-frontend; fi; fi'
-    - echo "Results directory contents:"
-    - ls -al results
+    - docker build -t ${DOCKER_IMAGE_TAG} .
+  after_script:
+    - docker push ${DOCKER_IMAGE_TAG}
+    - docker logout
+
+robot_tests:
+  stage: run
+  variables:
+    DOCKER_IMAGE_TAG: ${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}
+  image: ${DOCKER_IMAGE_TAG}
+  script:
+    - robot-test.sh
   artifacts:
-    when: always
     paths:
-      - results/
-    expire_in: 1 week
-  allow_failure: true
+      - $ARTIFACT_REPORT_PATH
+    when: always
