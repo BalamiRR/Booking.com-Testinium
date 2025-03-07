@@ -15,3 +15,9 @@ run-sanity-checks-fe:
     - if: '$CI_PIPELINE_SOURCE == "push"'         
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"' 
     - if: '$CI_PIPELINE_SOURCE == "web"'
+  script:
+      - echo "Running sanity checks"
+      - python3 --version
+      - pip install pytest
+      - pytest --version
+      - echo "Doing complex stuff"
