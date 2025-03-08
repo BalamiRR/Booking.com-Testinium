@@ -7,6 +7,8 @@ variables:
   ROBOT_WORK_DIR: /app
   ROBOT_REPORTS_DIR: /app/results
 
+image: registry.gitlab.com/balamirr/testinium-booking
+
 before_script:
   - echo "Setting up the environment"
   - export DISPLAY=:99
@@ -18,9 +20,7 @@ before_script:
 build:
   stage: build
   script:
-    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
-    - docker pull registry.gitlab.com/balamirr/testinium-booking
-    - docker run -d --name testinium-booking registry.gitlab.com/balamirr/testinium-booking
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker build -t $CI_REGISTRY_IMAGE .
     - docker push $CI_REGISTRY_IMAGE
   tags:
