@@ -1,5 +1,5 @@
 test:
   script:
-    - echo $PATH
+    - echo $env:PATH
     - python --version
     - robot --version
