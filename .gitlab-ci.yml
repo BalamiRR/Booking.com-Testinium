@@ -10,9 +10,7 @@ image: registry.gitlab.com/balamirr/testinium-booking:latest
 run-sanity-checks-fe:
   stage: sanity-frontend
   script:
-    - python --version
-    - python -m pip --version
-    - python -m robot --version
+    - echo $PATH
   artifacts:
     when: always
     paths:
