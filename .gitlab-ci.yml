@@ -1,3 +1,5 @@
+image: registry.gitlab.com/balamirr/testinium-booking:latest
+
 stages:
   - build
   - test
@@ -5,29 +7,22 @@ stages:
 # Build stage - Docker imajı oluşturulacak
 build:
   stage: build
-  image: python:3.9-slim  # Python 3.9 imajı kullanılacak
+  services:
+    - docker:dind  # Docker in Docker kullanıyoruz
   script:
-    - echo "Building the application..."
-    - pip install --upgrade pip  # Pip'i güncelle
-    - pip install -r requirements.txt  # Gereksinimlerinizi yükleyin
+    - echo "Building Docker image..."
+    # Docker imajı oluşturulacak
+    - docker build -t my-python-app .  # Dockerfile bulunduğu dizin
+    - docker run -v $PWD:/app my-python-app bash -c "pip install -r /app/requirements.txt"  # Gereksinimlerin yüklenmesi
     - echo "Build completed"
 
 # Test stage - Testler çalıştırılacak
 test:
   stage: test
-  image: python:3.9-slim  # Python 3.9 imajı kullanılacak
   script:
     - echo "Running tests..."
-    - pytest tests  # Testler pytest ile çalıştırılacak
+    - pytest /app/tests  # Testlerin çalıştırılması
     - echo "Tests completed"
   artifacts:
     paths:
       - reports/  # Test raporlarını kaydetmek için kullanılan yol
-
-# Cleanup stage - Gereksiz dosyaları temizle
-cleanup:
-  stage: cleanup
-  script:
-    - echo "Cleaning up..."
-    - rm -rf build/
-    - echo "Cleanup completed"
