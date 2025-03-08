@@ -10,8 +10,8 @@ image: registry.gitlab.com/balamirr/testinium-booking:latest
 run-sanity-checks-fe:
   stage: sanity-frontend
   script:
-    - $env:PATH="$env:PATH;C:\Users\$env:USERNAME\AppData\Local\Programs\Python\PythonXX\"
-    - C:\Users\$env:USERNAME\AppData\Local\Programs\Python\PythonXX\python.exe --version
+    - $env:PATH="$env:PATH;C:\Users\$env:USERNAME\AppData\Local\Programs\Python\Python313\"
+    - C:\Users\$env:USERNAME\AppData\Local\Programs\Python\Python313\python.exe --version
   artifacts:
     when: always
     paths:
