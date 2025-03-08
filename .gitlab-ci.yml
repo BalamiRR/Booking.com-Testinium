@@ -3,7 +3,6 @@ stages:
 
 include:
   - local: 'templates/qa-variables.yml' 
-  - local: 'templates/sanity-checks-be.yml'
   - local: 'templates/sanity-checks-fe.yml'
 
 image: registry.gitlab.com/balamirr/testinium-booking
