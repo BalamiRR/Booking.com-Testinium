@@ -18,9 +18,9 @@ before_script:
 build:
   stage: build
   script:
-    - echo "Building Docker image..."
-    - docker build -t registry.gitlab.com/balamirr/testinium-booking .
-    - docker tag registry.gitlab.com/balamirr/testinium-booking registry.gitlab.com/balamirr/testinium-booking:latest
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+    - docker build -t $CI_REGISTRY_IMAGE .
+    - docker push $CI_REGISTRY_IMAGE
   tags:
     - build
   artifacts:
