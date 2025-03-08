@@ -1,21 +1,9 @@
-stages:
-  - sanity-frontend
-
-include:
-  - local: 'templates/qa-variables.yml' 
-  - local: 'templates/sanity-checks-fe.yml'
-
 image: registry.gitlab.com/balamirr/testinium-booking:latest
 
-run-sanity-checks-fe:
-  stage: sanity-frontend
+stages:
+  - test
+
+test:
   script:
-    - $env:PATH="$env:PATH;C:\Users\$env:USERNAME\AppData\Local\Programs\Python\Python313\"
-    - C:\Users\$env:USERNAME\AppData\Local\Programs\Python\Python313\python.exe --version
-  artifacts:
-    when: always
-    paths:
-      - results/report.html
-      - results/log.html
-    expire_in: 1 week
-  allow_failure: true
+    - python --version
+    - robot --version
