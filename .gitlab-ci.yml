@@ -10,9 +10,9 @@ image: registry.gitlab.com/balamirr/testinium-booking:latest
 run-sanity-checks-fe:
   stage: sanity-frontend
   script:
-  - bash -c "python3 --version || echo 'Python3 ÇALIŞMIYOR!'"
-  - bash -c "python3 -m pip --version || echo 'Pip ÇALIŞMIYOR!'"
-  - bash -c "python3 -m robot --version || echo 'Robot Framework YOK!'"
+    - python --version
+    - python -m pip --version
+    - python -m robot --version
   artifacts:
     when: always
     paths:
