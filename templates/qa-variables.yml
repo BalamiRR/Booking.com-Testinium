@@ -4,7 +4,7 @@ variables:
     value: "DEV"
 
   FEATURE:
-    description: "Select the Feature that you want to execute"
+    description: "Select thes Feature that you want to execute"
     value: "All" 
     options:
       - "All"
