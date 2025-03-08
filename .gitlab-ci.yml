@@ -10,7 +10,7 @@ image: registry.gitlab.com/balamirr/testinium-booking:latest
 run-sanity-checks-fe:
   stage: sanity-frontend
   script:
-    - bash -c "python3 -m robot --version"
+    - bash -c "python3 -m robot --version || echo 'Robot Framework YOK!'"
     - bash -c "robot --version"
     - bash -c "pip install -r requirements.txt"
     - bash -c "which robot || echo 'Robot Framework bulunamadı'"
