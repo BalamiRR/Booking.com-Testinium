@@ -29,7 +29,6 @@ build:
 
 sanity_check_frontend:
   stage: test
-  extends: .sanity-fe-template
   script:
     - echo "Running sanity frontend tests for ${ENVIRONMENT} environment"
     - pip install --no-cache-dir -r requirements.txt
