@@ -1,5 +1,12 @@
+image: registry.gitlab.com/balamirr/testinium-booking:latest
+
+stages:
+  - test
+
+
 test:
   script:
+    - $env:PATH="$env:PATH;C:\Users\$env:USERNAME\AppData\Local\Programs\Python\Python313\Scripts;C:\Users\$env:USERNAME\AppData\Local\Programs\Python\Python313\"
     - echo $env:PATH
     - python --version
     - robot --version
