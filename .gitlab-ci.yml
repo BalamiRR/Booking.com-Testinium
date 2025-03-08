@@ -45,7 +45,6 @@ sanity_check_frontend:
         fi
       fi
   artifacts:
-    when: always
     paths:
       - results
     expire_in: 1 week
