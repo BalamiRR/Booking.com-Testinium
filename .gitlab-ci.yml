@@ -1,12 +1,33 @@
-image: registry.gitlab.com/balamirr/testinium-booking:latest
-
 stages:
+  - build
   - test
 
-test:
+# Build stage - Docker imajı oluşturulacak
+build:
+  stage: build
+  image: python:3.9-slim  # Python 3.9 imajı kullanılacak
   script:
-    - $env:PATH="$env:PATH;C:\Users\$env:USERNAME\AppData\Local\Programs\Python\Python313\Scripts;C:\Users\$env:USERNAME\AppData\Local\Programs\Python\Python313\"
-    - echo $env:PATH
-    - python3 --version
-    - robot --version
-    - echo "python3 --version"
+    - echo "Building the application..."
+    - pip install --upgrade pip  # Pip'i güncelle
+    - pip install -r requirements.txt  # Gereksinimlerinizi yükleyin
+    - echo "Build completed"
+
+# Test stage - Testler çalıştırılacak
+test:
+  stage: test
+  image: python:3.9-slim  # Python 3.9 imajı kullanılacak
+  script:
+    - echo "Running tests..."
+    - pytest tests  # Testler pytest ile çalıştırılacak
+    - echo "Tests completed"
+  artifacts:
+    paths:
+      - reports/  # Test raporlarını kaydetmek için kullanılan yol
+
+# Cleanup stage - Gereksiz dosyaları temizle
+cleanup:
+  stage: cleanup
+  script:
+    - echo "Cleaning up..."
+    - rm -rf build/
+    - echo "Cleanup completed"
