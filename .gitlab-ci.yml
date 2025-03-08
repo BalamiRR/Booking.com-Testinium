@@ -1,7 +1,5 @@
 stages:
-  - build
   - test
-  - deploy
 
 variables:
   ROBOT_WORK_DIR: /app
@@ -17,21 +15,12 @@ before_script:
   - mkdir -p ${ROBOT_REPORTS_DIR}
   - apt-get update && apt-get install -y wget gnupg2 unzip
 
-build:
-  stage: build
+sanity_check_frontend:
+  stage: test
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker build -t $CI_REGISTRY_IMAGE .
     - docker push $CI_REGISTRY_IMAGE
-  tags:
-    - build
-  artifacts:
-    paths:
-      - results/
-
-sanity_check_frontend:
-  stage: test
-  script:
     - echo "Running sanity frontend tests for ${ENVIRONMENT} environment"
     - pip install --no-cache-dir -r requirements.txt
     - Xvfb :99 -ac -screen 0 1920x1080x24 &
@@ -45,16 +34,10 @@ sanity_check_frontend:
         fi
       fi
   artifacts:
+    when: always
     paths:
       - results
     expire_in: 1 week
   allow_failure: true
-  tags:
-    - build
-
-deploy:
-  stage: deploy
-  script:
-    - echo "Deploying the project..."
   tags:
     - build
