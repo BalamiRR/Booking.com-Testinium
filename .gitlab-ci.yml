@@ -20,7 +20,7 @@ build:
   script:
     - echo "Building Docker image..."
     - docker build -t registry.gitlab.com/balamirr/testinium-booking .
-    - docker tag registry.gitlab.com/balamirr/testinium-booking registry.gitlab.com/balamirr/testinium-booking
+    - docker tag registry.gitlab.com/balamirr/testinium-booking registry.gitlab.com/balamirr/testinium-booking:latest
   tags:
     - build
   artifacts:
