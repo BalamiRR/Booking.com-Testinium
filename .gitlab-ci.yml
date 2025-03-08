@@ -1,26 +1,24 @@
-before_script:
-  - pip install --no-cache-dir -r requirements.txt
-
-
 stages:
   - test
 
-test:
-  stage: test
-  script:
-    - echo "Running tests with ${BROWSER} on ${ENVIRONMENT} environment"
-    - pip install --no-cache-dir -r requirements.txt
-    - |
-      if [ "$ENVIRONMENT" = "DEV" ]; then
-        if [ "$FEATURE" = "All" ]; then
-          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable ENVIRONMENT:${ENVIRONMENT} features-frontend
-        else
-          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable ENVIRONMENT:${ENVIRONMENT} --include ${FEATURE} features-frontend
-        fi
-      fi
-  artifacts:
-    paths:
-      - results
-    expire_in: 1 week
-  allow_failure: true
+image: python:3.9 
 
+test:
+  script:
+    - pip install -r requirements.txt
+    - robot --version
+    - python3 --version
+
+include:
+  - local: 'templates/qa-variables.yml' 
+  - local: 'templates/sanity-checks-fe.yml'
+
+run-sanity-checks-fe:
+  stage: sanity-frontend
+  extends: .sanity-fe-template   
+  tags: [ build ]
+  rules:
+    - if: '$TRIGGER_SANITY_FE == "true"'           
+    - if: '$CI_PIPELINE_SOURCE == "push"'         
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"' 
+    - if: '$CI_PIPELINE_SOURCE == "web"'          
