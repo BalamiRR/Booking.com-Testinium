@@ -10,9 +10,9 @@ image: registry.gitlab.com/balamirr/testinium-booking:latest
 run-sanity-checks-fe:
   stage: sanity-frontend
   script:
-    - python3 -m robot --version
-    - robot --version
-    - pip install -r requirements.txt
+    - bash -c "python3 -m robot --version"
+    - bash -c "robot --version"
+    - bash -c "pip install -r requirements.txt"
     - bash -c "which robot || echo 'Robot Framework bulunamadı'"
     - bash -c "mkdir -p results && ls -la results"
     - bash -c "python3 -m robot --outputdir results --variable BROWSER:chrome --variable ENVIRONMENT:DEV --variable RESOLUTION:1920x1080 features-frontend/*.robot"
