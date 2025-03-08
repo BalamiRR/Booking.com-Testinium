@@ -11,8 +11,7 @@ run-sanity-checks-fe:
   stage: sanity-frontend
   script:
     - $env:PATH="$env:PATH;C:\Users\$env:USERNAME\AppData\Local\Programs\Python\PythonXX\"
-    - echo $env:PATH
-    - python --version
+    - C:\Users\$env:USERNAME\AppData\Local\Programs\Python\PythonXX\python.exe --version
   artifacts:
     when: always
     paths:
