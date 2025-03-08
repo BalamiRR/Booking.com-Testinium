@@ -1,17 +1,60 @@
 stages:
-  - sanity-frontend
+  - build
+  - test
+  - deploy
 
-include:
-  - local: 'templates/qa-variables.yml'
-  - local: 'templates/sanity-checks-fe.yml'
+variables:
+  ROBOT_WORK_DIR: /app
+  ROBOT_REPORTS_DIR: /app/results
 
-image: registry.gitlab.com/balamirr/testinium-booking
+before_script:
+  - echo "Setting up the environment"
+  - export DISPLAY=:99
+  - export ROBOT_WORK_DIR=${ROBOT_WORK_DIR}
+  - export ROBOT_REPORTS_DIR=${ROBOT_REPORTS_DIR}
+  - mkdir -p ${ROBOT_REPORTS_DIR}
+  - apt-get update && apt-get install -y wget gnupg2 unzip
 
-run-sanity-checks-fe:
-  stage: sanity-frontend
-  extends: .sanity-fe-template   
-  tags: [ build ]
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "push"'         
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"' 
-    - if: '$CI_PIPELINE_SOURCE == "web"'          
+build:
+  stage: build
+  script:
+    - echo "Building Docker image..."
+    - docker build -t registry.gitlab.com/balamirr/testinium-booking .
+    - docker tag registry.gitlab.com/balamirr/testinium-booking registry.gitlab.com/balamirr/testinium-booking:latest
+  tags:
+    - build
+  artifacts:
+    paths:
+      - results/
+
+sanity_check_frontend:
+  stage: test
+  extends: .sanity-fe-template
+  script:
+    - echo "Running sanity frontend tests for ${ENVIRONMENT} environment"
+    - pip install --no-cache-dir -r requirements.txt
+    - Xvfb :99 -ac -screen 0 1920x1080x24 &
+    - export DISPLAY=:99
+    - |
+      if [ "$ENVIRONMENT" = "DEV" ]; then
+        if [ "$FEATURE" = "All" ]; then
+          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable RESOLUTION:${RESOLUTION} --variable ENVIRONMENT:${ENVIRONMENT} --include ${ENVIRONMENT} features-frontend
+        else
+          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable RESOLUTION:${RESOLUTION} --variable ENVIRONMENT:${ENVIRONMENT} --include ${ENVIRONMENT}AND${FEATURE} features-frontend
+        fi
+      fi
+  artifacts:
+    when: always
+    paths:
+      - results
+    expire_in: 1 week
+  allow_failure: true
+  tags:
+    - build
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying the project..."
+  tags:
+    - build
