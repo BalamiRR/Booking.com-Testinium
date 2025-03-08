@@ -1,0 +1,1350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.13.1 on win32)" generated="2025-03-08T00:23:35.057991" rpa="false" schemaversion="5">
+<suite id="s1" name="Flights.Feature" source="C:\Testinium-Booking-Gitlab\Testinium-Booking\features-frontend\flights.feature.robot">
+<kw name="Open BookingApp" owner="home.steps" type="SETUP">
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Create Chrome browser" owner="webdrivers">
+<kw name="Get Main Url" owner="readProperty">
+<msg time="2025-03-08T00:23:35.417004" level="INFO">${URL} = https://www.booking.com/</msg>
+<var>${URL}</var>
+<arg>${ENVIRONMENT}</arg>
+<status status="PASS" start="2025-03-08T00:23:35.416885" elapsed="0.000145"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-03-08T00:23:35.417291" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000001E75D7212B0&gt;</msg>
+<var>${chrome_options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-03-08T00:23:35.417137" elapsed="0.000172"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-03-08T00:23:35.417384" elapsed="0.000070"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-gpu</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-03-08T00:23:35.417524" elapsed="0.000065"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-infobars</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-03-08T00:23:35.417647" elapsed="0.000059"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-extensions</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-03-08T00:23:35.417769" elapsed="0.000058"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-dev-shm-usage</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" start="2025-03-08T00:23:35.417881" elapsed="0.000064"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:35.418197" level="INFO">Opening browser 'chrome' to base url 'https://www.booking.com/'.</msg>
+<msg time="2025-03-08T00:23:35.801274" level="WARN">The chromedriver version (132.0.6834.83) detected in PATH at C:\Users\furka\Desktop\Fuat\Fuat Belgeler\chromedriver.exe might not be compatible with the detected chrome version (133.0.6943.143); currently, chromedriver 133.0.6943.141 is recommended for chrome 133.*, so it is advised to delete the driver in PATH and retry</msg>
+<arg>${URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<arg>options=${chrome_options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-03-08T00:23:35.418031" elapsed="3.442249"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-03-08T00:23:38.860689" level="INFO">${URL} = https://www.booking.com/</msg>
+<arg>${URL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-03-08T00:23:38.860494" elapsed="0.000231"/>
+</kw>
+<return>
+<value>${URL}</value>
+<status status="PASS" start="2025-03-08T00:23:38.860778" elapsed="0.000055"/>
+</return>
+<arg>${BROWSER}</arg>
+<status status="PASS" start="2025-03-08T00:23:35.416712" elapsed="3.444234"/>
+</kw>
+<msg time="2025-03-08T00:23:38.861008" level="INFO">${URL} = https://www.booking.com/</msg>
+<var>${URL}</var>
+<arg>"${BROWSER}" == 'chrome'</arg>
+<arg>Create Chrome browser</arg>
+<arg>${BROWSER}</arg>
+<arg>ELSE IF</arg>
+<arg>"${BROWSER}" == 'edge'</arg>
+<arg>Run Keyword</arg>
+<arg>Create edge browser</arg>
+<arg>${BROWSER}</arg>
+<arg>ELSE IF</arg>
+<arg>"${BROWSER}" == 'firefox'</arg>
+<arg>Run Keyword</arg>
+<arg>Create edge browser</arg>
+<arg>${BROWSER}</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>The browser selection is not valid</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-03-08T00:23:35.416435" elapsed="3.444596"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-03-08T00:23:38.861180" elapsed="0.125947"/>
+</kw>
+<kw name="Accept Cookies" owner="home.steps">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:38.988094" level="INFO">Clicking element 'css=#onetrust-accept-btn-handler'.</msg>
+<arg>css=${ACCEPT_COOKIES}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:38.987716" elapsed="0.269912"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:38.987447" elapsed="0.270297"/>
+</kw>
+<kw name="Set language preferences" owner="home.steps">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:39.258433" level="INFO">Clicking element 'css=.f419a93f12:nth-child(2) .e3fa9175ee'.</msg>
+<arg>${LANGUAGE_PREF_DRAWER}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:39.258150" elapsed="0.661399"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${LANGUAGE_ENG}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-08T00:23:39.919734" elapsed="0.024922"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:39.945040" level="INFO">Clicking element 'css=.c624d7469d:nth-child(1) &gt; .c624d7469d:nth-child(1) &gt; .Picker_selection-list:nth-child(2) .b817090550:nth-child(2) .Picker_selection-text:nth-child(1)'.</msg>
+<arg>${LANGUAGE_ENG}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:39.944844" elapsed="1.756462"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-03-08T00:23:46.702512" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-03-08T00:23:41.701501" elapsed="5.001188"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:39.257922" elapsed="7.444928"/>
+</kw>
+<kw name="Close the Advertisement" owner="home.steps">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:46.760397" level="INFO">Element 'css=button.a83ed08757.c21c56c305.f38b6daa18.d691166b09.ab98298258.f4552b6561' is displayed.</msg>
+<arg>${ADVERTISEMENT_CLOSE_BTN}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-08T00:23:46.704342" elapsed="0.056153"/>
+</kw>
+<msg time="2025-03-08T00:23:46.760612" level="INFO">${is_visible} = True</msg>
+<var>${is_visible}</var>
+<arg>Element Should Be Visible</arg>
+<arg>${ADVERTISEMENT_CLOSE_BTN}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2025-03-08T00:23:46.703856" elapsed="0.056773"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Handle Pop-up" owner="home.steps">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:46.761317" level="INFO">Clicking element 'css=button.a83ed08757.c21c56c305.f38b6daa18.d691166b09.ab98298258.f4552b6561'.</msg>
+<arg>${ADVERTISEMENT_CLOSE_BTN}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:46.761161" elapsed="0.065035"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:46.760980" elapsed="0.065522"/>
+</kw>
+<arg>${is_visible}</arg>
+<arg>Handle Pop-Up</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-03-08T00:23:46.760778" elapsed="0.065776"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:46.703199" elapsed="0.123399"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-03-08T00:23:46.826906" level="INFO">${URL} = https://www.booking.com/</msg>
+<arg>${URL}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-03-08T00:23:46.826729" elapsed="0.000208"/>
+</kw>
+<return>
+<value>${URL}</value>
+<status status="PASS" start="2025-03-08T00:23:46.826983" elapsed="0.000062"/>
+</return>
+<status status="PASS" start="2025-03-08T00:23:35.415902" elapsed="11.411230"/>
+</kw>
+<test id="s1-t1" name="Scenario: Verify Flights tab navigation" line="10">
+<kw name="Given I click on the &quot;Flights&quot; tab" owner="flights.steps">
+<kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
+<arg>${DESTINATION_FIELD}</arg>
+<arg>timeout=10</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" start="2025-03-08T00:23:46.827958" elapsed="0.035236"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:46.863634" level="INFO">Clicking element '//a[@id='flights']'.</msg>
+<arg>${FLIGHTS_PAGE}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:46.863415" elapsed="1.926277"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:46.827740" elapsed="1.962107"/>
+</kw>
+<kw name="Then I should be redirected to the flights page" owner="flights.steps">
+<kw name="Get Location" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:48.798715" level="INFO">${url} = https://www.booking.com/flights/index.html?aid=304142&amp;label=gen173nr-1FCAEoggI46AdIM1gEaE2IAQGYAQ24ARfIAQzYAQHoAQH4AQyIAgGoAgO4Avn_rb4GwAIB0gIkMDBiNWM4M2EtNjE3Ni00M2U5LWFkYmEtY2E4ODU1ZDcwZGZm2AIG4AIB&amp;...</msg>
+<var>${url}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="PASS" start="2025-03-08T00:23:48.790752" elapsed="0.008014"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${url}</arg>
+<arg>flights</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-03-08T00:23:48.798968" elapsed="0.000178"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:48.790465" elapsed="0.008764"/>
+</kw>
+<kw name="Run Keyword If Test Failed" owner="BuiltIn" type="TEARDOWN">
+<arg>Capture Page Screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" start="2025-03-08T00:23:48.799715" elapsed="0.000103"/>
+</kw>
+<doc>Verify flights tab navigation functionality</doc>
+<tag>High</tag>
+<tag>UC-FLIGHTS</tag>
+<status status="PASS" start="2025-03-08T00:23:46.827200" elapsed="1.972834"/>
+</test>
+<test id="s1-t2" name="Scenario: Searching for the departure field" line="17">
+<kw name="Given I click on the departure field" owner="flights.steps">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:48.802867" level="INFO">Clicking element '(//span[contains(@class,'SbZm6')])[1]'.</msg>
+<arg>${DEPARTURE_FLIGHT}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:48.802484" elapsed="0.213057"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:48.802132" elapsed="0.213542"/>
+</kw>
+<kw name="Then I will see the selected airport or an empty input in the departure field" owner="flights.steps">
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:49.016686" level="WARN">Keyword 'Get Element Attribute' found both from a custom library 'SeleniumLibrary' and a standard library 'XML'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'SeleniumLibrary.Get Element Attribute' or 'XML.Get Element Attribute'.</msg>
+<msg time="2025-03-08T00:23:49.069793" level="INFO">${destination_text} = Airport or city</msg>
+<var>${destination_text}</var>
+<arg>${DESTINATION_TO}</arg>
+<arg>placeholder</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:49.016761" elapsed="0.053089"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${DESTINATION_MESSAGE}</arg>
+<arg>${destination_text}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-03-08T00:23:49.070099" elapsed="0.000365"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:49.070852" level="INFO">Clicking element '//span[@class='Tags-module__text___90E7G']'.</msg>
+<arg>${DESTINATION_OPTION}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:49.070647" elapsed="0.059175"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-03-08T00:23:50.130805" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-03-08T00:23:49.130039" elapsed="1.000951"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:49.016367" elapsed="1.114795"/>
+</kw>
+<kw name="When I type &quot;T&quot; &quot;I&quot; &quot;R&quot; in the &quot;Where from?&quot; in the departure field" owner="flights.steps" source_name="I type &quot;${T}&quot; &quot;${I}&quot; &quot;${R}&quot; in the &quot;Where from?&quot; in the departure field">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:50.133725" level="INFO">Clicking element '//input[@placeholder='Airport or city']'.</msg>
+<arg>${DESTINATION_TO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:50.133409" elapsed="0.058645"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Press Key" owner="SeleniumLibrary">
+<arg>${DESTINATION_TO}</arg>
+<arg>${T}</arg>
+<doc>Simulates user pressing key on element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:50.192475" elapsed="0.029509"/>
+</kw>
+<arg>1s</arg>
+<arg>2s</arg>
+<arg>Press Key</arg>
+<arg>${DESTINATION_TO}</arg>
+<arg>${T}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-03-08T00:23:50.192258" elapsed="0.029815"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Press Key" owner="SeleniumLibrary">
+<arg>${DESTINATION_TO}</arg>
+<arg>${I}</arg>
+<doc>Simulates user pressing key on element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:50.222459" elapsed="0.025001"/>
+</kw>
+<arg>1s</arg>
+<arg>2s</arg>
+<arg>Press Key</arg>
+<arg>${DESTINATION_TO}</arg>
+<arg>${I}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-03-08T00:23:50.222234" elapsed="0.025314"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Press Key" owner="SeleniumLibrary">
+<arg>${DESTINATION_TO}</arg>
+<arg>${R}</arg>
+<doc>Simulates user pressing key on element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:50.247920" elapsed="0.023968"/>
+</kw>
+<arg>1s</arg>
+<arg>2s</arg>
+<arg>Press Key</arg>
+<arg>${DESTINATION_TO}</arg>
+<arg>${R}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-03-08T00:23:50.247693" elapsed="0.024284"/>
+</kw>
+<kw name="Get Value" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:50.281814" level="INFO">${input} = TIR</msg>
+<var>${input}</var>
+<arg>${DESTINATION_TO}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:50.272121" elapsed="0.009741"/>
+</kw>
+<kw name="Convert To Lower Case" owner="String">
+<msg time="2025-03-08T00:23:50.282292" level="INFO">${input} = tir</msg>
+<var>${input}</var>
+<arg>${input}</arg>
+<doc>Converts string to lower case.</doc>
+<status status="PASS" start="2025-03-08T00:23:50.282136" elapsed="0.000177"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-03-08T00:23:50.282562" level="INFO">${input} = tir</msg>
+<arg>${input}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-03-08T00:23:50.282414" elapsed="0.000180"/>
+</kw>
+<return>
+<value>${input}</value>
+<status status="PASS" start="2025-03-08T00:23:50.282640" elapsed="0.000037"/>
+</return>
+<kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
+<arg>${input}</arg>
+<arg>timeout=10</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="NOT RUN" start="2025-03-08T00:23:50.282770" elapsed="0.000018"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:50.132854" elapsed="0.150022"/>
+</kw>
+<kw name="Then I should see a list of destinations matching the input" owner="flights.steps">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${DESTINATION_FROM_CITIES}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-08T00:23:50.283498" elapsed="0.661076"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:50.949398" level="INFO">${destination_from_items} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.465")&gt;, &lt;selenium.webdri...</msg>
+<var>${destination_from_items}</var>
+<arg>${DESTINATION_FROM_CITIES}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:50.944773" elapsed="0.004659"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-03-08T00:23:50.949951" level="INFO">Length is 5.</msg>
+<msg time="2025-03-08T00:23:50.950011" level="INFO">${l} = 5</msg>
+<var>${l}</var>
+<arg>${destination_from_items}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-03-08T00:23:50.949634" elapsed="0.000392"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-03-08T00:23:50.950310" level="INFO">@{destination_from_items} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.465")&gt; | &lt;selenium.webd...</msg>
+<arg>@{destination_from_items}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-03-08T00:23:50.950152" elapsed="0.000185"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-03-08T00:23:50.950518" level="INFO">${l} = 5</msg>
+<arg>${l}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-03-08T00:23:50.950418" elapsed="0.000124"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-03-08T00:23:51.951176" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-03-08T00:23:50.950613" elapsed="1.000922"/>
+</kw>
+<return>
+<value>${destination_from_items}</value>
+<value>${l}</value>
+<status status="PASS" start="2025-03-08T00:23:51.951801" elapsed="0.000147"/>
+</return>
+<status status="PASS" start="2025-03-08T00:23:50.283279" elapsed="1.669174"/>
+</kw>
+<kw name="Run Keyword If Test Failed" owner="BuiltIn" type="TEARDOWN">
+<arg>Capture Page Screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" start="2025-03-08T00:23:51.954488" elapsed="0.000260"/>
+</kw>
+<doc>Verify the functionality of the departure in the flight search form
+Ensure that users can find their desired location</doc>
+<tag>High</tag>
+<tag>UC-FLIGHTS</tag>
+<status status="PASS" start="2025-03-08T00:23:48.801475" elapsed="3.154452"/>
+</test>
+<test id="s1-t3" name="Scenario: Verify random departure airport selection from search" line="27">
+<kw name="Given I select a random departure from the list" owner="flights.steps">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-03-08T00:23:51.962591" level="INFO">${random_index} = -2</msg>
+<var>${random_index}</var>
+<arg>random.randint(0, ${l}-1)-3</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-03-08T00:23:51.962133" elapsed="0.000502"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:51.999296" level="INFO">${destination_from_city} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.470")&gt;, &lt;selenium.webdri...</msg>
+<var>${destination_from_city}</var>
+<arg>${DESTINATION_LIST}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:51.962848" elapsed="0.036488"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:52.011465" level="INFO">${selected_destination} = TRZ</msg>
+<var>${selected_destination}</var>
+<arg>${destination_from_city}[${random_index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:51.999499" elapsed="0.012004"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-03-08T00:23:52.011834" level="INFO">${selected_destination} = TRZ</msg>
+<arg>${selected_destination}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-03-08T00:23:52.011667" elapsed="0.000197"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:52.012149" level="INFO">Clicking element '&lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.473")&gt;'.</msg>
+<arg>${destination_from_city}[${random_index}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:52.011956" elapsed="0.049754"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-08T00:23:52.062049" level="INFO">TRZ</msg>
+<arg>${selected_destination}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-08T00:23:52.061885" elapsed="0.000202"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-03-08T00:23:53.062694" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-03-08T00:23:52.062182" elapsed="1.000726"/>
+</kw>
+<return>
+<value>${selected_destination}</value>
+<status status="PASS" start="2025-03-08T00:23:53.063107" elapsed="0.000110"/>
+</return>
+<status status="PASS" start="2025-03-08T00:23:51.960947" elapsed="1.102564"/>
+</kw>
+<kw name="Then The departure will be assigned to the departure field" owner="flights.steps">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:53.084726" level="INFO">${destination_assigned} = TRZ</msg>
+<var>${destination_assigned}</var>
+<arg>${DEPARTURE_FLIGHT_DETAIL}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:53.065503" elapsed="0.019303"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${destination_assigned}</arg>
+<arg>${selected_destination}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-03-08T00:23:53.085005" elapsed="0.000181"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:53.064965" elapsed="0.020388"/>
+</kw>
+<kw name="Run Keyword If Test Failed" owner="BuiltIn" type="TEARDOWN">
+<arg>Capture Page Screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" start="2025-03-08T00:23:53.086058" elapsed="0.000099"/>
+</kw>
+<doc>Ensure the departure field updates with a randomly chosen airport from the search results</doc>
+<tag>High</tag>
+<tag>UC-FLIGHTS</tag>
+<status status="PASS" start="2025-03-08T00:23:51.959083" elapsed="1.127232"/>
+</test>
+<test id="s1-t4" name="Scenario: Searching for the destination field" line="34">
+<kw name="Given I click on the destination field" owner="flights.steps">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:53.087748" level="INFO">Clicking element '(//span[contains(@class,'SbZm6')])[3]'.</msg>
+<arg>${DESTINATION_FLIGHT}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:53.087592" elapsed="0.073501"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:53.087378" elapsed="0.073817"/>
+</kw>
+<kw name="Then I will see the selected airport or an empty input in the destination field" owner="flights.steps">
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:53.161899" level="WARN">Keyword 'Get Element Attribute' found both from a custom library 'SeleniumLibrary' and a standard library 'XML'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'SeleniumLibrary.Get Element Attribute' or 'XML.Get Element Attribute'.</msg>
+<msg time="2025-03-08T00:23:53.175867" level="INFO">${destination_text} = Airport or city</msg>
+<var>${destination_text}</var>
+<arg>${DESTINATION_TO}</arg>
+<arg>placeholder</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:53.161941" elapsed="0.013964"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${DESTINATION_MESSAGE}</arg>
+<arg>${destination_text}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-03-08T00:23:53.176065" elapsed="0.000202"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-03-08T00:23:54.176908" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-03-08T00:23:53.176376" elapsed="1.000748"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:53.161680" elapsed="1.015663"/>
+</kw>
+<kw name="When I type &quot;S&quot; &quot;A&quot; &quot;M&quot; in the &quot;Where to?&quot; destination field" owner="flights.steps" source_name="I type &quot;${S}&quot; &quot;${A}&quot; &quot;${M}&quot; in the &quot;Where to?&quot; destination field">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:54.180463" level="INFO">Clicking element '//input[@placeholder='Airport or city']'.</msg>
+<arg>${DESTINATION_TO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:54.180090" elapsed="0.057528"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Press Key" owner="SeleniumLibrary">
+<arg>${DESTINATION_TO}</arg>
+<arg>${S}</arg>
+<doc>Simulates user pressing key on element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:54.238029" elapsed="0.025783"/>
+</kw>
+<arg>1s</arg>
+<arg>2s</arg>
+<arg>Press Key</arg>
+<arg>${DESTINATION_TO}</arg>
+<arg>${S}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-03-08T00:23:54.237814" elapsed="0.026086"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Press Key" owner="SeleniumLibrary">
+<arg>${DESTINATION_TO}</arg>
+<arg>${A}</arg>
+<doc>Simulates user pressing key on element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:54.264252" elapsed="0.037375"/>
+</kw>
+<arg>1s</arg>
+<arg>2s</arg>
+<arg>Press Key</arg>
+<arg>${DESTINATION_TO}</arg>
+<arg>${A}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-03-08T00:23:54.264050" elapsed="0.037749"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Press Key" owner="SeleniumLibrary">
+<arg>${DESTINATION_TO}</arg>
+<arg>${M}</arg>
+<doc>Simulates user pressing key on element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:54.302324" elapsed="0.029540"/>
+</kw>
+<arg>1s</arg>
+<arg>2s</arg>
+<arg>Press Key</arg>
+<arg>${DESTINATION_TO}</arg>
+<arg>${M}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2025-03-08T00:23:54.302011" elapsed="0.029987"/>
+</kw>
+<kw name="Get Value" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:54.343957" level="INFO">${input} = SAM</msg>
+<var>${input}</var>
+<arg>${DESTINATION_TO}</arg>
+<doc>Returns the value attribute of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:54.332189" elapsed="0.011819"/>
+</kw>
+<kw name="Convert To Lower Case" owner="String">
+<msg time="2025-03-08T00:23:54.344430" level="INFO">${input} = sam</msg>
+<var>${input}</var>
+<arg>${input}</arg>
+<doc>Converts string to lower case.</doc>
+<status status="PASS" start="2025-03-08T00:23:54.344232" elapsed="0.000272"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-03-08T00:23:54.344905" level="INFO">${input} = sam</msg>
+<arg>${input}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-03-08T00:23:54.344666" elapsed="0.000289"/>
+</kw>
+<return>
+<value>${input}</value>
+<status status="PASS" start="2025-03-08T00:23:54.345031" elapsed="0.000070"/>
+</return>
+<kw name="Wait Until Element Is Enabled" owner="SeleniumLibrary">
+<arg>${input}</arg>
+<arg>timeout=10</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="NOT RUN" start="2025-03-08T00:23:54.345289" elapsed="0.000032"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:54.179491" elapsed="0.165972"/>
+</kw>
+<kw name="Then I should see a list of destinations matching the input" owner="flights.steps">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${DESTINATION_FROM_CITIES}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-08T00:23:54.346471" elapsed="0.691519"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:55.050494" level="INFO">${destination_from_items} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.502")&gt;, &lt;selenium.webdri...</msg>
+<var>${destination_from_items}</var>
+<arg>${DESTINATION_FROM_CITIES}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:55.038242" elapsed="0.012347"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-03-08T00:23:55.051299" level="INFO">Length is 10.</msg>
+<msg time="2025-03-08T00:23:55.051432" level="INFO">${l} = 10</msg>
+<var>${l}</var>
+<arg>${destination_from_items}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-03-08T00:23:55.051001" elapsed="0.000478"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-03-08T00:23:55.052283" level="INFO">@{destination_from_items} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.502")&gt; | &lt;selenium.webd...</msg>
+<arg>@{destination_from_items}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-03-08T00:23:55.051767" elapsed="0.000597"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-03-08T00:23:55.053209" level="INFO">${l} = 10</msg>
+<arg>${l}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-03-08T00:23:55.052776" elapsed="0.000532"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-03-08T00:23:56.054501" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-03-08T00:23:55.053515" elapsed="1.001292"/>
+</kw>
+<return>
+<value>${destination_from_items}</value>
+<value>${l}</value>
+<status status="PASS" start="2025-03-08T00:23:56.055072" elapsed="0.000139"/>
+</return>
+<status status="PASS" start="2025-03-08T00:23:54.346177" elapsed="1.709480"/>
+</kw>
+<kw name="Run Keyword If Test Failed" owner="BuiltIn" type="TEARDOWN">
+<arg>Capture Page Screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" start="2025-03-08T00:23:56.058020" elapsed="0.000274"/>
+</kw>
+<doc>Verify the functionality of the destination in the flight search form
+Ensure that users can find their desired location</doc>
+<tag>High</tag>
+<tag>UC-FLIGHTS</tag>
+<status status="PASS" start="2025-03-08T00:23:53.086952" elapsed="2.972332"/>
+</test>
+<test id="s1-t5" name="Scenario: Verify random destination airport selection from search" line="44">
+<kw name="Given I select a random destination from the list" owner="flights.steps">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-03-08T00:23:56.064556" level="INFO">${random_index} = -1</msg>
+<var>${random_index}</var>
+<arg>random.randint(0, ${l}-1)-3</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-03-08T00:23:56.063875" elapsed="0.000743"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:56.078587" level="INFO">${destination_to_city} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.513")&gt;, &lt;selenium.webdri...</msg>
+<var>${destination_to_city}</var>
+<arg>${DESTINATION_LIST}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:56.064867" elapsed="0.013765"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-08T00:23:56.078978" level="INFO">[&lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.513")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.514")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.515")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.516")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.517")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.518")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.519")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.520")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.521")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.522")&gt;]</msg>
+<arg>${destination_to_city}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-08T00:23:56.078817" elapsed="0.000212"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:56.085485" level="INFO">${selected_destination_to} = AZS</msg>
+<var>${selected_destination_to}</var>
+<arg>${destination_to_city}[${random_index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:56.079141" elapsed="0.006381"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-03-08T00:23:56.085875" level="INFO">${selected_destination_to} = AZS</msg>
+<arg>${selected_destination_to}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-03-08T00:23:56.085698" elapsed="0.000207"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:56.086194" level="INFO">Clicking element '&lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.522")&gt;'.</msg>
+<arg>${destination_to_city}[${random_index}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:56.086002" elapsed="0.055240"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-08T00:23:56.141574" level="INFO">AZS</msg>
+<arg>${selected_destination_to}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-08T00:23:56.141426" elapsed="0.000183"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-03-08T00:23:57.142694" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-03-08T00:23:56.141758" elapsed="1.001133"/>
+</kw>
+<return>
+<value>${selected_destination_to}</value>
+<status status="PASS" start="2025-03-08T00:23:57.143060" elapsed="0.000090"/>
+</return>
+<status status="PASS" start="2025-03-08T00:23:56.063464" elapsed="1.079931"/>
+</kw>
+<kw name="Then The destination will be assigned to the destination field" owner="flights.steps">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:57.184593" level="INFO">${selected_destination_to} = AZS</msg>
+<var>${selected_destination_to}</var>
+<arg>${DESTINATION_FLIGHT_DETAIL}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.145239" elapsed="0.039389"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${selected_destination_to}</arg>
+<arg>${selected_destination_to}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.184907" elapsed="0.000207"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:57.144756" elapsed="0.040420"/>
+</kw>
+<kw name="Run Keyword If Test Failed" owner="BuiltIn" type="TEARDOWN">
+<arg>Capture Page Screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.185576" elapsed="0.000089"/>
+</kw>
+<doc>Ensure the destination field updates with a randomly chosen airport from the search results</doc>
+<tag>High</tag>
+<tag>UC-FLIGHTS</tag>
+<status status="PASS" start="2025-03-08T00:23:56.062388" elapsed="1.123612"/>
+</test>
+<test id="s1-t6" name="Scenario: Switch origin and return destinations" line="51">
+<kw name="Given I click on the switch button" owner="flights.steps">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:57.214504" level="INFO">${departure_before} = TRZ Tiruchirappalli International Airport</msg>
+<var>${departure_before}</var>
+<arg>${DEPARTURE_FLIGHT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.187571" elapsed="0.027019"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-03-08T00:23:57.214895" level="INFO">${departure_before} = TRZ Tiruchirappalli International Airport</msg>
+<arg>${departure_before}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.214745" elapsed="0.000175"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:57.228370" level="INFO">${destination_before} = AZS Samana El Catey International Airport</msg>
+<var>${destination_before}</var>
+<arg>${DESTINATION_FLIGHT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.214998" elapsed="0.013409"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-03-08T00:23:57.228734" level="INFO">${destination_before} = AZS Samana El Catey International Airport</msg>
+<arg>${destination_before}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.228569" elapsed="0.000194"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:57.228996" level="INFO">Clicking element 'css=.ButtonFlip-module__flipIcon___2sPKY &gt; svg'.</msg>
+<arg>${SWITCH_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.228857" elapsed="0.053095"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:57.187397" elapsed="0.094653"/>
+</kw>
+<kw name="Then I should see that the destination and departure are switched" owner="flights.steps">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:57.296586" level="INFO">${departure_after} = AZS Samana El Catey International Airport</msg>
+<var>${departure_after}</var>
+<arg>${DEPARTURE_FLIGHT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.283078" elapsed="0.013546"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:57.310149" level="INFO">${destination_after} = TRZ Tiruchirappalli International Airport</msg>
+<var>${destination_after}</var>
+<arg>${DESTINATION_FLIGHT}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.296785" elapsed="0.013402"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${departure_before}</arg>
+<arg>${destination_after}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.310354" elapsed="0.000181"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${destination_before}</arg>
+<arg>${departure_after}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.310630" elapsed="0.000114"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:57.282826" elapsed="0.027970"/>
+</kw>
+<kw name="Run Keyword If Test Failed" owner="BuiltIn" type="TEARDOWN">
+<arg>Capture Page Screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.311172" elapsed="0.000069"/>
+</kw>
+<doc>Ensure that the destination and departure fields have been switched or not</doc>
+<tag>High</tag>
+<tag>UC-FLIGHTS</tag>
+<status status="PASS" start="2025-03-08T00:23:57.186983" elapsed="0.124392"/>
+</test>
+<test id="s1-t7" name="Scenario: Selecting a random date" line="58">
+<kw name="Given The calendar button is visible" owner="flights.steps">
+<kw name="Page Should Contain Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:57.322432" level="INFO">Current page contains element '(//span[contains(@class,'SbZm6')])[5]'.</msg>
+<arg>${ROUND_TRIP_CALENDAR_BUTTON}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.312800" elapsed="0.009712"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:57.312596" elapsed="0.009998"/>
+</kw>
+<kw name="When I click on the calendar button" owner="flights.steps">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:57.323457" level="INFO">Clicking element '(//span[contains(@class,'SbZm6')])[5]'.</msg>
+<arg>${ROUND_TRIP_CALENDAR_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.323299" elapsed="0.108575"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:57.323033" elapsed="0.108942"/>
+</kw>
+<kw name="Then The calendar should be displayed" owner="flights.steps">
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:57.460944" level="INFO">Element '(//h3[contains(@class,'3JH6j')])' is displayed.</msg>
+<arg>${ROUND_TRIP_CALENDER_DETAIL}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.432730" elapsed="0.028295"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:57.432487" elapsed="0.028619"/>
+</kw>
+<kw name="When I select a random departure and return date" owner="flights.steps">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>${SELECTED_DATE_ROUND_TRIP_SELECT_DATE}</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.462008" elapsed="0.014222"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:57.488249" level="INFO">${selected_dates} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.530")&gt;, &lt;selenium.webdri...</msg>
+<var>${selected_dates}</var>
+<arg>${SELECTED_DATE_ROUND_TRIP_SELECT_DATE}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.476408" elapsed="0.011880"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-03-08T00:23:57.488569" level="INFO">Length is 8.</msg>
+<msg time="2025-03-08T00:23:57.488615" level="INFO">${length} = 8</msg>
+<var>${length}</var>
+<arg>${selected_dates}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.488447" elapsed="0.000184"/>
+</kw>
+<if>
+<branch type="IF" condition="${length} &gt;= 2">
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:57.497355" level="INFO">${departure_date} = 12</msg>
+<var>${departure_date}</var>
+<arg>${selected_dates[0]}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.488897" elapsed="0.008496"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:57.506433" level="INFO">${return_date} = 19</msg>
+<var>${return_date}</var>
+<arg>${selected_dates[-1]}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.497565" elapsed="0.008916"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-08T00:23:57.506859" level="INFO">Departure date already selected: 12</msg>
+<arg>Departure date already selected: ${departure_date}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.506696" elapsed="0.000209"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-08T00:23:57.507180" level="INFO">Return date already selected: 19</msg>
+<arg>Return date already selected: ${return_date}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.507054" elapsed="0.000170"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:57.488716" elapsed="0.018631"/>
+</branch>
+<branch type="ELSE">
+<kw name="Get Current Date" owner="DateTime">
+<var>${current_date}</var>
+<arg>result_format=%Y-%m-%d</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="NOT RUN" start="2025-03-08T00:23:57.507536" elapsed="0.000028"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${DEPARTURE_DATE}</var>
+<arg>xpath=//span[contains(@data-date,"${current_date}")]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-08T00:23:57.507677" elapsed="0.000026"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${DEPARTURE_DATE}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-08T00:23:57.507844" elapsed="0.000025"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<arg>${DEPARTURE_DATE}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="NOT RUN" start="2025-03-08T00:23:57.507985" elapsed="0.000025"/>
+</kw>
+<kw name="Get Current Date" owner="DateTime">
+<var>${current_date}</var>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="NOT RUN" start="2025-03-08T00:23:57.508117" elapsed="0.000025"/>
+</kw>
+<kw name="Add Time To Date" owner="DateTime">
+<var>${date}</var>
+<arg>${current_date}</arg>
+<arg>3 days</arg>
+<arg>result_format=%Y-%m-%d</arg>
+<doc>Adds time to date and returns the resulting date.</doc>
+<status status="NOT RUN" start="2025-03-08T00:23:57.508245" elapsed="0.000023"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${RETURN_DATE}</var>
+<arg>xpath=//span[contains(@data-date,"${date}")]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2025-03-08T00:23:57.508377" elapsed="0.000024"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<arg>${RETURN_DATE}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="NOT RUN" start="2025-03-08T00:23:57.508506" elapsed="0.000022"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${RETURN_DATE}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-08T00:23:57.508629" elapsed="0.000023"/>
+</kw>
+<status status="NOT RUN" start="2025-03-08T00:23:57.507411" elapsed="0.001280"/>
+</branch>
+<status status="PASS" start="2025-03-08T00:23:57.488690" elapsed="0.020040"/>
+</if>
+<status status="PASS" start="2025-03-08T00:23:57.461755" elapsed="0.047049"/>
+</kw>
+<kw name="Then The selected dates should be visible on the screen" owner="flights.steps">
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-03-08T00:23:57.510080" level="INFO">message</msg>
+<arg>message</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.509990" elapsed="0.000127"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:57.509362" elapsed="0.000809"/>
+</kw>
+<kw name="Run Keyword If Test Failed" owner="BuiltIn" type="TEARDOWN">
+<arg>Capture Page Screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.510643" elapsed="0.000124"/>
+</kw>
+<doc>Verify the selection of random departure and return dates from the calendar and ensures they are displayed correctly.</doc>
+<tag>High</tag>
+<tag>UC-FLIGHTS</tag>
+<status status="PASS" start="2025-03-08T00:23:57.312133" elapsed="0.198876"/>
+</test>
+<test id="s1-t8" name="Scenario: Checking multi-city option displays required fields" line="68">
+<kw name="Given I click the multi-city radio button" owner="flights.steps">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:57.512943" level="INFO">Clicking element 'xpath=//span/div[text()='Multi-city']'.</msg>
+<arg>${MULTI_CITY_RADIO_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.512706" elapsed="0.141349"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:57.512472" elapsed="0.141738"/>
+</kw>
+<kw name="Then I should see two departures and destinations search boxes" owner="flights.steps">
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:57.666540" level="INFO">${search_multi_dest} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.561")&gt;, &lt;selenium.webdri...</msg>
+<var>${search_multi_dest}</var>
+<arg>${SEARCH_MULTI_DESTINATION_BOXES}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.655257" elapsed="0.011329"/>
+</kw>
+<kw name="Length Should Be" owner="BuiltIn">
+<msg time="2025-03-08T00:23:57.666941" level="INFO">Length is 2.</msg>
+<arg>${search_multi_dest}</arg>
+<arg>2</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.666776" elapsed="0.000208"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:57.655005" elapsed="0.012052"/>
+</kw>
+<kw name="Run Keyword If Test Failed" owner="BuiltIn" type="TEARDOWN">
+<arg>Capture Page Screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.667699" elapsed="0.000101"/>
+</kw>
+<doc>Ensure that selecting the multi-city option displays two sets of departure and destination search boxes.</doc>
+<tag>High</tag>
+<tag>UC-FLIGHTS</tag>
+<status status="PASS" start="2025-03-08T00:23:57.511850" elapsed="0.156291"/>
+</test>
+<test id="s1-t9" name="Scenario: Add a flight multi-city destination" line="75">
+<kw name="Given I click on the &quot;Add a flight&quot; button" owner="flights.steps">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-03-08T00:23:57.670225" level="INFO">${click_count} = 2</msg>
+<var>${click_count}</var>
+<arg>random.randint(1, 2)</arg>
+<arg>modules=random</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.669996" elapsed="0.000267"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-03-08T00:23:59.671331" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-03-08T00:23:57.670408" elapsed="2.001131"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-03-08T00:23:59.672400" level="INFO">${click_count} = 2</msg>
+<arg>${click_count}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-03-08T00:23:59.671972" elapsed="0.000503"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:23:59.673682" level="INFO">Clicking element '//span[contains(.,'Add a flight')]'.</msg>
+<arg>${ADD_FLIGHT_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:23:59.673361" elapsed="0.086753"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-03-08T00:24:01.760713" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-03-08T00:23:59.760284" elapsed="2.000603"/>
+</kw>
+<var name="${i}">0</var>
+<status status="PASS" start="2025-03-08T00:23:59.673086" elapsed="2.087918"/>
+</iter>
+<iter>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:24:01.761900" level="INFO">Clicking element '//span[contains(.,'Add a flight')]'.</msg>
+<arg>${ADD_FLIGHT_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:24:01.761542" elapsed="0.086139"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-03-08T00:24:03.848842" level="INFO">Slept 2 seconds.</msg>
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-03-08T00:24:01.847919" elapsed="2.001269"/>
+</kw>
+<var name="${i}">1</var>
+<status status="PASS" start="2025-03-08T00:24:01.761294" elapsed="2.088118"/>
+</iter>
+<var>${i}</var>
+<value>0</value>
+<value>${click_count}</value>
+<status status="PASS" start="2025-03-08T00:23:59.672617" elapsed="4.176985"/>
+</for>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-03-08T00:24:03.850930" level="INFO">${total_flights} = 3</msg>
+<var>${total_flights}</var>
+<arg>1 + ${click_count}</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-03-08T00:24:03.850167" elapsed="0.000837"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-03-08T00:24:03.851804" level="INFO">${total_flights} = 3</msg>
+<arg>${total_flights}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-03-08T00:24:03.851363" elapsed="0.000533"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:23:57.669766" elapsed="6.182291"/>
+</kw>
+<kw name="Then I should see new departure and destination search boxes" owner="flights.steps">
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:24:03.887119" level="INFO">${search_multi_dest} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.561")&gt;, &lt;selenium.webdri...</msg>
+<var>${search_multi_dest}</var>
+<arg>${SEARCH_MULTI_DESTINATION_BOXES}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:24:03.854783" elapsed="0.032395"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-03-08T00:24:03.887754" level="INFO">${expected_flights} = 4</msg>
+<var>${expected_flights}</var>
+<arg>${total_flights} + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-03-08T00:24:03.887418" elapsed="0.000368"/>
+</kw>
+<kw name="Length Should Be" owner="BuiltIn">
+<msg time="2025-03-08T00:24:03.888099" level="INFO">Length is 4.</msg>
+<arg>${search_multi_dest}</arg>
+<arg>${expected_flights}</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="PASS" start="2025-03-08T00:24:03.887931" elapsed="0.000214"/>
+</kw>
+<status status="PASS" start="2025-03-08T00:24:03.854277" elapsed="0.033946"/>
+</kw>
+<kw name="Run Keyword If Test Failed" owner="BuiltIn" type="TEARDOWN">
+<arg>Capture Page Screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" start="2025-03-08T00:24:03.889633" elapsed="0.000144"/>
+</kw>
+<doc>Ensure that selecting the 'Add a Flight' button displays new departure and destination search boxes</doc>
+<tag>High</tag>
+<tag>UC-FLIGHTS</tag>
+<status status="PASS" start="2025-03-08T00:23:57.669201" elapsed="6.221281"/>
+</test>
+<test id="s1-t10" name="Scenario: Search multiple flights for departures and destinations" line="82">
+<kw name="Given I search new destionations and departures with dates" owner="flights.steps">
+<for flavor="IN RANGE">
+<iter>
+<for flavor="IN">
+<iter>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Evaluate" owner="BuiltIn">
+<arg>${i} * 6 + 1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-03-08T00:24:03.894230" elapsed="0.000141"/>
+</kw>
+<msg time="2025-03-08T00:24:03.894475" level="INFO">${index} = 7</msg>
+<var>${index}</var>
+<arg>'${type}' == 'departure'</arg>
+<arg>Evaluate</arg>
+<arg>${i} * 6 + 1</arg>
+<arg>ELSE IF</arg>
+<arg>'${type}' == 'destination'</arg>
+<arg>Evaluate</arg>
+<arg>${i} * 6 + 3</arg>
+<arg>ELSE</arg>
+<arg>Evaluate</arg>
+<arg>${i} * 6 + 5</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-03-08T00:24:03.893986" elapsed="0.000511"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-03-08T00:24:03.894768" level="INFO">${xpath} = xpath=(//span[contains(@class,'SbZm6')])[7]</msg>
+<var>${xpath}</var>
+<arg>xpath=(//span[contains(@class,'SbZm6')])[${index}]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-03-08T00:24:03.894620" elapsed="0.000167"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:24:03.895219" level="INFO">Clicking element 'xpath=(//span[contains(@class,'SbZm6')])[7]'.</msg>
+<arg>${xpath}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:24:03.895032" elapsed="0.103676"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Search And Select Destination" owner="flights.steps">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:24:03.999809" level="INFO">Clicking element '//input[@placeholder='Airport or city']'.</msg>
+<arg>${DESTINATION_TO}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:24:03.999612" elapsed="0.071601"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-03-08T00:24:04.071672" level="INFO">${random_text} = YF</msg>
+<var>${random_text}</var>
+<arg>''.join(random.choices('ABCDEFGHIJKLMNOPQRSTUVWXYZ', k=2))</arg>
+<arg>modules=random,string</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-03-08T00:24:04.071404" elapsed="0.000293"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:24:04.072005" level="INFO">Typing text 'YF' into text field '//input[@placeholder='Airport or city']'.</msg>
+<arg>${DESTINATION_TO}</arg>
+<arg>${random_text}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:24:04.071815" elapsed="0.056621"/>
+</kw>
+<kw name="I should see a list of destinations matching the input" owner="flights.steps">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${DESTINATION_FROM_CITIES}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-03-08T00:24:04.128897" elapsed="0.672633"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:24:04.808380" level="INFO">${destination_from_items} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.579")&gt;, &lt;selenium.webdri...</msg>
+<var>${destination_from_items}</var>
+<arg>${DESTINATION_FROM_CITIES}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:24:04.801806" elapsed="0.006613"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2025-03-08T00:24:04.808699" level="INFO">Length is 13.</msg>
+<msg time="2025-03-08T00:24:04.808759" level="INFO">${l} = 13</msg>
+<var>${l}</var>
+<arg>${destination_from_items}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2025-03-08T00:24:04.808576" elapsed="0.000198"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-03-08T00:24:04.809050" level="INFO">@{destination_from_items} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.579")&gt; | &lt;selenium.webd...</msg>
+<arg>@{destination_from_items}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-03-08T00:24:04.808872" elapsed="0.000205"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-03-08T00:24:04.809445" level="INFO">${l} = 13</msg>
+<arg>${l}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-03-08T00:24:04.809295" elapsed="0.000178"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-03-08T00:24:05.810353" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-03-08T00:24:04.809553" elapsed="1.000992"/>
+</kw>
+<return>
+<value>${destination_from_items}</value>
+<value>${l}</value>
+<status status="PASS" start="2025-03-08T00:24:05.810717" elapsed="0.000088"/>
+</return>
+<status status="PASS" start="2025-03-08T00:24:04.128668" elapsed="1.682447"/>
+</kw>
+<kw name="I select a random departure from the list" owner="flights.steps">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-03-08T00:24:05.812408" level="INFO">${random_index} = 7</msg>
+<var>${random_index}</var>
+<arg>random.randint(0, ${l}-1)-3</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-03-08T00:24:05.811982" elapsed="0.000472"/>
+</kw>
+<kw name="Get WebElements" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:24:05.828146" level="INFO">${destination_from_city} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="342825a47a50eec424835cce8f138bac", element="f.673EA572E1947A45BB797ACF6B6EBB8B.d.2FD8177D7BAD9B8F6BC75648FD95410B.e.592")&gt;, &lt;selenium.webdri...</msg>
+<var>${destination_from_city}</var>
+<arg>${DESTINATION_LIST}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<status status="PASS" start="2025-03-08T00:24:05.812676" elapsed="0.015534"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:24:05.828734" level="FAIL">List '${destination_from_city}' has no item in index 7.</msg>
+<var>${selected_destination}</var>
+<arg>${destination_from_city}[${random_index}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="FAIL" start="2025-03-08T00:24:05.828459" elapsed="0.000329">List '${destination_from_city}' has no item in index 7.</status>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<arg>${selected_destination}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="NOT RUN" start="2025-03-08T00:24:05.829007" elapsed="0.000035"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<arg>${destination_from_city}[${random_index}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" start="2025-03-08T00:24:05.829185" elapsed="0.000026"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${selected_destination}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2025-03-08T00:24:05.829328" elapsed="0.000025"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2025-03-08T00:24:05.829454" elapsed="0.000022"/>
+</kw>
+<return>
+<value>${selected_destination}</value>
+<status status="NOT RUN" start="2025-03-08T00:24:05.829528" elapsed="0.000026"/>
+</return>
+<status status="FAIL" start="2025-03-08T00:24:05.811479" elapsed="0.018212">List '${destination_from_city}' has no item in index 7.</status>
+</kw>
+<arg>${xpath}</arg>
+<status status="FAIL" start="2025-03-08T00:24:03.999285" elapsed="1.830541">List '${destination_from_city}' has no item in index 7.</status>
+</kw>
+<arg>'${type}' == 'date'</arg>
+<arg>Set A Random Date</arg>
+<arg>${xpath}</arg>
+<arg>ELSE</arg>
+<arg>Search And Select Destination</arg>
+<arg>${xpath}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="FAIL" start="2025-03-08T00:24:03.998937" elapsed="1.830966">List '${destination_from_city}' has no item in index 7.</status>
+</kw>
+<var name="${type}">departure</var>
+<status status="FAIL" start="2025-03-08T00:24:03.893876" elapsed="1.936101">List '${destination_from_city}' has no item in index 7.</status>
+</iter>
+<var>${type}</var>
+<value>departure</value>
+<value>destination</value>
+<value>date</value>
+<status status="FAIL" start="2025-03-08T00:24:03.893779" elapsed="1.936272">List '${destination_from_city}' has no item in index 7.</status>
+</for>
+<var name="${i}">1</var>
+<status status="FAIL" start="2025-03-08T00:24:03.893736" elapsed="1.936395">List '${destination_from_city}' has no item in index 7.</status>
+</iter>
+<var>${i}</var>
+<value>1</value>
+<value>${total_flights}+1</value>
+<status status="FAIL" start="2025-03-08T00:24:03.893490" elapsed="1.936697">List '${destination_from_city}' has no item in index 7.</status>
+</for>
+<status status="FAIL" start="2025-03-08T00:24:03.893268" elapsed="1.937036">List '${destination_from_city}' has no item in index 7.</status>
+</kw>
+<kw name="Then I should see new departure and destination search boxes" owner="flights.steps">
+<status status="NOT RUN" start="2025-03-08T00:24:05.831229" elapsed="0.000046"/>
+</kw>
+<kw name="Run Keyword If Test Failed" owner="BuiltIn" type="TEARDOWN">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-03-08T00:24:05.930132" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-03-08T00:24:05.832106" elapsed="0.098121"/>
+</kw>
+<arg>Capture Page Screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" start="2025-03-08T00:24:05.831902" elapsed="0.098395"/>
+</kw>
+<tag>High</tag>
+<tag>UC-FLIGHTS</tag>
+<status status="FAIL" start="2025-03-08T00:24:03.892511" elapsed="2.038165">List '${destination_from_city}' has no item in index 7.</status>
+</test>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2025-03-08T00:24:05.932715" elapsed="2.276187"/>
+</kw>
+<status status="FAIL" start="2025-03-08T00:23:35.059150" elapsed="33.149931"/>
+</suite>
+<statistics>
+<total>
+<stat pass="9" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="9" fail="1" skip="0">High</stat>
+<stat pass="9" fail="1" skip="0">UC-FLIGHTS</stat>
+</tag>
+<suite>
+<stat pass="9" fail="1" skip="0" id="s1" name="Flights.Feature">Flights.Feature</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-03-08T00:23:35.412207" level="WARN">Error in file 'C:\Testinium-Booking-Gitlab\Testinium-Booking\step-definition\frontend\pages\bookingHomePage.robot' on line 26: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+<msg time="2025-03-08T00:23:35.801274" level="WARN">The chromedriver version (132.0.6834.83) detected in PATH at C:\Users\furka\Desktop\Fuat\Fuat Belgeler\chromedriver.exe might not be compatible with the detected chrome version (133.0.6943.143); currently, chromedriver 133.0.6943.141 is recommended for chrome 133.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-03-08T00:23:49.016686" level="WARN">Keyword 'Get Element Attribute' found both from a custom library 'SeleniumLibrary' and a standard library 'XML'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'SeleniumLibrary.Get Element Attribute' or 'XML.Get Element Attribute'.</msg>
+<msg time="2025-03-08T00:23:53.161899" level="WARN">Keyword 'Get Element Attribute' found both from a custom library 'SeleniumLibrary' and a standard library 'XML'. The custom keyword is used. To select explicitly, and to get rid of this warning, use either 'SeleniumLibrary.Get Element Attribute' or 'XML.Get Element Attribute'.</msg>
+</errors>
+</robot>
