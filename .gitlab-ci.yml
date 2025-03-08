@@ -19,6 +19,8 @@ build:
   stage: build
   script:
     - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+    - docker pull registry.gitlab.com/balamirr/testinium-booking
+    - docker run -d --name testinium-booking registry.gitlab.com/balamirr/testinium-booking
     - docker build -t $CI_REGISTRY_IMAGE .
     - docker push $CI_REGISTRY_IMAGE
   tags:
