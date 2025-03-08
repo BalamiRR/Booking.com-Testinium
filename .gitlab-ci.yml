@@ -10,10 +10,11 @@ image: registry.gitlab.com/balamirr/testinium-booking:latest
 run-sanity-checks-fe:
   stage: sanity-frontend
   script:
-    - python -m robot --version
+    - python3 -m robot --version
     - robot --version
     - pip install -r requirements.txt
     - robot --outputdir results --variable BROWSER:chrome --variable ENVIRONMENT:DEV --variable RESOLUTION:1920x1080 features-frontend/*.robot
+    - ls -la results
   artifacts:
     when: always
     paths:
