@@ -1,9 +1,5 @@
-image: registry.gitlab.com/balamirr/testinium-booking:latest
-
-stages:
-  - test
-
 test:
   script:
+    - echo $PATH
     - python --version
     - robot --version
