@@ -1,28 +1,32 @@
-image: registry.gitlab.com/balamirr/testinium-booking:latest
-
 stages:
   - build
   - test
 
-# Build stage - Docker imajı oluşturulacak
-build:
-  stage: build
-  services:
-    - docker:dind  # Docker in Docker kullanıyoruz
-  script:
-    - echo "Building Docker image..."
-    # Docker imajı oluşturulacak
-    - docker build -t my-python-app .  # Dockerfile bulunduğu dizin
-    - docker run -v $PWD:/app my-python-app bash -c "pip install -r /app/requirements.txt"  # Gereksinimlerin yüklenmesi
-    - echo "Build completed"
+variables:
+  ENVIRONMENT: "DEV"
+  FEATURE: "All"
+  BROWSER: "chrome"
 
-# Test stage - Testler çalıştırılacak
+# Docker image'i kullanarak testleri çalıştıracak job
 test:
+  image: registry.gitlab.com/balamirr/testinium-booking:latest  # Docker imajınız
   stage: test
   script:
-    - echo "Running tests..."
-    - pytest /app/tests  # Testlerin çalıştırılması
-    - echo "Tests completed"
+    - echo "Running tests on ${ENVIRONMENT} environment using ${BROWSER} browser..."
+    - echo "Test feature:" ${FEATURE}
+    - pip install --no-cache-dir -r requirements.txt
+    - Xvfb :99 -ac -screen 0 1920x1080x24 & export DISPLAY=:99
+    - |
+      if [ "$ENVIRONMENT" = "DEV" ]; then
+        if [ "$FEATURE" = "All" ]; then
+          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable ENVIRONMENT:${ENVIRONMENT} features-frontend
+        else
+          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable ENVIRONMENT:${ENVIRONMENT} --include ${ENVIRONMENT}AND${FEATURE} features-frontend
+        fi
+      fi
   artifacts:
+    when: always
     paths:
-      - reports/  # Test raporlarını kaydetmek için kullanılan yol
+      - results
+    expire_in: 1 week
+  allow_failure: true
