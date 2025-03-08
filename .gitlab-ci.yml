@@ -1,5 +1,4 @@
 stages:
-  - test
   - sanity-frontend
 
 include:
@@ -8,25 +7,11 @@ include:
 
 image: registry.gitlab.com/balamirr/testinium-booking
 
-test:
-  stage: test
-  script:
-    - echo "Running tests..."
-    - pip install -r requirements.txt
-    - robot --version
-    - python3 --version
-
 run-sanity-checks-fe:
   stage: sanity-frontend
-  extends: .sanity-fe-template
-  tags: [build]
+  extends: .sanity-fe-template   
+  tags: [ build ]
   rules:
-    - if: '$TRIGGER_SANITY_FE == "true"'
-    - if: '$CI_PIPELINE_SOURCE == "push"'
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-    - if: '$CI_PIPELINE_SOURCE == "web"'
-  script:
-    - echo "Running sanity frontend for the ${ENVIRONMENT} environment..."
-    - echo "Browser- $BROWSER"
-    - pip install --no-cache-dir -r requirements.txt
-    - robot --outputdir results --variable BROWSER:$BROWSER --variable RESOLUTION:$RESOLUTION --variable ENVIRONMENT:$ENVIRONMENT --include $ENVIRONMENT features-frontend/*.robot
+    - if: '$CI_PIPELINE_SOURCE == "push"'         
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"' 
+    - if: '$CI_PIPELINE_SOURCE == "web"'          
