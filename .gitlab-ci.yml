@@ -13,8 +13,9 @@ run-sanity-checks-fe:
     - python3 -m robot --version
     - robot --version
     - pip install -r requirements.txt
+    - which robot || where.exe robot
     - ls -la results 
-    - if [ ! -d "results" ]; then mkdir -p results; fi 
+    - bash -c "if [ ! -d 'results' ]; then mkdir -p results; fi"
     - robot --outputdir results --variable BROWSER:chrome --variable ENVIRONMENT:DEV --variable RESOLUTION:1920x1080 features-frontend/*.robot
   artifacts:
     when: always
