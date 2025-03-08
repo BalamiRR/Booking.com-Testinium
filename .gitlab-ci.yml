@@ -7,7 +7,7 @@ variables:
   ROBOT_WORK_DIR: /app
   ROBOT_REPORTS_DIR: /app/results
 
-image: registry.gitlab.com/balamirr/testinium-booking
+image: registry.gitlab.com/balamirr/testinium-booking:latest
 
 before_script:
   - echo "Setting up the environment"
