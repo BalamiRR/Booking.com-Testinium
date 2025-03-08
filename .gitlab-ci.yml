@@ -10,7 +10,8 @@ image: registry.gitlab.com/balamirr/testinium-booking:latest
 run-sanity-checks-fe:
   stage: sanity-frontend
   script:
-    - echo $PATH
+    - export PATH=$PATH:/c/Users/$USERNAME/AppData/Local/Programs/Python/PythonXX/
+    - python --version
   artifacts:
     when: always
     paths:
