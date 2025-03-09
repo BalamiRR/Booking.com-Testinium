@@ -11,25 +11,3 @@ run-sanity-checks-fe:
   stage: sanity-frontend
   extends: .sanity-fe-template   
   tags: [ build ]
-  script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build -t $CI_REGISTRY_IMAGE .
-    - docker push $CI_REGISTRY_IMAGE
-    - echo "Running sanity frontend tests for ${ENVIRONMENT} environment"
-    - pip install --no-cache-dir -r requirements.txt
-    - Xvfb :99 -ac -screen 0 1920x1080x24 &
-    - export DISPLAY=:99
-    - |
-      if [ "$ENVIRONMENT" = "DEV" ]; then
-        if [ "$FEATURE" = "All" ]; then
-          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable RESOLUTION:${RESOLUTION} --variable ENVIRONMENT:${ENVIRONMENT} --include ${ENVIRONMENT} features-frontend
-        else
-          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable RESOLUTION:${RESOLUTION} --variable ENVIRONMENT:${ENVIRONMENT} --include ${ENVIRONMENT}AND${FEATURE} features-frontend
-        fi
-      fi
-  artifacts:
-    when: always
-    paths:
-      - results
-    expire_in: 1 week
-  allow_failure: true
