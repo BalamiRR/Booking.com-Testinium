@@ -13,6 +13,6 @@
   artifacts:
     when: always
     paths:
-      - results
+      - build/results
     expire_in: 1 week
   allow_failure: true
