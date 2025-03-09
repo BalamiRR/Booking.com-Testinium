@@ -13,7 +13,7 @@ variables:
       - "UC-STAYS"
 
   BROWSER:
-    description: "Select the browser. Valid options are: 'chrome', 'edge'"
+    description: "Select the browsesr. Valid options are: 'chrome', 'edge'"
     value: "chrome" 
     options:
       - "chrome"
