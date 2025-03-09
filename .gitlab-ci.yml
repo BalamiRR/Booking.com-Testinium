@@ -1,3 +1,6 @@
+stages:
+  - sanity-frontend
+
 include:
   - local: 'templates/qa-variables.yml' 
   - local: 'templates/sanity-checks-fe.yml'
