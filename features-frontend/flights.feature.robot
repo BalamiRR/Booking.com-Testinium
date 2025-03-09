@@ -2,9 +2,6 @@
 Resource    ../step-definition/frontend/flights.steps.robot
 Resource    ../step-definition/frontend/home.steps.robot
 Force Tags    UC-FLIGHTS
-Suite Setup    Open BookingApp
-Test Teardown    Run Keyword If Test Failed    Capture Page Screenshot
-Suite Teardown    Close All Browsers
 
 *** Test Cases ***
 Scenario: Verify Flights tab navigation 
