@@ -335,12 +335,13 @@ I click the "Apply" button
 I will be redirected to the hotels result page
     Successfull redirection to the flight and hotel page    ${FLIGHT_HOTEL_PAGE}
 
-# I select a random hotel
-#     # ${get_random_hotels}    Evaluate    random.randint(1, ${lists_hotels}-1)
-#     # ${FORMULA_DESCRIPTION_DEL_TEMP}    Replace In String    ${RANDOM_HOTELS}    ${get_random_hotels}${EMPTY}
-#     Log    message
-# I will be redirected to the hotel details page
-#     Log    message
+I select a random hotel
+    ${get_random_hotels}    Evaluate    random.randint(1, ${lists_hotels}-1)
+    ${list_of_hotels_from_the_list}    Get WebElements    ${LIST_OF_HOTELS}
+    Click Element    ${list_of_hotels_from_the_list}[${get_random_hotels}]
+
+I will be redirected to the hotel details page
+    Element Should Be Visible    ${HOTEL_DETAILS}
 
 *** Comments ***
 I see related cities or airports as suggestions
