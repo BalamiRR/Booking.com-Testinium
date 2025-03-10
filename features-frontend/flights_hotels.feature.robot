@@ -2,10 +2,6 @@
 Resource    ../step-definition/frontend/flights_hotels.steps.robot
 Resource    ../step-definition/frontend/stays.steps.robot
 Force Tags    UC-FLIGHTS-HOTELS
-Suite Setup    Open BookingApp
-Test Teardown    Run Keyword If Test Failed    Capture Page Screenshot
-Suite Teardown    Close All Browsers
-
 
 *** Test Cases ***
 Scenario: Searching for the departure field

@@ -13,6 +13,7 @@ ${DESTINATION_MESSAGE}    Airport or city
 I click on the "Flights" tab
     Wait Until Element Is Enabled    ${DESTINATION_FIELD}    timeout=10
     Click Element    ${FLIGHTS_PAGE}
+    Log    message
 
 I should be redirected to the flights page
     ${url}=    Get Location

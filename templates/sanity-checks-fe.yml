@@ -3,8 +3,6 @@
     - echo "Running sanity frontend for the ${ENVIRONMENT} environment..."
     - echo "Browser:"" $BROWSER
     - pip install --no-cache-dir -r requirements.txt
-    - Xvfb :99 -ac -screen 0 1920x1080x24 &
-      export DISPLAY=:99
     - |
       if [ "$ENVIRONMENT" = "DEV" ]; then
         if [ "$FEATURE" = "All" ]; then
@@ -15,6 +13,6 @@
   artifacts:
     when: always
     paths:
-      - results
+      - build/results
     expire_in: 1 week
   allow_failure: true
