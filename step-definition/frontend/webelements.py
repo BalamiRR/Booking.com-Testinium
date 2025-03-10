@@ -99,4 +99,4 @@ APPLY_BTN="//div[@class='sc-efd5badf-0 jCbEWB']"
 SELECTED_DATE_ROUND_TRIP_SELECT_DATE="//div[@id=':R4ll1995:']//span[@aria-checked='true']"
 PREV_BUTTON_DATE="//button[contains(@class,'prev___oL5yZ')]"
 DATE_CALENDAR="(//span[contains(@class,'txN4N')])"
-
+HOTEL_DETAILS="//div[@id='packageDetails']"
