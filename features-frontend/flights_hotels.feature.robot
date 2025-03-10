@@ -156,12 +156,12 @@ Scenario: Selecting a meal plan option
     When I click the "Apply" button
     Then I will be redirected to the hotels result page
 
-# Scenario: Selecting a random hotel
-#     [Documentation]
-#      ...    Verify that when a user selects a random hotel from the search results,  
-#      ...    they are redirected to the hotel's details page.  
-#      ...    The details page should provide information such as the hotel's name,  
-#      ...    pricing, amenities, and booking options.
-#     [Tags]    High
-#     Given I select a random hotel
-#     Then I will be redirected to the hotel details page
+Scenario: Selecting a random hotel
+    [Documentation]
+     ...    Verify that when a user selects a random hotel from the search results,  
+     ...    they are redirected to the hotel's details page.  
+     ...    The details page should provide information such as the hotel's name,  
+     ...    pricing, amenities, and booking options.
+    [Tags]    High
+    Given I select a random hotel
+    Then I will be redirected to the hotel details page
