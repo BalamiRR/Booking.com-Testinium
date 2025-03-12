@@ -22,7 +22,7 @@ variables:
     options:
       - "chrome"
       - "edge"
-  IMAGE_TAG: $CI_REGISTRY_IMAGE/test-image:$CI_COMMIT_REF_SLUG
+  IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
 
 run-sanity-checks-fe:
   stage: sanity-frontend
