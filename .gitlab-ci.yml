@@ -54,4 +54,4 @@ build:
   script: 
     - docker build -t $IMAGE_TAG .
     - docker images 
-    - dokcer push $IMAGE_TAG
+    - docker push $IMAGE_TAG
