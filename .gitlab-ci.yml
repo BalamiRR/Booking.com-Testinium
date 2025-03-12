@@ -26,7 +26,6 @@ variables:
 
 run-sanity-checks-fe:
   stage: sanity-frontend
-  extends: .sanity-fe-template
   script:
     - echo "Running sanity frontend for the ${ENVIRONMENT} environment..."
     - echo "Browser:" $BROWSER
@@ -48,7 +47,7 @@ run-sanity-checks-fe:
 build:
   image: docker:latest
   services:
-    - dokcer:dind
+    - docker:dind
   stage: build
   before_script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
