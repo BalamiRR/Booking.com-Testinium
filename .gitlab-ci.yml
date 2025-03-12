@@ -11,6 +11,7 @@ run-sanity-checks-fe:
   stage: sanity-frontend
   extends: .sanity-fe-template   
   tags: [ build ]
+  script: "curl -X POST --fail -F token=glptt-47e1eb1bbbaefecf7b5031edd2bcb9cee08f7d70 -F ref=main https://gitlab.com/api/v4/projects/67711988/trigger/pipeline"  
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push"'         
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"' 
