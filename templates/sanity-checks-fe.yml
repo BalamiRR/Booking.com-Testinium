@@ -1,7 +1,7 @@
 .sanity-fe-template:
   script:
     - echo "Running sanity frontend for the ${ENVIRONMENT} environment..."
-    - echo "Browser:"" $BROWSER
+    - echo "Browser:" $BROWSER
     - pip install --no-cache-dir -r requirements.txt
     - |
       if [ "$ENVIRONMENT" = "DEV" ]; then
@@ -13,6 +13,6 @@
   artifacts:
     when: always
     paths:
-      - build/results
+      - results
     expire_in: 1 week
   allow_failure: true

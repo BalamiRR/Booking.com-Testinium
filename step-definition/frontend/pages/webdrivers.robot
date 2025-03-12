@@ -31,7 +31,7 @@ Create edge browser
    ${URL}=   readProperty.get_main_url   ${ENVIRONMENT}
    ${chrome_options}=   Evaluate   sys.modules['selenium.webdriver'].EdgeOptions()   sys, selenium.webdriver
    Call Method   ${options}   add_argument   --no-sandbox
-   Call Method   ${options}   add_argument   --headless  
+   # Call Method   ${options}   add_argument   --headless  
    Call Method   ${options}   add_argument   --disable-gpu
    Call Method   ${options}   add_argument   --disable-infobars
    Call Method   ${options}   add_argument   --disable-extensions

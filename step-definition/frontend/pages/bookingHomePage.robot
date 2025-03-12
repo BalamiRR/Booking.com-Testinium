@@ -23,4 +23,4 @@ Get Matching Items
     FOR    ${item}    IN    ${list1}
         Run Keyword If    ${item} in ${list2}    Append To List    ${matching_items}    ${item}
     END
-    [Return]    ${matching_items}
+    RETURN   ${matching_items}

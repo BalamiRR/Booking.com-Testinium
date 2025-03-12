@@ -1,18 +1,58 @@
 stages:
   - sanity-frontend
+  - build
 
-include:
-  - local: 'templates/qa-variables.yml' 
-  - local: 'templates/sanity-checks-fe.yml'
+variables:
+  ENVIRONMENT:
+    description: "Select the environment. Valid options are: 'DEV'"
+    value: "DEV"
 
-image: ppodgorsek/robot-framework
+  FEATURE:
+    description: "Select thes Feature that you want to execute"
+    value: "All" 
+    options:
+      - "All"
+      - "UC-FLIGHTS-HOTELS"
+      - "UC-FLIGHTS"
+      - "UC-STAYS"
+
+  BROWSER:
+    description: "Select the browsesr. Valid options are: 'chrome', 'edge'"
+    value: "chrome" 
+    options:
+      - "chrome"
+      - "edge"
+  IMAGE_TAG: $CI_REGISTRY_IMAGE/test-image:$CI_COMMIT_REF_SLUG
 
 run-sanity-checks-fe:
   stage: sanity-frontend
-  extends: .sanity-fe-template   
-  tags: [ build ]
-  script: robot --outputdir results --variable BROWSER:chrome --variable ENVIRONMENT:DEV features-frontend/flights.feature.robot  
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "push"'         
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"' 
-    - if: '$CI_PIPELINE_SOURCE == "web"'          
+  extends: .sanity-fe-template
+  script:
+    - echo "Running sanity frontend for the ${ENVIRONMENT} environment..."
+    - echo "Browser:" $BROWSER
+    - pip install --no-cache-dir -r requirements.txt
+    - |
+      if [ "$ENVIRONMENT" = "DEV" ]; then
+        if [ "$FEATURE" = "All" ]; then
+          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable RESOLUTION:${RESOLUTION} --variable ENVIRONMENT:${ENVIRONMENT} --include ${ENVIRONMENT} features-frontend
+        else
+          pabot --verbose -d results --variable BROWSER:${BROWSER} --variable RESOLUTION:${RESOLUTION} --variable ENVIRONMENT:${ENVIRONMENT} --include ${ENVIRONMENT}AND${FEATURE} features-frontend
+        fi
+  artifacts:
+    when: always
+    paths:
+      - results
+    expire_in: 1 week
+  allow_failure: true
+
+build:
+  image: docker:latest
+  services:
+    - dokcer:dind
+  stage: build
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script: 
+    - docker build -t $IMAGE_TAG
+    - docker images 
+    - dokcer push $IMAGE_TAG
