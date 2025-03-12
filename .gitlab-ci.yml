@@ -5,12 +5,13 @@ include:
   - local: 'templates/qa-variables.yml' 
   - local: 'templates/sanity-checks-fe.yml'
 
-image: registry.gitlab.com/balamirr/testinium-booking:latest
+image: ppodgorsek/robot-framework
 
 run-sanity-checks-fe:
   stage: sanity-frontend
   extends: .sanity-fe-template   
   tags: [ build ]
+  script: robot --outputdir results --variable BROWSER:chrome --variable ENVIRONMENT:DEV features-frontend/flights.feature.robot  
   rules:
     - if: '$CI_PIPELINE_SOURCE == "push"'         
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"' 
