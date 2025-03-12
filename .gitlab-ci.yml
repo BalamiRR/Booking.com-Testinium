@@ -41,7 +41,7 @@ run-sanity-checks-fe:
     when: always
     paths:
       - results
-    expire_in: 1 week
+    expire_in: 2 week
   allow_failure: true
 
 build:
