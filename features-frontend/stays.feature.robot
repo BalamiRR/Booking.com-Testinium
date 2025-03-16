@@ -114,6 +114,6 @@ Scenario: Search for available accommodation
     ...    and that they are successfully redirected to the results page upon selecting a destination.   
     [Tags]    DEV
     Given I click on search button
-    # Then I will see mandatory field warning for destination city
-    # When I select a random destionation city
-    # Then I will be redirected to the stay page
+    Then I will see mandatory field warning for destination city
+    When I select a random destionation city
+    Then I will be redirected to the stay page
