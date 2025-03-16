@@ -11,7 +11,7 @@ Scenario: Searching for the departure field
      ...    enter at least one letter, relevant city or airport suggestions appear.
     [Tags]    DEV
     Given I will be redirected to the Flight and Hotel page
-    And I select the english language on the top
+    # And I select the english language on the top
     When I click on the departure field
     Then I see that the departure field is active
     When I enter at least one letter "O"

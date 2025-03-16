@@ -13,12 +13,12 @@ I will be redirected to the Flight and Hotel page
     Click Element    ${FLIGHT_HOTEL_BTN}
     Successfull redirection to the flight and hotel page    ${FLIGHT_HOTEL_PAGE}
 
-I select the english language on the top
-    Wait Until Element Is Visible    ${FLIGHT_HOTEL_ACCEPT_COOKIES}
-    Click Element    ${FLIGHT_HOTEL_ACCEPT_COOKIES}
-    Wait Until Element Is Visible     ${FLIGHT_HOTEL_LANGUAGE}
-    Click Element    ${FLIGHT_HOTEL_LANGUAGE}
-    Click Element    ${FLIGHT_HOTEL_ENGLISH}
+# I select the english language on the top
+#     Wait Until Element Is Visible    ${FLIGHT_HOTEL_ACCEPT_COOKIES}
+#     Click Element    ${FLIGHT_HOTEL_ACCEPT_COOKIES}
+#     Wait Until Element Is Visible     ${FLIGHT_HOTEL_LANGUAGE}
+#     Click Element    ${FLIGHT_HOTEL_LANGUAGE}
+#     Click Element    ${FLIGHT_HOTEL_ENGLISH}
 
 I click on the departure field
     Click Element    ${DEPARTURE_FLIGHT_HOTEL_FIELD}
