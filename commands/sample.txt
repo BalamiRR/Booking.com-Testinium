@@ -11,3 +11,5 @@
 
 #Execute a scenario
 > robot --outputdir results --variable BROWSER:chrome --variable ENVIRONMENT:DEV --test "Searching for the destination field" features-frontend/flights.feature.robot
+
+Test Booking-16
