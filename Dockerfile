@@ -1,4 +1,5 @@
 FROM python:3.9
+RUN apt-get update && apt-get upgrade -y
 COPY . /app
 RUN pip3 install --upgrade pip
 RUN pip install --no-cache-dir -r /app/requirements.txt
@@ -44,4 +45,4 @@ VOLUME ${ROBOT_REPORTS_DIR}
 WORKDIR ${ROBOT_WORK_DIR}
 
 RUN rm -rf /root/.cache/selenium
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+CMD ["/bin/bash"]

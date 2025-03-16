@@ -1,6 +1,6 @@
 stages:
-  - sanity-frontend
   - build
+  - sanity-frontend
 
 variables:
   ENVIRONMENT:
@@ -24,12 +24,24 @@ variables:
       - "edge"
   IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
 
+build:
+  image: docker:latest
+  services:
+    - docker:dind
+  stage: build
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script: 
+    - docker build -t $IMAGE_TAG .
+    - docker images 
+    - docker push $IMAGE_TAG
+
 run-sanity-checks-fe:
+  image: $IMAGE_TAG
   stage: sanity-frontend
   script:
     - echo "Running sanity frontend for the ${ENVIRONMENT} environment..."
     - echo "Browser:" $BROWSER
-    - pip install --no-cache-dir -r requirements.txt
     - |
       if [ "$ENVIRONMENT" = "DEV" ]; then
         if [ "$FEATURE" = "All" ]; then
@@ -44,14 +56,3 @@ run-sanity-checks-fe:
     expire_in: 1 week
   allow_failure: true
 
-build:
-  image: docker:latest
-  services:
-    - docker:dind
-  stage: build
-  before_script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-  script: 
-    - docker build -t $IMAGE_TAG .
-    - docker images 
-    - docker push $IMAGE_TAG
