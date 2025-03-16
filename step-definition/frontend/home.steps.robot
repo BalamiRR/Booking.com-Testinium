@@ -16,8 +16,8 @@ Open BookingApp
         ...    ELSE
         ...    Fail    The browser selection is not valid
     Maximize Browser Window
-    Accept Cookies
-    Set language preferences
+    #Accept Cookies
+    #Set language preferences
     Close the Advertisement
     Set Global Variable    ${URL}
     RETURN    ${URL}
