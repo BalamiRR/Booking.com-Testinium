@@ -32,7 +32,7 @@ The list of destinations is displayed
     Set Global Variable    ${l}
     RETURN    ${destination_items}    ${l}
 
-The list of destinations matching the input\
+The list of destinations matching the input
     Log    message
     # FOR    ${i}    IN RANGE    ${l}
     #     ${destination}=    Get Text    ${destination_items}[${0}]
