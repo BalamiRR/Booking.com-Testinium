@@ -36,11 +36,11 @@ This project automates the testing process for the https://www.Booking.com site 
 </a> 
 
 <a href="https://projectfactory.randstaddigital.fr/secure/AboutPage.jspa" target="_blank" rel="noreferrer">
-    <img src="https://projectfactory.randstaddigital.fr/images/atlassian-jira-logo-large.png" alt="Atlassian" width="100" height="100"/> 
+    <img src="https://projectfactory.randstaddigital.fr/images/atlassian-jira-logo-large.png" alt="Atlassian" width="100" height="50"/> 
 </a>
 
 <a href="https://www.getxray.app/" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/xray-for-jira.svg" alt="Jira Xray" width="100" height="100"/> 
+    <img src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/xray-for-jira.svg" alt="Jira Xray" width="100" height="50"/> 
 </a>
 
 </p>
@@ -177,12 +177,12 @@ In our GitLab CI/CD pipeline, we regularly run automated tests to ensure softwar
 
 #### Test Plan and Test Execution Overview
 We track our test execution results using Jira Xray, ensuring better test management and defect tracking.  **Test Plan** is created to manage the testing process. The Test Plan includes the test scenarios that need to be executed, and these are run through the **Test Execution** process.
-![alt text](./image/Test Execution.png)
+![alt text](./image/TestPlanAndExecution.png)
 In this example, there are 28 tests in total, out of which 22 have passed and 6 are still to be executed. Each test case has details like the assignee, number of executions, dataset used, and the latest status.
 
 #### 📌Test Case
 The image shows a detailed test case written in Cucumber (Gherkin) format. This test verifies that users can correctly select the number of travelers and choose the appropriate flight class on the booking platform.
-![alt text](./image/TestCase- Cucumber.png)
+![alt text](./image/TestCase.png)
 
 
 ## 📄 License
