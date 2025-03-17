@@ -54,7 +54,7 @@ This project automates the testing process for the https://www.Booking.com site 
 git clone https://github.com/your-username/booking-automation.git
 cd booking-automation
 ```
-Manually :
+##### Manually :
 
 Fork / Clone repository from [here](https://github.com/BalamiRR/Testinium-Booking.git) or download zip and set
 it up in your local workspace.
@@ -67,15 +67,17 @@ pip install -r requirements.txt
 ```bash
 > robot --outputdir results --variable BROWSER:chrome --variable ENVIRONMENT:DEV features-frontend/stays.feature.robot
 ```
-###  Develop automation scripts using BDD approach - Cucumber- Python
+###  Develop automation scripts using BDD approach
 Develop automation scripts using the BDD approach in Robot Framework.
 There are already many predefined keywords which are packaged under /step_definition/frontend/stays.steps.robot, helping speed up your automation development with essential workaday helper methods.
 
 Tests are written using the Robot Framework with the Gherkin Syntax. Here is one of the scenarios:
 Feature File (Python Robot Framework)
-robot
-Kodu kopyala
-##### Feature File (Python Robot Framework)
+
+##### Feature File (stays.feature.robot)
+The feature file defines the test cases using the Gherkin syntax in Behavior-Driven Development (BDD). It describes scenarios in a human-readable format, ensuring clarity for both technical and non-technical stakeholders.
+
+Here is the feature file for UC-STAYS, where we define the test cases:
 ```
 *** Settings ***
 Resource    ../step-definition/frontend/stays.steps.robot
@@ -104,7 +106,10 @@ Scenario: Select a random age needed for children
     When I click the Done button
     Then I see the selected number of "1" is displayed in the field
 ```
-##### Step Definitions (Python - stays.steps.robot)
+##### Step Definitions (stays.steps.robot)
+The Step Definitions file connects the feature file’s Gherkin steps to actual automation code, enabling test execution.
+
+Here’s an example Step Definition file :
 ```
 *** Settings ***
 Library    SeleniumLibrary
@@ -147,13 +152,15 @@ In our GitLab CI/CD pipeline, we regularly run automated tests to ensure softwar
 * In the first execution, 10 out of 13 tests passed, while 3 tests failed.
 * The failed tests indicate potential system issues or missing functionalities.
 * Test Report Screenshot:
-  ![alt text](./image/Failed.png)
+
+![alt text](./image/Failed.png)
 * This report provides insights into which tests failed and detailed error logs for further analysis.
 
 #### ✅Successful Pipeline Execution
 * After fixing the identified issues, all tests passed (13/13).
 * This confirms that the fixes were effective and the system is functioning as expected.
 * Test Report Screenshot:
+
 ![alt text](./image/Passed.png)
 
 #### GitLab Pipeline Result
@@ -161,11 +168,15 @@ In our GitLab CI/CD pipeline, we regularly run automated tests to ensure softwar
 * This shows that the tests were executed successfully within the GitLab pipeline and passed the sanity frontend stage.
 ![alt text](./image/Pipeline.png)
 
-### 📌Jira Xray Test Execution Overview
-We track our test execution results using Jira Xray, ensuring better test management and defect tracking.
-![alt text](./image/Test Execution.png)
+### 📌Jira Xray 
 
-### 📌Test Case
+#### Test Plan and Test Execution Overview
+We track our test execution results using Jira Xray, ensuring better test management and defect tracking.  **Test Plan** is created to manage the testing process. The Test Plan includes the test scenarios that need to be executed, and these are run through the **Test Execution** process.
+![alt text](./image/Test Execution.png)
+In this example, there are 28 tests in total, out of which 22 have passed and 6 are still to be executed. Each test case has details like the assignee, number of executions, dataset used, and the latest status.
+
+#### 📌Test Case
+The image shows a detailed test case written in Cucumber (Gherkin) format. This test verifies that users can correctly select the number of travelers and choose the appropriate flight class on the booking platform.
 ![alt text](./image/TestCase- Cucumber.png)
 
 
