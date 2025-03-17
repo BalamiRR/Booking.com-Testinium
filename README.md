@@ -20,32 +20,37 @@ This project automates the testing process for the https://www.Booking.com site 
 </a> 
 
 <a href="https://robotframework.org/" target="_blank" rel="noreferrer">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Robot-framework-logo.png" alt="Robot Framework" width="60" height="60"/> 
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Robot-framework-logo.png" alt="Robot Framework" width="70" height="70"/> 
 </a>    
 
 <a href="https://www.oracle.com/" target="_blank" rel="noreferrer"> 
   <img src="https://lisacrispin.com/wp-content/uploads/2019/01/Screen-Shot-2019-01-17-at-12.13.33-PM.png" alt="oracle" width="60" height="60"/> 
 </a>
 
-<a href="https://www.getxray.app/" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/xray-for-jira.svg" alt="Jira Xray" width="60" height="60"/> 
+<a href="https://about.gitlab.com/" target="_blank" rel="noreferrer">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/GitLab_icon.svg" alt="GitLab" width="50" height="50"/> 
 </a>
 
 <a href="https://www.docker.com/" target="_blank" rel="noreferrer">
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" alt="Docker" width="60" height="60"/> 
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" alt="Docker" width="70" height="70"/> 
 </a> 
 
-<a href="https://about.gitlab.com/" target="_blank" rel="noreferrer">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/GitLab_icon.svg" alt="GitLab" width="60" height="60"/> 
+<a href="https://projectfactory.randstaddigital.fr/secure/AboutPage.jspa" target="_blank" rel="noreferrer">
+    <img src="https://projectfactory.randstaddigital.fr/images/atlassian-jira-logo-large.png" alt="Atlassian" width="100" height="100"/> 
 </a>
+
+<a href="https://www.getxray.app/" target="_blank" rel="noreferrer">
+    <img src="https://raw.githubusercontent.com/gilbarbara/logos/master/logos/xray-for-jira.svg" alt="Jira Xray" width="100" height="100"/> 
+</a>
+
 </p>
 
 - **Programming Language:** Python
 - **Test Framework:** Robot Framework
 - **Behavior-Driven Development (BDD):** Cucumber (Gherkin syntax)
-- **Test Management:** Jira Xray
-- **Containerization:** Docker
 - **Continuous Integration & Deployment (CI/CD):** Gitlab
+- **Containerization:** Docker
+- **Test Management:** Jira & Xray
 
 
 ## 🚀 How to Run the Tests
