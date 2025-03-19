@@ -85,19 +85,20 @@ The feature file defines the test cases using the Gherkin syntax in Behavior-Dri
 Here is the feature file for UC-STAYS, where we define the test cases:
 ```
 *** Settings ***
-Resource    ../step-definition/frontend/stays.steps.robot
-Force Tags    UC-STAYS
+Resource    ../step-definition/frontend/flights_hotels.steps.robot
+Force Tags    UC-FLIGHTS-HOTELS
 
 *** Test Cases ***
-Scenario: Select minimum number of children
-    [Documentation]    
-    ...    This scenario verifies that when the "+" button for children is clicked, the 
-    ...    number of children increases by 1 and the "Age needed" field appears.
-    [Tags]    Medium
-    Given I see "0" displayed default for children
-    When I click the '+' button for children
-    Then I see the number of children increase by 1
-    And I see the "Age needed" field is displayed for the added child
+Scenario: Searching for the destination field
+    [Documentation]
+     ...    Verify the functionality of the destination input field on the Flights and Hotel page.
+     ...    Ensures that users can click on the destination field and see it ready for input.
+     ...    enter at least one letter, relevant city or airport suggestions appear.
+    [Tags]    DEV
+    When I click on the destination field
+    Then I see that the destination field is active
+    When I enter a letter "I"
+    Then I see related cities or airports for destination
     
 Scenario: Select a random age needed for children
     [Documentation]    
@@ -111,7 +112,7 @@ Scenario: Select a random age needed for children
     When I click the Done button
     Then I see the selected number of "1" is displayed in the field
 ```
-##### Step Definitions (stays.steps.robot)
+##### Step Definitions (flights_hotels.steps.robot)
 The Step Definitions file connects the feature file’s Gherkin steps to actual automation code, enabling test execution.
 
 Here’s an example Step Definition file :
@@ -125,29 +126,22 @@ Variables    webelements.py
 
 *** Keywords ***
 
-I click the "Age needed" field
-    Click Element    ${AGE_NEEDED_FIELD}
+I click on the destination field
+    Click Element    ${DESTINATION_FLIGHT_HOTEL_FIELD}
 
-I will see the list of ages 
-    Element Should Be Visible    ${AGE_NEEDED_LIST}
-
-I select a random age from the list
-    ${options}    Get List Items    ${AGE_NEEDED_FIELD}
-    ${random_age}    Evaluate    random.choice(${options})    modules=random
-    Select From List By Label    ${AGE_NEEDED_FIELD}    ${random_age}
-    Log    ${AGE_NEEDED_FIELD}
-    Log    ${random_age}
-
-The age will be assigned to the field
-    ${age_value}    Get Value    ${AGE_NEEDED_FIELD}
-
-I click the Done button
-    Click ELement    ${DONE_BTN}
-
-I see the selected number of "${children}" is displayed in the field
-    ${children_value}    Evaluate    ${children_value} + 1
-    ${children}    Convert To Integer    ${children}
-    Should Be Equal    ${children_value}    ${children}
+I will see the popular cities contain "${Amsterdam Netherlands}" "${Tenerife Canary Islands}" "${Dubai United Arab Emirates}" "${New York - Manhattan United States}" "${Barcelona Spain}" "${Lanzarote Canary Islands}" "${Paris France}" "${Prague Czech Republic}" "${Rome Italy}" "${Antalya region Turkey}" 
+    ${destination_list}=    Create List    ${Amsterdam Netherlands}    ${Tenerife Canary Islands}     ${Dubai United Arab Emirates}    
+    ...    ${New York - Manhattan United States}    ${Barcelona Spain}    ${Lanzarote Canary Islands}    ${Paris France}    
+    ...    ${Prague Czech Republic}    ${Rome Italy}    ${Antalya region Turkey}     
+    Wait Until Page Contains Element    ${LIST_OF_DESTINATION}    20s
+    ${list_destination_count}    Get Element Count    ${LIST_OF_DESTINATION}
+    ${list_destination_count}    Convert To Integer    ${list_destination_count}     
+    ${list_number}    Convert To String    ${list_destination_count}   
+    FOR    ${index}    IN RANGE    1    ${list_destination_count}
+        ${random_destination_list_text}    Get Text    //ul[@class='d-1ip0gkj']//li[@id='listbox-option-${index}']
+        ${random_destination_list_text}    Replace String    ${random_destination_list_text}    \n    ${SPACE}
+        List Should Contain Value    ${destination_list}    ${random_destination_list_text}
+    END
 ```
 
 ### 📌 GitLab Pipeline Execution Summary
