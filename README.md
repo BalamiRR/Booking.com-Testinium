@@ -97,6 +97,7 @@ Scenario: Searching for the destination field
     [Tags]    DEV
     When I click on the destination field
     Then I see that the destination field is active
+    And It is ready for inputs
     When I enter a letter "I"
     Then I see related cities or airports for destination
     
