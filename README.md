@@ -36,7 +36,7 @@ This project automates the testing process for the https://www.Booking.com site 
 </a> 
 
 <a href="https://projectfactory.randstaddigital.fr/secure/AboutPage.jspa" target="_blank" rel="noreferrer">
-    <img src="https://projectfactory.randstaddigital.fr/images/atlassian-jira-logo-large.png" alt="Atlassian" width="100" height="50"/> 
+    <img src="https://github.com/user-attachments/assets/3b176d23-5cdb-4d19-852d-40b30b867cb2" alt="Atlassian" width="100" height="50"/> 
 </a>
 
 <a href="https://www.getxray.app/" target="_blank" rel="noreferrer">
