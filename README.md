@@ -4,7 +4,7 @@
 This project automates the testing process for the https://www.Booking.com site using **Python**, **Robot Framework** and **Cucumber (BDD)**. The automation suite is integrated with **Gitlab Actions CI/CD** for continuous testing and runs in an isolated **Docker** environment. Test case management and reporting are handled via **Jira Xray**.
 
 
-## 🎯 Objectives
+## Objectives
 - Automate functional and regression testing
 - Reduce manual testing effort and execution time
 - Enable early bug detection and faster feedback loops
@@ -12,7 +12,7 @@ This project automates the testing process for the https://www.Booking.com site 
 - Manage test cases and reports efficiently with **Jira Xray**
 
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 <p align="left"> 
 <a href="https://www.python.org/" target="_blank" rel="noreferrer"> 
@@ -53,8 +53,8 @@ This project automates the testing process for the https://www.Booking.com site 
 - **Test Management:** Jira & Xray
 
 
-## 🚀 How to Run the Tests
-### 1️⃣ Clone the repository
+## How to Run the Tests
+### 1- Clone the repository
 ```bash
 git clone https://github.com/your-username/booking-automation.git
 cd booking-automation
@@ -64,11 +64,11 @@ cd booking-automation
 Fork / Clone repository from [here](https://github.com/BalamiRR/Testinium-Booking.git) or download zip and set
 it up in your local workspace.
 
-### 2️⃣ Install dependencies
+### 2- Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
-### 3️⃣ Run tests locally
+### 3- Run tests locally
 ```bash
 > robot --outputdir results --variable BROWSER:chrome --variable ENVIRONMENT:DEV features-frontend/stays.feature.robot
 ```
@@ -180,7 +180,7 @@ The image shows a detailed test case written in Cucumber (Gherkin) format. This 
 ![alt text](./image/TestCase.png)
 
 
-## 📄 License
+## License
 This project is licensed under the MIT License.
 
 
