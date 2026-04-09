@@ -3,7 +3,6 @@
 ## 📌 Project Description
 This project automates the testing process for the https://www.Booking.com site using **Python**, **Robot Framework** and **Cucumber (BDD)**. The automation suite is integrated with **Gitlab Actions CI/CD** for continuous testing and runs in an isolated **Docker** environment. Test case management and reporting are handled via **Jira Xray**.
 
-
 ## Objectives
 - Automate functional and regression testing
 - Reduce manual testing effort and execution time
