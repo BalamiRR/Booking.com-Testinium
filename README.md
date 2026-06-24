@@ -178,7 +178,8 @@ This project backlog contains user stories that define the core features, user n
 
 #### 📌User Story
 The project backlog consists of user stories that capture user needs and expected system functionality. These stories serve as a foundation for planning, prioritizing tasks, and guiding the development process to ensure the delivery of valuable and user-centered features.
-![alt text](./image/User story.png)
+
+![alt text](./image/Userstory.png)
 
 #### 📌Test Case
 The image shows a detailed test case written in Cucumber (Gherkin) format. This test verifies that users can correctly select the number of travelers and choose the appropriate flight class on the booking platform.
