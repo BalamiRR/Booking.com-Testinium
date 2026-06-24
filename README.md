@@ -172,6 +172,14 @@ We track our test execution results using Jira Xray, ensuring better test manage
 ![alt text](./image/TestPlanAndExecution.png)
 In this example, there are 28 tests in total, out of which 22 have passed and 6 are still to be executed. Each test case has details like the assignee, number of executions, dataset used, and the latest status.
 
+#### 📌Backlog
+This project backlog contains user stories that define the core features, user needs, and acceptance criteria. These stories help prioritize development tasks and ensure the product delivers value to end users through iterative improvements.
+![alt text](./image/backlog.png)
+
+#### 📌User Story
+The project backlog consists of user stories that capture user needs and expected system functionality. These stories serve as a foundation for planning, prioritizing tasks, and guiding the development process to ensure the delivery of valuable and user-centered features.
+![alt text](./image/User story.png)
+
 #### 📌Test Case
 The image shows a detailed test case written in Cucumber (Gherkin) format. This test verifies that users can correctly select the number of travelers and choose the appropriate flight class on the booking platform.
 ![alt text](./image/TestCase.png)
