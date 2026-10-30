@@ -1,6 +1,7 @@
  # :fallen_leaf: :leaves: Testinium-BookingApp :leaves: :fallen_leaf:
 
-## 📌 Project Description
+<img width="1280" height="720" alt="Yellow and White Collage Kashmir Travel Vlog YouTube Thumbnail (1)" src="https://github.com/user-attachments/assets/d25067d1-4b1e-4d02-bf37-af6ecd9b33fc" />
+
 This project automates the testing process for the https://www.Booking.com site using **Python**, **Robot Framework** and **Cucumber (BDD)**. The automation suite is integrated with **Gitlab Actions CI/CD** for continuous testing and runs in an isolated **Docker** environment. Test case management and reporting are handled via **Jira Xray**.
 
 ## Objectives
